@@ -1,0 +1,78 @@
+// Accordion
+.accordion-ui {
+  > .card {
+    overflow: hidden;
+    &.active {
+      border-color: $component-active-bg;
+    }
+    .card-header {
+      padding-top: .75rem;
+      padding-bottom: .75rem;
+      border-bottom: 0;
+      transition: background-color .35s ease, color .35s ease;
+      cursor: pointer;
+      &.dropdown-toggle::after { // Caret
+        margin-left: auto;
+        transition: transform .35s ease;
+      }
+      &[aria-expanded="false"] { // Collapsed
+        background-color: rgba($black, .03);
+      }
+      &[aria-expanded="true"] { // Expanded
+        color: $component-active-bg;
+        &.dropdown-toggle::after { // Expanded caret
+          transform: rotate(180deg);
+        }
+      }
+    }
+    &:not(:first-of-type) {
+      margin-top: .25rem;
+    }
+    .card-body {
+      padding-top: .25rem;
+    }
+  }
+}
+// Accordion active color
+@each $color, $value in $theme-colors {
+  @if $color != 'light' and $color != 'primary' { // Ignore 'primary' and 'light' use default instead
+    .accordion-active-#{$color} > .card {
+      &.active {
+        border-color: $value;
+      }
+      .card-header[aria-expanded="true"] {
+        color: $value;
+      }
+    }
+  }
+}
+// Accordion colored variations
+@each $color, $value in $theme-colors {
+  @if $color != 'light' { // Ignore 'light' use default instead
+    .accordion-#{$color} {
+      > .card {
+        border-color: $value;
+        &.active {
+          border-color: $value;
+        }
+        .card-header {
+          &[aria-expanded="false"] {
+            background-color: $value;
+            color: color-yiq($value);
+          }
+          &[aria-expanded="true"] {
+            @if $color == 'warning' {
+              color: color-yiq($value);
+            } @else {
+              color: $value;
+            }
+          }
+        }
+        .card-header[aria-expanded="true"],
+        .card-body {
+          background-color: theme-color-level($color, $faded-level);
+        }
+      }
+    }
+  }
+}

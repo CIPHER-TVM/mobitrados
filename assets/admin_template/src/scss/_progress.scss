@@ -1,0 +1,15 @@
+// Progress
+.progress-vertical {
+  position: relative;
+  display: inline-block;
+  width: $progress-height;
+  margin-bottom: 0;
+  .progress-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+}
+.progress-bar-animated {
+  transform: translateZ(0); // Reduce cpu usage (https://stackoverflow.com/questions/34792969/bootstrap-progress-bar-animation-using-50-cpu)
+}

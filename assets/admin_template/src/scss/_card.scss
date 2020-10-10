@@ -1,0 +1,65 @@
+.card-header,
+.card-footer {
+  display: flex;
+  align-items: center;
+}
+.card-header > {
+  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-bottom: 0;
+  }
+}
+
+// Theme colors
+@each $color, $value in $theme-colors {
+  @if $color != 'light' { // ignore '.card-light' use default card instead
+    .card.card-#{$color} {
+      border-color: $value;
+      .card-header,
+      .card-footer {
+        background-color: $value;
+        color: color-yiq($value);
+        border: 0;
+      }
+    }
+  }
+}
+
+// Card fullscreen
+.card-fullscreen {
+  position: fixed;
+  z-index: $zindex-fixed + 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  border: 0;
+  @if $enable-rounded {
+    border-radius: 0;
+  }
+  > .card-header,
+  > .card-footer {
+    flex-shrink: 0;
+    @if $enable-rounded {
+      border-radius: 0;
+    }
+  }
+}
+
+// Card loader overlay
+.card-loader-overlay {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: #fff;
+  background-color: rgba(#000, .5);
+  background-repeat: no-repeat;
+  background-position: center;
+  @include flex-center;
+}

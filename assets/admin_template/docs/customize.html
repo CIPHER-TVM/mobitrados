@@ -1,0 +1,23 @@
+<h3>Customize</h3>
+<hr>
+<p>Mimity uses <code>Yarn</code> as package manager and <code>Gulp</code> for build tool</p>
+<ul>
+  <li>Make sure your machine has <a href="https://yarnpkg.com/en/docs/install" target="_blank">Yarn</a> and <a href="https://gulpjs.com/" target="_blank">Gulp</a> installed</li>
+  <li>Navigate to the root mimity directory and run <code>yarn install</code> to install our local dependencies listed in <u>package.json</u></li>
+  <li>
+    When completed, you’ll be able to run the following commands from the command line:
+    <ul>
+      <li><code>gulp watch</code> will serve the template at <code>127.0.0.1:2020</code>, open browser automatically, watch changes then reload the browser automatically</li>
+      <li><code>gulp</code> will rebuild all plugins, css, and js then serve the template, open browser and watch changes same as <code>gulp watch</code> command</li>
+    </ul>
+  </li>
+  <li>Please customize the file in the <code>src</code> folder</li>
+</ul>
+
+<script>
+  App.loadPlugins(null, null).then(() => {
+
+    App.accordionActive()
+
+  }).then(() => App.stopLoading())
+</script>

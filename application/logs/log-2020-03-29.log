@@ -1,0 +1,36 @@
+INFO - 2020-03-29 20:37:24 --> Config Class Initialized
+INFO - 2020-03-29 20:37:24 --> Hooks Class Initialized
+DEBUG - 2020-03-29 20:37:24 --> UTF-8 Support Enabled
+INFO - 2020-03-29 20:37:24 --> Utf8 Class Initialized
+INFO - 2020-03-29 20:37:24 --> URI Class Initialized
+DEBUG - 2020-03-29 20:37:24 --> No URI present. Default controller set.
+INFO - 2020-03-29 20:37:24 --> Router Class Initialized
+INFO - 2020-03-29 20:37:24 --> Output Class Initialized
+INFO - 2020-03-29 20:37:24 --> Security Class Initialized
+DEBUG - 2020-03-29 20:37:24 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-03-29 20:37:24 --> Input Class Initialized
+INFO - 2020-03-29 20:37:24 --> Language Class Initialized
+INFO - 2020-03-29 20:37:24 --> Language Class Initialized
+INFO - 2020-03-29 20:37:24 --> Config Class Initialized
+INFO - 2020-03-29 20:37:24 --> Loader Class Initialized
+DEBUG - 2020-03-29 20:37:24 --> Config file loaded: /home/cipherte/public_html/medi_shop/application/config/rest.php
+INFO - 2020-03-29 20:37:24 --> Helper loaded: url_helper
+INFO - 2020-03-29 20:37:24 --> Helper loaded: form_helper
+INFO - 2020-03-29 20:37:24 --> Helper loaded: adminurl_helper
+INFO - 2020-03-29 20:37:24 --> Helper loaded: site_helper
+INFO - 2020-03-29 20:37:24 --> Helper loaded: directory_helper
+INFO - 2020-03-29 20:37:24 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-03-29 20:37:24 --> Database Driver Class Initialized
+INFO - 2020-03-29 20:37:24 --> Email Class Initialized
+DEBUG - 2020-03-29 20:37:24 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-03-29 20:37:24 --> Session: Class initialized using 'files' driver.
+INFO - 2020-03-29 20:37:24 --> Controller Class Initialized
+DEBUG - 2020-03-29 20:37:24 --> Web MX_Controller Initialized
+DEBUG - 2020-03-29 20:37:24 --> File loaded: /home/cipherte/public_html/medi_shop/application/modules/website/web/models/Public_users_m.php
+DEBUG - 2020-03-29 20:37:24 --> File loaded: /home/cipherte/public_html/medi_shop/application/modules/website/web/views/sections/header.php
+DEBUG - 2020-03-29 20:37:24 --> File loaded: /home/cipherte/public_html/medi_shop/application/modules/website/web/views/sections/modals.php
+DEBUG - 2020-03-29 20:37:24 --> File loaded: /home/cipherte/public_html/medi_shop/application/modules/website/web/views/home.php
+DEBUG - 2020-03-29 20:37:24 --> File loaded: /home/cipherte/public_html/medi_shop/application/modules/website/web/views/sections/js.php
+DEBUG - 2020-03-29 20:37:24 --> File loaded: /home/cipherte/public_html/medi_shop/application/modules/website/web/views/sections/footer.php
+INFO - 2020-03-29 20:37:24 --> Final output sent to browser
+DEBUG - 2020-03-29 20:37:24 --> Total execution time: 0.1897

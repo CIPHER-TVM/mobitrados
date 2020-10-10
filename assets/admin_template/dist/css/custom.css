@@ -1,0 +1,14 @@
+font-sm{
+    font-size: 14px;
+}
+
+icon-sm{
+    font-size: 19px;
+}
+
+custom-input-icon{
+    position: absolute !important;
+    z-index: 1 !important;
+    padding-top: 0.3rem !important;
+    padding-left: .5rem !important;
+}

@@ -1,0 +1,56 @@
+INFO - 2020-10-01 12:55:30 --> Config Class Initialized
+INFO - 2020-10-01 12:55:30 --> Hooks Class Initialized
+DEBUG - 2020-10-01 12:55:30 --> UTF-8 Support Enabled
+INFO - 2020-10-01 12:55:31 --> Utf8 Class Initialized
+INFO - 2020-10-01 12:55:31 --> URI Class Initialized
+INFO - 2020-10-01 12:55:31 --> Router Class Initialized
+INFO - 2020-10-01 12:55:31 --> Output Class Initialized
+INFO - 2020-10-01 12:55:31 --> Security Class Initialized
+DEBUG - 2020-10-01 12:55:31 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-10-01 12:55:31 --> CSRF cookie sent
+INFO - 2020-10-01 12:55:31 --> Input Class Initialized
+INFO - 2020-10-01 12:55:31 --> Language Class Initialized
+INFO - 2020-10-01 12:55:31 --> Language Class Initialized
+INFO - 2020-10-01 12:55:32 --> Config Class Initialized
+INFO - 2020-10-01 12:55:32 --> Loader Class Initialized
+DEBUG - 2020-10-01 12:55:32 --> Config file loaded: D:\xampp\htdocs\mobitrados\application\config/rest.php
+INFO - 2020-10-01 12:55:32 --> Helper loaded: url_helper
+INFO - 2020-10-01 12:55:32 --> Helper loaded: form_helper
+INFO - 2020-10-01 12:55:32 --> Helper loaded: adminurl_helper
+INFO - 2020-10-01 12:55:32 --> Helper loaded: site_helper
+INFO - 2020-10-01 12:55:32 --> Helper loaded: directory_helper
+INFO - 2020-10-01 12:55:32 --> Helper loaded: mail_helper
+INFO - 2020-10-01 12:55:32 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-10-01 12:55:32 --> Database Driver Class Initialized
+ERROR - 2020-10-01 12:55:36 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+ D:\xampp\htdocs\mobitrados\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2020-10-01 12:55:36 --> Unable to connect to the database
+INFO - 2020-10-01 12:55:36 --> Language file loaded: language/english/db_lang.php
+INFO - 2020-10-01 12:55:37 --> Config Class Initialized
+INFO - 2020-10-01 12:55:37 --> Hooks Class Initialized
+DEBUG - 2020-10-01 12:55:37 --> UTF-8 Support Enabled
+INFO - 2020-10-01 12:55:37 --> Utf8 Class Initialized
+INFO - 2020-10-01 12:55:37 --> URI Class Initialized
+INFO - 2020-10-01 12:55:37 --> Router Class Initialized
+INFO - 2020-10-01 12:55:37 --> Output Class Initialized
+INFO - 2020-10-01 12:55:37 --> Security Class Initialized
+DEBUG - 2020-10-01 12:55:37 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-10-01 12:55:37 --> CSRF cookie sent
+INFO - 2020-10-01 12:55:37 --> Input Class Initialized
+INFO - 2020-10-01 12:55:38 --> Language Class Initialized
+INFO - 2020-10-01 12:55:38 --> Language Class Initialized
+INFO - 2020-10-01 12:55:38 --> Config Class Initialized
+INFO - 2020-10-01 12:55:38 --> Loader Class Initialized
+DEBUG - 2020-10-01 12:55:38 --> Config file loaded: D:\xampp\htdocs\mobitrados\application\config/rest.php
+INFO - 2020-10-01 12:55:38 --> Helper loaded: url_helper
+INFO - 2020-10-01 12:55:38 --> Helper loaded: form_helper
+INFO - 2020-10-01 12:55:38 --> Helper loaded: adminurl_helper
+INFO - 2020-10-01 12:55:38 --> Helper loaded: site_helper
+INFO - 2020-10-01 12:55:38 --> Helper loaded: directory_helper
+INFO - 2020-10-01 12:55:38 --> Helper loaded: mail_helper
+INFO - 2020-10-01 12:55:38 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-10-01 12:55:38 --> Database Driver Class Initialized
+ERROR - 2020-10-01 12:55:42 --> Severity: Warning --> mysqli::real_connect(): (HY000/2002): No connection could be made because the target machine actively refused it.
+ D:\xampp\htdocs\mobitrados\system\database\drivers\mysqli\mysqli_driver.php 203
+ERROR - 2020-10-01 12:55:42 --> Unable to connect to the database
+INFO - 2020-10-01 12:55:42 --> Language file loaded: language/english/db_lang.php

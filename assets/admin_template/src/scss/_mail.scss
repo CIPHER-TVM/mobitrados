@@ -1,0 +1,80 @@
+.table-mail {
+  table-layout: fixed;
+  thead tr th:first-child {
+    width: 62px !important;
+  }
+  tbody tr {
+    &.unread {
+      font-weight: 700;
+      background-color: #fff;
+    }
+    &:not(.unread) {
+      background-color: $light;
+    }
+    td {
+      @include media-breakpoint-up(md) {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+      &:first-child {
+        vertical-align: middle;
+        text-align: left !important;
+        padding-left: .75rem;
+      }
+    }
+    &:hover {
+      position: relative;
+      box-shadow: 0 -.125rem .25rem rgba(#000, .075), 0 .125rem .25rem rgba(#000, .075);
+      transform: translateX(0); // fix opera shadow does not appear
+    }
+  }
+}
+.btn-starred {
+  box-shadow: none !important;
+  color: #aaa;
+  &.active {
+    color: #f5c94b;
+  }
+}
+.list-mail-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-height: 32px;
+}
+.list-mail-item-subject {
+  width: 220px;
+  padding-right: 1rem;
+  &:hover {
+    text-decoration: none;
+  }
+}
+.list-mail-item-preview {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 1rem;
+  max-width: 100%;
+  .badge {
+    font-size: 90%;
+  }
+}
+.list-mail-item-time {
+  margin-left: auto;
+  white-space: nowrap;
+  color: $text-muted;
+  font-family: $font-number;
+}
+
+@include media-breakpoint-down(sm) {
+  .list-mail-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .list-mail-item-time {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 90%;
+  }
+}

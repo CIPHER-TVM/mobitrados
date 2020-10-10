@@ -1,0 +1,25 @@
+<h3>Changelog</h3>
+<hr>
+
+<div class="accordion-ui" id="changelog">
+  <div class="card active">
+    <div class="card-header h6 dropdown-toggle" role="button" data-toggle="collapse" data-target="#v70" aria-expanded="true">
+      v7.0
+    </div>
+    <div id="v70" class="collapse show" data-parent="#changelog">
+      <div class="card-body">
+        <ul class="mb-0">
+          <li>Initial release of Admin template</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  App.loadPlugins(null, null).then(() => {
+
+    App.accordionActive()
+
+  }).then(() => App.stopLoading())
+</script>

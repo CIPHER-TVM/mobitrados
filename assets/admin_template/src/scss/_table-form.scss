@@ -1,0 +1,14 @@
+.table-form {
+  > tbody > tr > td:nth-child(odd) {
+    background-color: $table-active-bg;
+    vertical-align: middle;
+    width: 1%;
+    white-space: nowrap;
+    text-align: right;
+    padding-left: 1rem;
+    > label {
+      display: block;
+      margin-bottom: 0;
+    }
+  }
+}

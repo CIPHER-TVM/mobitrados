@@ -1,0 +1,581 @@
+INFO - 2020-05-04 07:10:22 --> Config Class Initialized
+INFO - 2020-05-04 07:10:22 --> Hooks Class Initialized
+DEBUG - 2020-05-04 07:10:22 --> UTF-8 Support Enabled
+INFO - 2020-05-04 07:10:22 --> Utf8 Class Initialized
+INFO - 2020-05-04 07:10:22 --> URI Class Initialized
+DEBUG - 2020-05-04 07:10:22 --> No URI present. Default controller set.
+INFO - 2020-05-04 07:10:22 --> Router Class Initialized
+INFO - 2020-05-04 07:10:22 --> Output Class Initialized
+INFO - 2020-05-04 07:10:22 --> Security Class Initialized
+DEBUG - 2020-05-04 07:10:22 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-05-04 07:10:22 --> Input Class Initialized
+INFO - 2020-05-04 07:10:22 --> Language Class Initialized
+INFO - 2020-05-04 07:10:22 --> Language Class Initialized
+INFO - 2020-05-04 07:10:22 --> Config Class Initialized
+INFO - 2020-05-04 07:10:22 --> Loader Class Initialized
+DEBUG - 2020-05-04 07:10:22 --> Config file loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/config/rest.php
+INFO - 2020-05-04 07:10:22 --> Helper loaded: url_helper
+INFO - 2020-05-04 07:10:22 --> Helper loaded: form_helper
+INFO - 2020-05-04 07:10:22 --> Helper loaded: adminurl_helper
+INFO - 2020-05-04 07:10:22 --> Helper loaded: site_helper
+INFO - 2020-05-04 07:10:22 --> Helper loaded: directory_helper
+INFO - 2020-05-04 07:10:22 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-05-04 07:10:22 --> Database Driver Class Initialized
+INFO - 2020-05-04 07:10:22 --> Email Class Initialized
+DEBUG - 2020-05-04 07:10:22 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-05-04 07:10:22 --> Session: Class initialized using 'files' driver.
+INFO - 2020-05-04 07:10:22 --> Form Validation Class Initialized
+INFO - 2020-05-04 07:10:22 --> Controller Class Initialized
+DEBUG - 2020-05-04 07:10:22 --> Web MX_Controller Initialized
+DEBUG - 2020-05-04 07:10:22 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+DEBUG - 2020-05-04 07:10:22 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php
+DEBUG - 2020-05-04 07:10:22 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/modals.php
+DEBUG - 2020-05-04 07:10:22 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/home.php
+DEBUG - 2020-05-04 07:10:22 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/search_all.php
+DEBUG - 2020-05-04 07:10:22 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/js.php
+DEBUG - 2020-05-04 07:10:22 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/footer.php
+INFO - 2020-05-04 07:10:22 --> Final output sent to browser
+DEBUG - 2020-05-04 07:10:22 --> Total execution time: 0.4419
+INFO - 2020-05-04 07:10:24 --> Config Class Initialized
+INFO - 2020-05-04 07:10:24 --> Hooks Class Initialized
+DEBUG - 2020-05-04 07:10:24 --> UTF-8 Support Enabled
+INFO - 2020-05-04 07:10:24 --> Utf8 Class Initialized
+INFO - 2020-05-04 07:10:24 --> URI Class Initialized
+INFO - 2020-05-04 07:10:24 --> Router Class Initialized
+INFO - 2020-05-04 07:10:24 --> Output Class Initialized
+INFO - 2020-05-04 07:10:24 --> Security Class Initialized
+DEBUG - 2020-05-04 07:10:24 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-05-04 07:10:24 --> Input Class Initialized
+INFO - 2020-05-04 07:10:24 --> Language Class Initialized
+INFO - 2020-05-04 07:10:24 --> Language Class Initialized
+INFO - 2020-05-04 07:10:24 --> Config Class Initialized
+INFO - 2020-05-04 07:10:24 --> Loader Class Initialized
+DEBUG - 2020-05-04 07:10:24 --> Config file loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/config/rest.php
+INFO - 2020-05-04 07:10:24 --> Helper loaded: url_helper
+INFO - 2020-05-04 07:10:24 --> Helper loaded: form_helper
+INFO - 2020-05-04 07:10:24 --> Helper loaded: adminurl_helper
+INFO - 2020-05-04 07:10:24 --> Helper loaded: site_helper
+INFO - 2020-05-04 07:10:24 --> Helper loaded: directory_helper
+INFO - 2020-05-04 07:10:24 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-05-04 07:10:24 --> Database Driver Class Initialized
+INFO - 2020-05-04 07:10:24 --> Email Class Initialized
+DEBUG - 2020-05-04 07:10:24 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-05-04 07:10:24 --> Session: Class initialized using 'files' driver.
+INFO - 2020-05-04 07:10:24 --> Form Validation Class Initialized
+INFO - 2020-05-04 07:10:24 --> Controller Class Initialized
+DEBUG - 2020-05-04 07:10:24 --> Orders MX_Controller Initialized
+DEBUG - 2020-05-04 07:10:24 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/controllers/../modules/website/web/controllers/Web.php
+DEBUG - 2020-05-04 07:10:24 --> Web MX_Controller Initialized
+DEBUG - 2020-05-04 07:10:24 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+DEBUG - 2020-05-04 07:10:24 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/orders/models/Order_management.php
+DEBUG - 2020-05-04 07:10:24 --> File already loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+ERROR - 2020-05-04 07:10:24 --> Severity: Notice --> Undefined index: public_userid /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/orders/controllers/Orders.php 932
+ERROR - 2020-05-04 07:10:24 --> Severity: Notice --> Trying to get property 'place' of non-object /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/orders/controllers/Orders.php 933
+ERROR - 2020-05-04 07:10:24 --> Severity: Warning --> Creating default object from empty value /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/orders/controllers/Orders.php 935
+INFO - 2020-05-04 07:10:24 --> Final output sent to browser
+DEBUG - 2020-05-04 07:10:24 --> Total execution time: 0.3891
+INFO - 2020-05-04 07:12:01 --> Config Class Initialized
+INFO - 2020-05-04 07:12:01 --> Hooks Class Initialized
+DEBUG - 2020-05-04 07:12:01 --> UTF-8 Support Enabled
+INFO - 2020-05-04 07:12:01 --> Utf8 Class Initialized
+INFO - 2020-05-04 07:12:01 --> URI Class Initialized
+INFO - 2020-05-04 07:12:01 --> Router Class Initialized
+INFO - 2020-05-04 07:12:01 --> Output Class Initialized
+INFO - 2020-05-04 07:12:01 --> Security Class Initialized
+DEBUG - 2020-05-04 07:12:01 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-05-04 07:12:01 --> Input Class Initialized
+INFO - 2020-05-04 07:12:01 --> Language Class Initialized
+INFO - 2020-05-04 07:12:01 --> Language Class Initialized
+INFO - 2020-05-04 07:12:01 --> Config Class Initialized
+INFO - 2020-05-04 07:12:01 --> Loader Class Initialized
+DEBUG - 2020-05-04 07:12:01 --> Config file loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/config/rest.php
+INFO - 2020-05-04 07:12:01 --> Helper loaded: url_helper
+INFO - 2020-05-04 07:12:01 --> Helper loaded: form_helper
+INFO - 2020-05-04 07:12:01 --> Helper loaded: adminurl_helper
+INFO - 2020-05-04 07:12:01 --> Helper loaded: site_helper
+INFO - 2020-05-04 07:12:01 --> Helper loaded: directory_helper
+INFO - 2020-05-04 07:12:01 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-05-04 07:12:01 --> Database Driver Class Initialized
+INFO - 2020-05-04 07:12:01 --> Email Class Initialized
+DEBUG - 2020-05-04 07:12:01 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-05-04 07:12:01 --> Session: Class initialized using 'files' driver.
+INFO - 2020-05-04 07:12:01 --> Form Validation Class Initialized
+INFO - 2020-05-04 07:12:01 --> Controller Class Initialized
+DEBUG - 2020-05-04 07:12:01 --> Web MX_Controller Initialized
+DEBUG - 2020-05-04 07:12:01 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+DEBUG - 2020-05-04 07:12:01 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php
+DEBUG - 2020-05-04 07:12:01 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/modals.php
+DEBUG - 2020-05-04 07:12:01 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/products.php
+DEBUG - 2020-05-04 07:12:01 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/js.php
+DEBUG - 2020-05-04 07:12:01 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/footer.php
+INFO - 2020-05-04 07:12:01 --> Final output sent to browser
+DEBUG - 2020-05-04 07:12:01 --> Total execution time: 0.3080
+INFO - 2020-05-04 07:12:02 --> Config Class Initialized
+INFO - 2020-05-04 07:12:02 --> Hooks Class Initialized
+DEBUG - 2020-05-04 07:12:02 --> UTF-8 Support Enabled
+INFO - 2020-05-04 07:12:02 --> Config Class Initialized
+INFO - 2020-05-04 07:12:02 --> Utf8 Class Initialized
+INFO - 2020-05-04 07:12:02 --> Hooks Class Initialized
+INFO - 2020-05-04 07:12:02 --> URI Class Initialized
+DEBUG - 2020-05-04 07:12:02 --> UTF-8 Support Enabled
+INFO - 2020-05-04 07:12:02 --> Utf8 Class Initialized
+INFO - 2020-05-04 07:12:02 --> Router Class Initialized
+INFO - 2020-05-04 07:12:02 --> URI Class Initialized
+INFO - 2020-05-04 07:12:02 --> Output Class Initialized
+INFO - 2020-05-04 07:12:02 --> Security Class Initialized
+INFO - 2020-05-04 07:12:02 --> Router Class Initialized
+DEBUG - 2020-05-04 07:12:02 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-05-04 07:12:02 --> Output Class Initialized
+INFO - 2020-05-04 07:12:02 --> Input Class Initialized
+INFO - 2020-05-04 07:12:02 --> Security Class Initialized
+INFO - 2020-05-04 07:12:02 --> Language Class Initialized
+DEBUG - 2020-05-04 07:12:02 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-05-04 07:12:02 --> Language Class Initialized
+INFO - 2020-05-04 07:12:02 --> Input Class Initialized
+INFO - 2020-05-04 07:12:02 --> Config Class Initialized
+INFO - 2020-05-04 07:12:02 --> Language Class Initialized
+INFO - 2020-05-04 07:12:02 --> Language Class Initialized
+INFO - 2020-05-04 07:12:02 --> Loader Class Initialized
+INFO - 2020-05-04 07:12:02 --> Config Class Initialized
+DEBUG - 2020-05-04 07:12:02 --> Config file loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/config/rest.php
+INFO - 2020-05-04 07:12:02 --> Helper loaded: url_helper
+INFO - 2020-05-04 07:12:02 --> Loader Class Initialized
+INFO - 2020-05-04 07:12:02 --> Helper loaded: form_helper
+DEBUG - 2020-05-04 07:12:02 --> Config file loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/config/rest.php
+INFO - 2020-05-04 07:12:02 --> Helper loaded: adminurl_helper
+INFO - 2020-05-04 07:12:02 --> Helper loaded: url_helper
+INFO - 2020-05-04 07:12:02 --> Helper loaded: site_helper
+INFO - 2020-05-04 07:12:02 --> Helper loaded: directory_helper
+INFO - 2020-05-04 07:12:02 --> Helper loaded: form_helper
+INFO - 2020-05-04 07:12:02 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-05-04 07:12:02 --> Helper loaded: adminurl_helper
+INFO - 2020-05-04 07:12:02 --> Database Driver Class Initialized
+INFO - 2020-05-04 07:12:02 --> Config Class Initialized
+INFO - 2020-05-04 07:12:02 --> Hooks Class Initialized
+INFO - 2020-05-04 07:12:02 --> Helper loaded: site_helper
+INFO - 2020-05-04 07:12:02 --> Email Class Initialized
+DEBUG - 2020-05-04 07:12:02 --> UTF-8 Support Enabled
+INFO - 2020-05-04 07:12:02 --> Helper loaded: directory_helper
+INFO - 2020-05-04 07:12:02 --> Utf8 Class Initialized
+DEBUG - 2020-05-04 07:12:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-05-04 07:12:02 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-05-04 07:12:02 --> Session: Class initialized using 'files' driver.
+INFO - 2020-05-04 07:12:02 --> URI Class Initialized
+INFO - 2020-05-04 07:12:02 --> Form Validation Class Initialized
+INFO - 2020-05-04 07:12:02 --> Database Driver Class Initialized
+INFO - 2020-05-04 07:12:02 --> Controller Class Initialized
+INFO - 2020-05-04 07:12:02 --> Router Class Initialized
+DEBUG - 2020-05-04 07:12:02 --> Public_users MX_Controller Initialized
+INFO - 2020-05-04 07:12:02 --> Email Class Initialized
+DEBUG - 2020-05-04 07:12:02 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+INFO - 2020-05-04 07:12:02 --> Output Class Initialized
+DEBUG - 2020-05-04 07:12:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-05-04 07:12:02 --> Security Class Initialized
+DEBUG - 2020-05-04 07:12:02 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-05-04 07:12:02 --> Input Class Initialized
+INFO - 2020-05-04 07:12:02 --> Language Class Initialized
+INFO - 2020-05-04 07:12:02 --> Language Class Initialized
+INFO - 2020-05-04 07:12:02 --> Config Class Initialized
+INFO - 2020-05-04 07:12:02 --> Loader Class Initialized
+DEBUG - 2020-05-04 07:12:02 --> Config file loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/config/rest.php
+INFO - 2020-05-04 07:12:02 --> Helper loaded: url_helper
+INFO - 2020-05-04 07:12:02 --> Helper loaded: form_helper
+INFO - 2020-05-04 07:12:02 --> Helper loaded: adminurl_helper
+INFO - 2020-05-04 07:12:02 --> Helper loaded: site_helper
+INFO - 2020-05-04 07:12:02 --> Helper loaded: directory_helper
+INFO - 2020-05-04 07:12:02 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-05-04 07:12:02 --> Database Driver Class Initialized
+INFO - 2020-05-04 07:12:02 --> Email Class Initialized
+DEBUG - 2020-05-04 07:12:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-05-04 07:12:02 --> Final output sent to browser
+DEBUG - 2020-05-04 07:12:02 --> Total execution time: 0.3510
+INFO - 2020-05-04 07:12:02 --> Session: Class initialized using 'files' driver.
+INFO - 2020-05-04 07:12:02 --> Form Validation Class Initialized
+INFO - 2020-05-04 07:12:02 --> Controller Class Initialized
+DEBUG - 2020-05-04 07:12:02 --> Public_users MX_Controller Initialized
+DEBUG - 2020-05-04 07:12:02 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+INFO - 2020-05-04 07:12:02 --> Config Class Initialized
+INFO - 2020-05-04 07:12:02 --> Hooks Class Initialized
+DEBUG - 2020-05-04 07:12:02 --> UTF-8 Support Enabled
+INFO - 2020-05-04 07:12:02 --> Utf8 Class Initialized
+INFO - 2020-05-04 07:12:02 --> URI Class Initialized
+INFO - 2020-05-04 07:12:02 --> Router Class Initialized
+INFO - 2020-05-04 07:12:02 --> Output Class Initialized
+INFO - 2020-05-04 07:12:02 --> Security Class Initialized
+DEBUG - 2020-05-04 07:12:02 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-05-04 07:12:02 --> Input Class Initialized
+INFO - 2020-05-04 07:12:02 --> Language Class Initialized
+INFO - 2020-05-04 07:12:02 --> Language Class Initialized
+INFO - 2020-05-04 07:12:02 --> Config Class Initialized
+INFO - 2020-05-04 07:12:02 --> Loader Class Initialized
+DEBUG - 2020-05-04 07:12:02 --> Config file loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/config/rest.php
+INFO - 2020-05-04 07:12:02 --> Helper loaded: url_helper
+INFO - 2020-05-04 07:12:03 --> Helper loaded: form_helper
+INFO - 2020-05-04 07:12:03 --> Helper loaded: adminurl_helper
+INFO - 2020-05-04 07:12:03 --> Helper loaded: site_helper
+INFO - 2020-05-04 07:12:03 --> Helper loaded: directory_helper
+INFO - 2020-05-04 07:12:03 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-05-04 07:12:03 --> Database Driver Class Initialized
+INFO - 2020-05-04 07:12:03 --> Email Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-05-04 07:12:03 --> Session: Class initialized using 'files' driver.
+INFO - 2020-05-04 07:12:03 --> Form Validation Class Initialized
+INFO - 2020-05-04 07:12:03 --> Controller Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> Web MX_Controller Initialized
+DEBUG - 2020-05-04 07:12:03 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'shopsByPlaceId' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 19
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Cannot assign an empty string to a string offset /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 19
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'currentServerTime' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 25
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'product_uploads' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 26
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'page' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 27
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'islogin' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 30
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Cannot assign an empty string to a string offset /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 30
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'full_name' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 31
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Cannot assign an empty string to a string offset /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 31
+ERROR - 2020-05-04 07:12:03 --> Severity: Notice --> Undefined variable: page /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php 34
+ERROR - 2020-05-04 07:12:03 --> Severity: Notice --> Undefined variable: islogin /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php 174
+ERROR - 2020-05-04 07:12:03 --> Severity: Notice --> Undefined variable: islogin /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php 354
+DEBUG - 2020-05-04 07:12:03 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php
+DEBUG - 2020-05-04 07:12:03 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/modals.php
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/system/core/Exceptions.php:271) /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/system/core/Common.php 570
+INFO - 2020-05-04 07:12:03 --> Config Class Initialized
+INFO - 2020-05-04 07:12:03 --> Hooks Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> UTF-8 Support Enabled
+INFO - 2020-05-04 07:12:03 --> Utf8 Class Initialized
+INFO - 2020-05-04 07:12:03 --> URI Class Initialized
+INFO - 2020-05-04 07:12:03 --> Router Class Initialized
+INFO - 2020-05-04 07:12:03 --> Output Class Initialized
+INFO - 2020-05-04 07:12:03 --> Security Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-05-04 07:12:03 --> Input Class Initialized
+INFO - 2020-05-04 07:12:03 --> Language Class Initialized
+INFO - 2020-05-04 07:12:03 --> Language Class Initialized
+INFO - 2020-05-04 07:12:03 --> Config Class Initialized
+INFO - 2020-05-04 07:12:03 --> Loader Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> Config file loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/config/rest.php
+INFO - 2020-05-04 07:12:03 --> Helper loaded: url_helper
+INFO - 2020-05-04 07:12:03 --> Helper loaded: form_helper
+INFO - 2020-05-04 07:12:03 --> Helper loaded: adminurl_helper
+INFO - 2020-05-04 07:12:03 --> Helper loaded: site_helper
+INFO - 2020-05-04 07:12:03 --> Helper loaded: directory_helper
+INFO - 2020-05-04 07:12:03 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-05-04 07:12:03 --> Database Driver Class Initialized
+INFO - 2020-05-04 07:12:03 --> Email Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-05-04 07:12:03 --> Session: Class initialized using 'files' driver.
+INFO - 2020-05-04 07:12:03 --> Form Validation Class Initialized
+INFO - 2020-05-04 07:12:03 --> Controller Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> Web MX_Controller Initialized
+DEBUG - 2020-05-04 07:12:03 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'shopsByPlaceId' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 19
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Cannot assign an empty string to a string offset /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 19
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'currentServerTime' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 25
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'product_uploads' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 26
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'page' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 27
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'islogin' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 30
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Cannot assign an empty string to a string offset /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 30
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'full_name' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 31
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Cannot assign an empty string to a string offset /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 31
+ERROR - 2020-05-04 07:12:03 --> Severity: Notice --> Undefined variable: page /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php 34
+ERROR - 2020-05-04 07:12:03 --> Severity: Notice --> Undefined variable: islogin /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php 174
+ERROR - 2020-05-04 07:12:03 --> Severity: Notice --> Undefined variable: islogin /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php 354
+DEBUG - 2020-05-04 07:12:03 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php
+DEBUG - 2020-05-04 07:12:03 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/modals.php
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/system/core/Exceptions.php:271) /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/system/core/Common.php 570
+INFO - 2020-05-04 07:12:03 --> Config Class Initialized
+INFO - 2020-05-04 07:12:03 --> Hooks Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> UTF-8 Support Enabled
+INFO - 2020-05-04 07:12:03 --> Utf8 Class Initialized
+INFO - 2020-05-04 07:12:03 --> URI Class Initialized
+INFO - 2020-05-04 07:12:03 --> Router Class Initialized
+INFO - 2020-05-04 07:12:03 --> Output Class Initialized
+INFO - 2020-05-04 07:12:03 --> Security Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-05-04 07:12:03 --> Input Class Initialized
+INFO - 2020-05-04 07:12:03 --> Language Class Initialized
+INFO - 2020-05-04 07:12:03 --> Language Class Initialized
+INFO - 2020-05-04 07:12:03 --> Config Class Initialized
+INFO - 2020-05-04 07:12:03 --> Loader Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> Config file loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/config/rest.php
+INFO - 2020-05-04 07:12:03 --> Helper loaded: url_helper
+INFO - 2020-05-04 07:12:03 --> Helper loaded: form_helper
+INFO - 2020-05-04 07:12:03 --> Helper loaded: adminurl_helper
+INFO - 2020-05-04 07:12:03 --> Helper loaded: site_helper
+INFO - 2020-05-04 07:12:03 --> Helper loaded: directory_helper
+INFO - 2020-05-04 07:12:03 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-05-04 07:12:03 --> Database Driver Class Initialized
+INFO - 2020-05-04 07:12:03 --> Email Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-05-04 07:12:03 --> Session: Class initialized using 'files' driver.
+INFO - 2020-05-04 07:12:03 --> Form Validation Class Initialized
+INFO - 2020-05-04 07:12:03 --> Controller Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> Web MX_Controller Initialized
+DEBUG - 2020-05-04 07:12:03 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'shopsByPlaceId' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 19
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Cannot assign an empty string to a string offset /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 19
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'currentServerTime' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 25
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'product_uploads' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 26
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'page' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 27
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'islogin' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 30
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Cannot assign an empty string to a string offset /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 30
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'full_name' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 31
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Cannot assign an empty string to a string offset /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 31
+ERROR - 2020-05-04 07:12:03 --> Severity: Notice --> Undefined variable: page /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php 34
+ERROR - 2020-05-04 07:12:03 --> Severity: Notice --> Undefined variable: islogin /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php 174
+ERROR - 2020-05-04 07:12:03 --> Severity: Notice --> Undefined variable: islogin /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php 354
+DEBUG - 2020-05-04 07:12:03 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php
+DEBUG - 2020-05-04 07:12:03 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/modals.php
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/system/core/Exceptions.php:271) /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/system/core/Common.php 570
+INFO - 2020-05-04 07:12:03 --> Config Class Initialized
+INFO - 2020-05-04 07:12:03 --> Hooks Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> UTF-8 Support Enabled
+INFO - 2020-05-04 07:12:03 --> Utf8 Class Initialized
+INFO - 2020-05-04 07:12:03 --> URI Class Initialized
+INFO - 2020-05-04 07:12:03 --> Router Class Initialized
+INFO - 2020-05-04 07:12:03 --> Output Class Initialized
+INFO - 2020-05-04 07:12:03 --> Security Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-05-04 07:12:03 --> Input Class Initialized
+INFO - 2020-05-04 07:12:03 --> Language Class Initialized
+INFO - 2020-05-04 07:12:03 --> Language Class Initialized
+INFO - 2020-05-04 07:12:03 --> Config Class Initialized
+INFO - 2020-05-04 07:12:03 --> Loader Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> Config file loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/config/rest.php
+INFO - 2020-05-04 07:12:03 --> Helper loaded: url_helper
+INFO - 2020-05-04 07:12:03 --> Helper loaded: form_helper
+INFO - 2020-05-04 07:12:03 --> Helper loaded: adminurl_helper
+INFO - 2020-05-04 07:12:03 --> Helper loaded: site_helper
+INFO - 2020-05-04 07:12:03 --> Helper loaded: directory_helper
+INFO - 2020-05-04 07:12:03 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-05-04 07:12:03 --> Database Driver Class Initialized
+INFO - 2020-05-04 07:12:03 --> Email Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-05-04 07:12:03 --> Session: Class initialized using 'files' driver.
+INFO - 2020-05-04 07:12:03 --> Form Validation Class Initialized
+INFO - 2020-05-04 07:12:03 --> Controller Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> Web MX_Controller Initialized
+DEBUG - 2020-05-04 07:12:03 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'shopsByPlaceId' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 19
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Cannot assign an empty string to a string offset /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 19
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'currentServerTime' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 25
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'product_uploads' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 26
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'page' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 27
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'islogin' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 30
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Cannot assign an empty string to a string offset /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 30
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'full_name' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 31
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Cannot assign an empty string to a string offset /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 31
+ERROR - 2020-05-04 07:12:03 --> Severity: Notice --> Undefined variable: page /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php 34
+ERROR - 2020-05-04 07:12:03 --> Severity: Notice --> Undefined variable: islogin /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php 174
+ERROR - 2020-05-04 07:12:03 --> Severity: Notice --> Undefined variable: islogin /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php 354
+DEBUG - 2020-05-04 07:12:03 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php
+DEBUG - 2020-05-04 07:12:03 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/modals.php
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/system/core/Exceptions.php:271) /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/system/core/Common.php 570
+INFO - 2020-05-04 07:12:03 --> Config Class Initialized
+INFO - 2020-05-04 07:12:03 --> Hooks Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> UTF-8 Support Enabled
+INFO - 2020-05-04 07:12:03 --> Utf8 Class Initialized
+INFO - 2020-05-04 07:12:03 --> URI Class Initialized
+INFO - 2020-05-04 07:12:03 --> Router Class Initialized
+INFO - 2020-05-04 07:12:03 --> Output Class Initialized
+INFO - 2020-05-04 07:12:03 --> Security Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-05-04 07:12:03 --> Input Class Initialized
+INFO - 2020-05-04 07:12:03 --> Language Class Initialized
+INFO - 2020-05-04 07:12:03 --> Language Class Initialized
+INFO - 2020-05-04 07:12:03 --> Config Class Initialized
+INFO - 2020-05-04 07:12:03 --> Loader Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> Config file loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/config/rest.php
+INFO - 2020-05-04 07:12:03 --> Helper loaded: url_helper
+INFO - 2020-05-04 07:12:03 --> Helper loaded: form_helper
+INFO - 2020-05-04 07:12:03 --> Helper loaded: adminurl_helper
+INFO - 2020-05-04 07:12:03 --> Helper loaded: site_helper
+INFO - 2020-05-04 07:12:03 --> Helper loaded: directory_helper
+INFO - 2020-05-04 07:12:03 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-05-04 07:12:03 --> Database Driver Class Initialized
+INFO - 2020-05-04 07:12:03 --> Email Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-05-04 07:12:03 --> Session: Class initialized using 'files' driver.
+INFO - 2020-05-04 07:12:03 --> Form Validation Class Initialized
+INFO - 2020-05-04 07:12:03 --> Controller Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> Web MX_Controller Initialized
+DEBUG - 2020-05-04 07:12:03 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'shopsByPlaceId' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 19
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Cannot assign an empty string to a string offset /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 19
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'currentServerTime' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 25
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'product_uploads' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 26
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'page' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 27
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'islogin' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 30
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Cannot assign an empty string to a string offset /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 30
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Illegal string offset 'full_name' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 31
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Cannot assign an empty string to a string offset /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 31
+ERROR - 2020-05-04 07:12:03 --> Severity: Notice --> Undefined variable: page /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php 34
+ERROR - 2020-05-04 07:12:03 --> Severity: Notice --> Undefined variable: islogin /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php 174
+ERROR - 2020-05-04 07:12:03 --> Severity: Notice --> Undefined variable: islogin /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php 354
+DEBUG - 2020-05-04 07:12:03 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php
+DEBUG - 2020-05-04 07:12:03 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/modals.php
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/system/core/Exceptions.php:271) /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/system/core/Common.php 570
+INFO - 2020-05-04 07:12:03 --> Final output sent to browser
+DEBUG - 2020-05-04 07:12:03 --> Total execution time: 1.6353
+INFO - 2020-05-04 07:12:03 --> Session: Class initialized using 'files' driver.
+INFO - 2020-05-04 07:12:03 --> Form Validation Class Initialized
+INFO - 2020-05-04 07:12:03 --> Controller Class Initialized
+DEBUG - 2020-05-04 07:12:03 --> Orders MX_Controller Initialized
+DEBUG - 2020-05-04 07:12:03 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/controllers/../modules/website/web/controllers/Web.php
+DEBUG - 2020-05-04 07:12:03 --> Web MX_Controller Initialized
+DEBUG - 2020-05-04 07:12:03 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+DEBUG - 2020-05-04 07:12:03 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/orders/models/Order_management.php
+DEBUG - 2020-05-04 07:12:03 --> File already loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+ERROR - 2020-05-04 07:12:03 --> Severity: Notice --> Undefined index: public_userid /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/orders/controllers/Orders.php 932
+ERROR - 2020-05-04 07:12:03 --> Severity: Notice --> Trying to get property 'place' of non-object /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/orders/controllers/Orders.php 933
+ERROR - 2020-05-04 07:12:03 --> Severity: Warning --> Creating default object from empty value /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/orders/controllers/Orders.php 935
+INFO - 2020-05-04 07:12:03 --> Final output sent to browser
+DEBUG - 2020-05-04 07:12:03 --> Total execution time: 1.6255
+INFO - 2020-05-04 07:12:05 --> Config Class Initialized
+INFO - 2020-05-04 07:12:05 --> Hooks Class Initialized
+DEBUG - 2020-05-04 07:12:05 --> UTF-8 Support Enabled
+INFO - 2020-05-04 07:12:05 --> Utf8 Class Initialized
+INFO - 2020-05-04 07:12:05 --> URI Class Initialized
+INFO - 2020-05-04 07:12:05 --> Router Class Initialized
+INFO - 2020-05-04 07:12:05 --> Output Class Initialized
+INFO - 2020-05-04 07:12:05 --> Security Class Initialized
+DEBUG - 2020-05-04 07:12:05 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-05-04 07:12:05 --> Input Class Initialized
+INFO - 2020-05-04 07:12:05 --> Language Class Initialized
+INFO - 2020-05-04 07:12:05 --> Language Class Initialized
+INFO - 2020-05-04 07:12:05 --> Config Class Initialized
+INFO - 2020-05-04 07:12:05 --> Loader Class Initialized
+DEBUG - 2020-05-04 07:12:05 --> Config file loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/config/rest.php
+INFO - 2020-05-04 07:12:05 --> Helper loaded: url_helper
+INFO - 2020-05-04 07:12:05 --> Helper loaded: form_helper
+INFO - 2020-05-04 07:12:05 --> Helper loaded: adminurl_helper
+INFO - 2020-05-04 07:12:05 --> Helper loaded: site_helper
+INFO - 2020-05-04 07:12:05 --> Helper loaded: directory_helper
+INFO - 2020-05-04 07:12:05 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-05-04 07:12:05 --> Database Driver Class Initialized
+INFO - 2020-05-04 07:12:05 --> Email Class Initialized
+DEBUG - 2020-05-04 07:12:05 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-05-04 07:12:05 --> Session: Class initialized using 'files' driver.
+INFO - 2020-05-04 07:12:05 --> Form Validation Class Initialized
+INFO - 2020-05-04 07:12:05 --> Controller Class Initialized
+DEBUG - 2020-05-04 07:12:05 --> Web MX_Controller Initialized
+DEBUG - 2020-05-04 07:12:05 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+DEBUG - 2020-05-04 07:12:05 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php
+DEBUG - 2020-05-04 07:12:05 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/modals.php
+DEBUG - 2020-05-04 07:12:05 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/shops.php
+DEBUG - 2020-05-04 07:12:05 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/js.php
+DEBUG - 2020-05-04 07:12:05 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/footer.php
+INFO - 2020-05-04 07:12:05 --> Final output sent to browser
+DEBUG - 2020-05-04 07:12:05 --> Total execution time: 0.1316
+INFO - 2020-05-04 07:12:06 --> Config Class Initialized
+INFO - 2020-05-04 07:12:06 --> Hooks Class Initialized
+DEBUG - 2020-05-04 07:12:06 --> UTF-8 Support Enabled
+INFO - 2020-05-04 07:12:06 --> Utf8 Class Initialized
+INFO - 2020-05-04 07:12:06 --> URI Class Initialized
+INFO - 2020-05-04 07:12:06 --> Router Class Initialized
+INFO - 2020-05-04 07:12:06 --> Output Class Initialized
+INFO - 2020-05-04 07:12:06 --> Security Class Initialized
+DEBUG - 2020-05-04 07:12:06 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-05-04 07:12:06 --> Input Class Initialized
+INFO - 2020-05-04 07:12:06 --> Config Class Initialized
+INFO - 2020-05-04 07:12:06 --> Language Class Initialized
+INFO - 2020-05-04 07:12:06 --> Hooks Class Initialized
+INFO - 2020-05-04 07:12:06 --> Language Class Initialized
+DEBUG - 2020-05-04 07:12:06 --> UTF-8 Support Enabled
+INFO - 2020-05-04 07:12:06 --> Config Class Initialized
+INFO - 2020-05-04 07:12:06 --> Utf8 Class Initialized
+INFO - 2020-05-04 07:12:06 --> Loader Class Initialized
+INFO - 2020-05-04 07:12:06 --> URI Class Initialized
+DEBUG - 2020-05-04 07:12:06 --> Config file loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/config/rest.php
+INFO - 2020-05-04 07:12:06 --> Router Class Initialized
+INFO - 2020-05-04 07:12:06 --> Helper loaded: url_helper
+INFO - 2020-05-04 07:12:06 --> Output Class Initialized
+INFO - 2020-05-04 07:12:06 --> Helper loaded: form_helper
+INFO - 2020-05-04 07:12:06 --> Security Class Initialized
+INFO - 2020-05-04 07:12:06 --> Helper loaded: adminurl_helper
+DEBUG - 2020-05-04 07:12:06 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-05-04 07:12:06 --> Input Class Initialized
+INFO - 2020-05-04 07:12:06 --> Helper loaded: site_helper
+INFO - 2020-05-04 07:12:06 --> Helper loaded: directory_helper
+INFO - 2020-05-04 07:12:06 --> Language Class Initialized
+INFO - 2020-05-04 07:12:06 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-05-04 07:12:06 --> Language Class Initialized
+INFO - 2020-05-04 07:12:06 --> Config Class Initialized
+INFO - 2020-05-04 07:12:06 --> Database Driver Class Initialized
+INFO - 2020-05-04 07:12:06 --> Loader Class Initialized
+DEBUG - 2020-05-04 07:12:06 --> Config file loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/config/rest.php
+INFO - 2020-05-04 07:12:06 --> Email Class Initialized
+INFO - 2020-05-04 07:12:06 --> Helper loaded: url_helper
+DEBUG - 2020-05-04 07:12:06 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-05-04 07:12:06 --> Helper loaded: form_helper
+INFO - 2020-05-04 07:12:06 --> Session: Class initialized using 'files' driver.
+INFO - 2020-05-04 07:12:06 --> Helper loaded: adminurl_helper
+INFO - 2020-05-04 07:12:06 --> Form Validation Class Initialized
+INFO - 2020-05-04 07:12:06 --> Helper loaded: site_helper
+INFO - 2020-05-04 07:12:06 --> Controller Class Initialized
+INFO - 2020-05-04 07:12:06 --> Helper loaded: directory_helper
+DEBUG - 2020-05-04 07:12:06 --> Public_users MX_Controller Initialized
+INFO - 2020-05-04 07:12:06 --> Language file loaded: language/english/api_lang.php
+DEBUG - 2020-05-04 07:12:06 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+INFO - 2020-05-04 07:12:06 --> Database Driver Class Initialized
+INFO - 2020-05-04 07:12:06 --> Email Class Initialized
+DEBUG - 2020-05-04 07:12:06 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-05-04 07:12:06 --> Config Class Initialized
+INFO - 2020-05-04 07:12:06 --> Hooks Class Initialized
+DEBUG - 2020-05-04 07:12:06 --> UTF-8 Support Enabled
+INFO - 2020-05-04 07:12:06 --> Utf8 Class Initialized
+INFO - 2020-05-04 07:12:06 --> URI Class Initialized
+INFO - 2020-05-04 07:12:06 --> Router Class Initialized
+INFO - 2020-05-04 07:12:06 --> Output Class Initialized
+INFO - 2020-05-04 07:12:06 --> Security Class Initialized
+DEBUG - 2020-05-04 07:12:06 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-05-04 07:12:06 --> Input Class Initialized
+INFO - 2020-05-04 07:12:06 --> Language Class Initialized
+INFO - 2020-05-04 07:12:06 --> Language Class Initialized
+INFO - 2020-05-04 07:12:06 --> Config Class Initialized
+INFO - 2020-05-04 07:12:06 --> Loader Class Initialized
+DEBUG - 2020-05-04 07:12:06 --> Config file loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/config/rest.php
+INFO - 2020-05-04 07:12:06 --> Helper loaded: url_helper
+INFO - 2020-05-04 07:12:06 --> Helper loaded: form_helper
+INFO - 2020-05-04 07:12:06 --> Helper loaded: adminurl_helper
+INFO - 2020-05-04 07:12:06 --> Helper loaded: site_helper
+INFO - 2020-05-04 07:12:06 --> Helper loaded: directory_helper
+INFO - 2020-05-04 07:12:06 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-05-04 07:12:06 --> Database Driver Class Initialized
+INFO - 2020-05-04 07:12:06 --> Email Class Initialized
+DEBUG - 2020-05-04 07:12:06 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-05-04 07:12:06 --> Session: Class initialized using 'files' driver.
+INFO - 2020-05-04 07:12:06 --> Form Validation Class Initialized
+INFO - 2020-05-04 07:12:06 --> Controller Class Initialized
+DEBUG - 2020-05-04 07:12:06 --> Web MX_Controller Initialized
+DEBUG - 2020-05-04 07:12:06 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+ERROR - 2020-05-04 07:12:06 --> Severity: Warning --> Illegal string offset 'shopsByPlaceId' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 19
+ERROR - 2020-05-04 07:12:06 --> Severity: Warning --> Cannot assign an empty string to a string offset /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 19
+ERROR - 2020-05-04 07:12:06 --> Severity: Warning --> Illegal string offset 'currentServerTime' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 25
+ERROR - 2020-05-04 07:12:06 --> Severity: Warning --> Illegal string offset 'uploads' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 26
+ERROR - 2020-05-04 07:12:06 --> Severity: Warning --> Illegal string offset 'page' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 27
+ERROR - 2020-05-04 07:12:06 --> Severity: Warning --> Illegal string offset 'islogin' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 30
+ERROR - 2020-05-04 07:12:06 --> Severity: Warning --> Cannot assign an empty string to a string offset /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 30
+ERROR - 2020-05-04 07:12:06 --> Severity: Warning --> Illegal string offset 'full_name' /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 31
+ERROR - 2020-05-04 07:12:06 --> Severity: Warning --> Cannot assign an empty string to a string offset /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/controllers/Web.php 31
+ERROR - 2020-05-04 07:12:06 --> Severity: Notice --> Undefined variable: page /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php 34
+ERROR - 2020-05-04 07:12:06 --> Severity: Notice --> Undefined variable: islogin /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php 174
+ERROR - 2020-05-04 07:12:06 --> Severity: Notice --> Undefined variable: islogin /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php 354
+DEBUG - 2020-05-04 07:12:06 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php
+DEBUG - 2020-05-04 07:12:06 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/modals.php
+ERROR - 2020-05-04 07:12:06 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/system/core/Exceptions.php:271) /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/system/core/Common.php 570
+INFO - 2020-05-04 07:12:06 --> Final output sent to browser
+DEBUG - 2020-05-04 07:12:06 --> Total execution time: 0.5952
+INFO - 2020-05-04 07:12:06 --> Session: Class initialized using 'files' driver.
+INFO - 2020-05-04 07:12:06 --> Form Validation Class Initialized
+INFO - 2020-05-04 07:12:06 --> Controller Class Initialized
+DEBUG - 2020-05-04 07:12:06 --> Orders MX_Controller Initialized
+DEBUG - 2020-05-04 07:12:06 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/controllers/../modules/website/web/controllers/Web.php
+DEBUG - 2020-05-04 07:12:06 --> Web MX_Controller Initialized
+DEBUG - 2020-05-04 07:12:06 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+DEBUG - 2020-05-04 07:12:06 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/orders/models/Order_management.php
+DEBUG - 2020-05-04 07:12:06 --> File already loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+ERROR - 2020-05-04 07:12:06 --> Severity: Notice --> Undefined index: public_userid /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/orders/controllers/Orders.php 932
+ERROR - 2020-05-04 07:12:06 --> Severity: Notice --> Trying to get property 'place' of non-object /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/orders/controllers/Orders.php 933
+ERROR - 2020-05-04 07:12:06 --> Severity: Warning --> Creating default object from empty value /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/orders/controllers/Orders.php 935
+INFO - 2020-05-04 07:12:06 --> Final output sent to browser
+DEBUG - 2020-05-04 07:12:06 --> Total execution time: 0.6257

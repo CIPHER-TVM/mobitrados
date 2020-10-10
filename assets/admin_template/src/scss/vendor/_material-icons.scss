@@ -1,0 +1,11 @@
+.material-icons {
+  .btn-xs > & {
+    font-size: $material-icons-size-xs;
+  }
+  .btn-sm > & {
+    font-size: $material-icons-size-sm;
+  }
+  .btn-lg > & {
+    font-size: $material-icons-size-lg;
+  }
+}

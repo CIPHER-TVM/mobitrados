@@ -1,0 +1,106 @@
+<!-- Sidebar -->
+  <aside class="sidebar border-right">
+
+    <!-- Sidebar header -->
+    <div class="sidebar-header">
+      <!-- Logo -->
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="../img/logo.svg" alt="Logo" id="main-logo">
+        Mimity Admin
+      </a>
+      <a href="#" class="nav-link nav-icon rounded-circle ml-auto" data-toggle="sidebar">
+        <i class="material-icons">close</i>
+      </a>
+    </div>
+
+    <!-- Sidebar body -->
+    <div class="sidebar-body">
+      <!-- Menu -->
+      <ul class="nav nav-sub mt-3" id="menu">
+        <li class="nav-item">
+          <a class="nav-link has-icon@@if(menu=='home'){ active}" href="index.html"><i class="material-icons">dashboard</i>Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link has-icon dropdown-toggle@@if(menu=='charts'){ active show}" href="#"><i class="material-icons">pie_chart</i>Charts</a>
+          <ul>
+            <li><a href="chart-line.html"@@if(sub=='chart-line'){ class="active"}>Line Charts</a></li>
+            <li><a href="chart-bar.html"@@if(sub=='chart-bar'){ class="active"}>Bar Charts</a></li>
+            <li><a href="chart-radar.html"@@if(sub=='chart-radar'){ class="active"}>Radar Charts</a></li>
+            <li><a href="chart-doughnutpie.html"@@if(sub=='chart-doughnutpie'){ class="active"}>Doughnut and Pie</a></li>
+            <li><a href="sparkline.html"@@if(sub=='sparkline'){ class="active"}>Sparkline</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link has-icon dropdown-toggle@@if(menu=='ui'){ active show}" href="#"><i class="material-icons">check_box_outline_blank</i>UI Elements</a>
+          <ul>
+            <li><a href="accordion.html"@@if(sub=='accordion'){ class="active"}>Accordion</a></li>
+            <li><a href="alerts.html"@@if(sub=='alerts'){ class="active"}>Alerts</a></li>
+            <li><a href="badge.html"@@if(sub=='badge'){ class="active"}>Badge</a></li>
+            <li><a href="breadcrumb.html"@@if(sub=='breadcrumb'){ class="active"}>Breadcrumb</a></li>
+            <li><a href="buttons.html"@@if(sub=='buttons'){ class="active"}>Buttons</a></li>
+            <li><a href="cards.html"@@if(sub=='cards'){ class="active"}>Cards</a></li>
+            <li><a href="carousel.html"@@if(sub=='carousel'){ class="active"}>Carousel</a></li>
+            <li><a href="collapse.html"@@if(sub=='collapse'){ class="active"}>Collapse</a></li>
+            <li><a href="dropdowns.html"@@if(sub=='dropdowns'){ class="active"}>Dropdowns</a></li>
+            <li><a href="lists.html"@@if(sub=='lists'){ class="active"}>List Group</a></li>
+            <li><a href="media-object.html"@@if(sub=='media-object'){ class="active"}>Media Object</a></li>
+            <li><a href="modal.html"@@if(sub=='modal'){ class="active"}>Modal</a></li>
+            <li><a href="navigation.html"@@if(sub=='navigation'){ class="active"}>Navigation</a></li>
+            <li><a href="notifications.html"@@if(sub=='notifications'){ class="active"}>Notifications</a></li>
+            <li><a href="pagination.html"@@if(sub=='pagination'){ class="active"}>Pagination</a></li>
+            <li><a href="popovers.html"@@if(sub=='popovers'){ class="active"}>Popovers</a></li>
+            <li><a href="progress.html"@@if(sub=='progress'){ class="active"}>Progress Bars</a></li>
+            <li><a href="sortable.html"@@if(sub=='sortable'){ class="active"}>Sortable List</a></li>
+            <li><a href="steps.html"@@if(sub=='steps'){ class="active"}>Steps</a></li>
+            <li><a href="tooltips.html"@@if(sub=='tooltips'){ class="active"}>Tooltips</a></li>
+            <li><a href="typography.html"@@if(sub=='typography'){ class="active"}>Typography</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link has-icon dropdown-toggle@@if(menu=='tables'){ active show}" href="#"><i class="material-icons">table_chart</i>Tables</a>
+          <ul>
+            <li><a href="table-basic.html"@@if(sub=='table-basic'){ class="active"}>Table Basic</a></li>
+            <li><a href="table-advanced.html"@@if(sub=='table-advanced'){ class="active"}>Table Advanced</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link has-icon dropdown-toggle@@if(menu=='forms'){ active show}" href="#"><i class="material-icons">notes</i>Forms</a>
+          <ul>
+            <li><a href="form-elements.html"@@if(sub=='form-elements'){ class="active"}>Form Elements</a></li>
+            <li><a href="input-group.html"@@if(sub=='input-group'){ class="active"}>Input Group</a></li>
+            <li><a href="input-masks.html"@@if(sub=='input-masks'){ class="active"}>Input Masks</a></li>
+            <li><a href="date-picker.html"@@if(sub=='date-picker'){ class="active"}>Date Picker</a></li>
+            <li><a href="color-picker.html"@@if(sub=='color-picker'){ class="active"}>Color Picker</a></li>
+            <li><a href="bootstrap-select.html"@@if(sub=='bootstrap-select'){ class="active"}>Bootstrap Select</a></li>
+            <li><a href="bootstrap-touchspin.html"@@if(sub=='bootstrap-touchspin'){ class="active"}>Bootstrap TouchSpin</a></li>
+            <li><a href="range-slider.html"@@if(sub=='range-slider'){ class="active"}>Range Slider</a></li>
+            <li><a href="text-editor.html"@@if(sub=='text-editor'){ class="active"}>Text Editor</a></li>
+            <li><a href="form-layouts.html"@@if(sub=='form-layouts'){ class="active"}>Form Layouts</a></li>
+            <li><a href="form-validation.html"@@if(sub=='form-validation'){ class="active"}>Form Validation</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link has-icon@@if(menu=='calendar'){ active}" href="calendar.html"><i class="material-icons">event</i> Calendar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link has-icon@@if(menu=='images'){ active}" href="images.html"><i class="material-icons">photo</i> Images</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link has-icon@@if(menu=='mail'){ active}" href="mail.html"><i class="material-icons">mail_outline</i> Mail</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link has-icon@@if(menu=='pricing'){ active}" href="pricing.html"><i class="material-icons">list_alt</i> Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link has-icon@@if(menu=='timeline'){ active}" href="timeline.html"><i class="material-icons">access_time</i> Timeline</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link has-icon" href="login.html"><i class="material-icons">exit_to_app</i> Login</a>
+        </li>
+      </ul>
+      <!-- /Menu -->
+    </div>
+    <!-- /Sidebar body -->
+
+  </aside>
+  <!-- /Sidebar -->

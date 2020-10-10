@@ -1,0 +1,17 @@
+.CodeMirror {
+  height: 200px;
+}
+.editor-toolbar.fullscreen,
+.CodeMirror-fullscreen {
+  z-index: $zindex-fixed + 1;
+}
+.editor-toolbar,
+.editor-toolbar.disabled-for-preview a:not(.no-disable),
+.editor-toolbar.fullscreen {
+  background: #f5f5f5;
+}
+.CodeMirror-vscrollbar,
+.editor-preview,
+.editor-preview-side {
+  scrollbar-width: thin;
+}

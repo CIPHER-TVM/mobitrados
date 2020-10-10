@@ -1,0 +1,43 @@
+// Sidebar
+.sidebar {
+  transition: width .25s ease, transform .45s ease;
+  background-color: $sidebar-bg;
+}
+
+// Sidebar header
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  height: $navbar-height;
+  padding: 0 8px;
+  box-shadow: $box-shadow-sm;
+  [data-toggle="sidebar"] {
+    display: none;
+  }
+}
+
+// Sidebar body
+.sidebar-body {
+  position: relative;
+  overflow: auto;
+  height: calc(100vh - #{$navbar-height});
+}
+
+// Sidebar backdrop
+.sidebar-backdrop {
+  position: fixed;
+  z-index: $zindex-fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  background-color: rgba($modal-backdrop-bg, $modal-backdrop-opacity);
+  @include media-breakpoint-down(md) { // Show backdrop on md down
+    .sidebar-expand & {
+      display: block;
+      animation-name: fadeIn;
+      animation-duration: .5s;
+    }
+  }
+}

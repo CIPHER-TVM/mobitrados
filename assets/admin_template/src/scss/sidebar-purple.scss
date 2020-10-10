@@ -1,0 +1,26 @@
+.sidebar {
+  background-color: #8164ce;
+  border-right-color: transparent !important;
+  .nav-link,
+  .nav-link:focus:not(:hover):not(.active),
+  .nav-sub ul a {
+    color: #e0d8f3;
+  }
+  .logo,
+  .nav-link:hover,
+  .nav-link.active,
+  .nav-sub ul a:hover,
+  .nav-sub ul a.active {
+    color: #fff;
+  }
+  .nav-link:hover,
+  .nav-link.active {
+    background-color: #9177d4;
+  }
+  .nav-sub ul {
+    background-color: #7151c8;
+  }
+  .nav-link.active {
+    box-shadow: 3px 0 0 0 #fff inset;
+  }
+}

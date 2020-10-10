@@ -1,0 +1,30 @@
+.note-editor.note-frame {
+  border-color: $border-color;
+  .modal-header {
+    border-bottom-width: 1px;
+    align-items: center;
+  }
+  .modal-body {
+    overflow: auto !important;
+    scrollbar-width: thin;
+  }
+  .modal-footer {
+    border-top-width: 1px;
+    > p {
+      margin-bottom: 0;
+    }
+  }
+}
+.card-header.note-toolbar {
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+}
+.note-popover .popover-content {
+  border-radius: $border-radius;
+}
+.note-group-image-url {
+  overflow: unset !important;
+}
+.note-editor.note-frame .note-editing-area .note-editable {
+  scrollbar-width: thin;
+}

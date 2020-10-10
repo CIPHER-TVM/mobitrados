@@ -1,0 +1,32 @@
+// Add vertical padding columns
+.gutters-vertical {
+  $gutter: $grid-gutter-width;
+  margin-top: -$gutter / 2;
+  margin-bottom: -$gutter / 2;
+  > .col,
+    > [class*="col-"] {
+      padding-top: $gutter / 2;
+      padding-bottom: $gutter / 2;
+    }
+}
+
+// Make gutters more compact by cutting default gutters padding in half
+.gutters-half {
+  $gutter: ceil($grid-gutter-width / 4);
+  margin-right: -$gutter;
+  margin-left: -$gutter;
+  > .col,
+  > [class*="col-"] {
+    padding-right: $gutter;
+    padding-left: $gutter;
+  }
+  &.gutters-vertical {
+    margin-top: -$gutter;
+    margin-bottom: -$gutter;
+    > .col,
+    > [class*="col-"] {
+      padding-top: $gutter;
+      padding-bottom: $gutter;
+    }
+  }
+}

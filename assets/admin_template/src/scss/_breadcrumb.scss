@@ -1,0 +1,39 @@
+.breadcrumb {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  .breadcrumb-item {
+    display: inline;
+  }
+}
+
+.breadcrumb-style1,
+.breadcrumb-style2,
+.breadcrumb-style3 {
+  background-color: transparent;
+  a {
+    color: lighten($body-color, 30%);
+    &:hover {
+      text-decoration: none;
+      color: $body-color;
+    }
+  }
+}
+.breadcrumb-style2 .breadcrumb-item + .breadcrumb-item::before {
+  content: '\276F';
+}
+.breadcrumb-style3 .breadcrumb-item + .breadcrumb-item::before {
+  content: '\279D';
+}
+
+.main-breadcrumb {
+  margin: (-$content-padding) (-$content-padding) $content-padding;
+  background-color: $main-breadcrumb-bg;
+  .breadcrumb {
+    margin-bottom: 0;
+    @if $enable-rounded {
+      border-radius: 0;
+    }
+  }
+}

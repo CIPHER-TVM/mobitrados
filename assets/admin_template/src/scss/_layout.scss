@@ -1,0 +1,66 @@
+// Sidebar
+.sidebar {
+  position: fixed;
+  z-index: $zindex-fixed + 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  width: $sidebar-width;
+}
+.sidebar-header,
+.sidebar-body {
+  width: $sidebar-width; // Prevent text wrap on sidebar-collapse
+}
+
+// Main content
+main {
+  padding: ($content-padding + $navbar-height) $content-padding $content-padding;
+}
+
+// Large devices (desktops, 992px and up)
+@include media-breakpoint-up(lg) {
+  main, .navbar-main {
+    padding-left: $sidebar-width + $content-padding; // Push main & navbar to the right
+  }
+  .sidebar-collapse {
+    main, .navbar-main {
+      padding-left: $sidebar-width-collapse + $content-padding;
+    }
+    .sidebar {
+      width: $sidebar-width-collapse;
+      .show + ul { // Hide submenu
+        display: none;
+        height: 0;
+      }
+      &:hover {
+        width: $sidebar-width;
+        .show + ul { // Show submenu on sidebar:hover
+          display: block;
+          height: auto;
+        }
+      }
+
+    }
+  }
+}
+
+// Medium devices (tablets, phones, less than 992px)
+@include media-breakpoint-down(md) {
+  .sidebar {
+    transform: translate3d(-#{$sidebar-width},0,0); // Hide sidebar
+  }
+  .sidebar-expand {
+    overflow: hidden; // Prevent scroll
+    .sidebar {
+      transform: translate3d(0,0,0); // Show sidebar
+      border-right: 0 !important;
+    }
+    .navbar-main [data-toggle="sidebar"] { // Hide navbar's toggler
+      display: none;
+    }
+    .sidebar-header [data-toggle="sidebar"] { // Show sidebar's toggler
+      display: flex;
+    }
+  }
+}

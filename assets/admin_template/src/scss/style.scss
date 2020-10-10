@@ -1,0 +1,68 @@
+// Bootstrap
+@import "variables"; // custom variables
+@import "node_modules/bootstrap/scss/bootstrap";
+
+// Required plugins
+@import "node_modules/perfect-scrollbar/css/perfect-scrollbar";
+
+// Vendor
+@import "vendor/material-icons";
+@import "vendor/perfect-scrollbar";
+@import "vendor/swiper";
+@import "vendor/nouislider";
+@import "vendor/bootbox";
+@import "vendor/noty";
+@import "vendor/sortablejs";
+@import "vendor/datatables";
+@import "vendor/flatpickr";
+@import "vendor/clockpicker";
+@import "vendor/bootstrap-select";
+@import "vendor/bootstrap-touchspin";
+@import "vendor/summernote";
+@import "vendor/simplemde";
+@import "vendor/bootstrap-colorpicker";
+@import "vendor/fullcalendar";
+
+// Template
+@import "mixins";
+@import "animations.scss";
+@import "custom-scrollbar";
+@import "images";
+@import "grid";
+@import "tables";
+@import "forms";
+@import "buttons";
+@import "dropdown";
+@import "button-group";
+@import "custom-forms";
+@import "nav";
+@import "card";
+@import "breadcrumb";
+@import "pagination";
+@import "badge";
+@import "alert";
+@import "progress";
+@import "list-group";
+@import "close";
+@import "modal";
+@import "tooltip";
+@import "popover";
+@import "utilities";
+@import "accordion";
+@import "rating";
+@import "steps";
+@import "layout.scss";
+@import "navbar.scss";
+@import "sidebar.scss";
+@import "logo.scss";
+@import "nav-sub.scss";
+@import "nav-section.scss";
+@import "form-fieldset.scss";
+@import "table-form.scss";
+@import "mail.scss";
+@import "chat-modal.scss";
+@import "timeline.scss";
+@import "login.scss";
+
+// Ajax
+@import "ajax.scss";

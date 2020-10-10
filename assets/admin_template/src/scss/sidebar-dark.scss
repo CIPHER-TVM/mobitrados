@@ -1,0 +1,22 @@
+.sidebar {
+  background-color: #272822;
+  border-right-color: transparent !important;
+  .nav-link,
+  .nav-link:focus:not(:hover):not(.active) {
+    color: #a6a6a6;
+  }
+  .logo,
+  .nav-link:hover,
+  .nav-link.active,
+  .nav-sub ul a:hover,
+  .nav-sub ul a.active {
+    color: #fff;
+  }
+  .nav-link:hover,
+  .nav-link.active {
+    background-color: #34362e;
+  }
+  .nav-sub ul {
+    background-color: #1a1a16;
+  }
+}

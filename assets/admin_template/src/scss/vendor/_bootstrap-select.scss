@@ -1,0 +1,97 @@
+.bootstrap-select {
+  > .dropdown-toggle {
+    border-color: $custom-select-border-color;
+    background-color: $custom-select-bg;
+    &::after {
+      margin-left: auto !important; // Fix dropup caret
+    }
+    &.disabled {
+      opacity: 1;
+      color: $custom-select-disabled-color;
+      background-color: $custom-select-disabled-bg;
+    }
+    &:focus {
+      outline: 0 !important;
+    }
+  }
+  &:not(.is-valid):not(.is-invalid) > .dropdown-toggle:not(:disabled):not(.disabled):focus,
+  &:not(.is-valid):not(.is-invalid) > .dropdown-toggle:not(:disabled):not(.disabled):active,
+  &.show:not(.is-valid):not(.is-invalid) > .dropdown-toggle {
+    border-color: $custom-select-focus-border-color;
+    background-color: $custom-select-bg;
+  }
+  > .dropdown-menu {
+    border-color: $custom-select-border-color;
+    > .inner {
+      scrollbar-width: thin;
+    }
+  }
+  .dropdown-item {
+    &:focus {
+      outline: 0;
+    }
+    &.active {
+      color: $dropdown-link-hover-color;
+      @include gradient-bg(darken($dropdown-link-hover-bg, 5%));
+    }
+    &:active:not(.active) {
+      color: $dropdown-link-hover-color;
+      @include gradient-bg($dropdown-link-hover-bg);
+    }
+  }
+  .bs-ok-default::after { // Select multiple check mark
+    content: '\2714';
+    border: 0;
+    transform: none;
+  }
+  .no-results {
+    padding: 3px 9px;
+    margin: 0 8px;
+  }
+  // Validation
+  &.is-valid,
+  &.is-invalid {
+    padding-right: 0;
+    @if $enable-validation-icons {
+      > .dropdown-toggle {
+        padding-right: $input-height-inner;
+        background-repeat: no-repeat;
+        background-position: center right $input-height-inner-quarter;
+        background-size: $input-height-inner-half $input-height-inner-half;
+      }
+    }
+  }
+  @if $enable-validation-icons {
+    &.is-valid > .dropdown-toggle {
+      background-image: $form-feedback-icon-valid;
+    }
+    &.is-invalid > .dropdown-toggle {
+      background-image: $form-feedback-icon-invalid;
+    }
+  }
+}
+.bs-searchbox {
+  padding: 0 8px 8px;
+  .form-control {
+    @extend .form-control-sm;
+    border-color: $input-border-color;
+    box-shadow: none;
+  }
+}
+.bootstrap-select.is-valid .dropdown-toggle,
+.was-validated .bootstrap-select > select:valid+.dropdown-toggle {
+  border-color: $success;
+}
+.bootstrap-select.is-invalid .dropdown-toggle,
+.was-validated .bootstrap-select > select:invalid+.dropdown-toggle {
+  border-color: $danger;
+}
+.bootstrap-select .dropdown-menu li a span.text {
+  display: flex;
+}
+.bootstrap-select .dropdown-menu li small {
+  align-self: center;
+}
+.bootstrap-select .dropdown-menu li.active small {
+  color: $text-muted !important;
+}

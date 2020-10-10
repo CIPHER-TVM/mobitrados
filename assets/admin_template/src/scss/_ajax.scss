@@ -1,0 +1,23 @@
+#ajaxloader {
+  position: fixed;
+  z-index: $zindex-modal + 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding-left: calc(#{$sidebar-width} + 1rem + 40px);
+  button {
+    margin-top: calc((#{$navbar-height} - 38px) / 2);
+  }
+  @include media-breakpoint-up(lg) {
+    .sidebar-collapse & {
+      padding-left: calc(#{$sidebar-width-collapse} + 1rem + 40px);
+    }
+  }
+  @include media-breakpoint-down(md) {
+    padding-left: calc(1rem + 40px);
+  }
+}
+.alert-error-load pre {
+  margin-bottom: 0;
+}

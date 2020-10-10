@@ -1,0 +1,13 @@
+.fc-event {
+  &.list-group-item {
+    cursor: move;
+  }
+  + .fc-event {
+    margin-top: .25rem;
+  }
+}
+@include media-breakpoint-down(sm) {
+  .fc-toolbar {
+    flex-direction: column;
+  }
+}

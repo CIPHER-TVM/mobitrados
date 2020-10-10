@@ -1,0 +1,106 @@
+<h3>Layout</h3>
+<hr>
+<div class="alert border border-width-2 border-warning" role="alert">
+  <strong>Tip!</strong>
+  The <a href="../dist/html/starter.html" target="_blank">starter page</a> is a good place to start building your app if you'd like to start from scratch.
+</div>
+<p>Default layout used for all pages (except for login) is:</p>
+<img src="img/layout.png" alt="Layout" class="border">
+<ul class="list-unstyled">
+  <li>1. Navbar</li>
+  <li>2. Sidebar</li>
+  <li>Inside <strong>main</strong> container:
+    <ul class="list-unstyled ml-3">
+      <li>3. Breadcrumb</li>
+      <li>4. Page content</li>
+    </ul>
+  </li>
+</ul>
+
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="color:#fff;margin: 0; line-height: 125%"><span style="color: #75715e">&lt;!doctype html&gt;</span>
+<span style="color: #f92672">&lt;html</span> <span style="color: #a6e22e">lang=</span><span style="color: #e6db74">&quot;en&quot;</span><span style="color: #f92672">&gt;</span>
+
+<span style="color: #f92672">&lt;head&gt;</span>
+  <span style="color: #f92672">&lt;meta</span> <span style="color: #a6e22e">charset=</span><span style="color: #e6db74">&quot;utf-8&quot;</span><span style="color: #f92672">&gt;</span>
+  <span style="color: #f92672">&lt;meta</span> <span style="color: #a6e22e">name=</span><span style="color: #e6db74">&quot;viewport&quot;</span> <span style="color: #a6e22e">content=</span><span style="color: #e6db74">&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot;</span><span style="color: #f92672">&gt;</span>
+
+  <span style="color: #75715e">&lt;!-- Font &amp; Icon --&gt;</span>
+  <span style="color: #f92672">&lt;link</span> <span style="color: #a6e22e">href=</span><span style="color: #e6db74">&quot;https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i&amp;display=swap&quot;</span> <span style="color: #a6e22e">rel=</span><span style="color: #e6db74">&quot;stylesheet&quot;</span><span style="color: #f92672">&gt;</span>
+  <span style="color: #f92672">&lt;link</span> <span style="color: #a6e22e">href=</span><span style="color: #e6db74">&quot;https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&quot;</span> <span style="color: #a6e22e">rel=</span><span style="color: #e6db74">&quot;stylesheet&quot;</span><span style="color: #f92672">&gt;</span>
+  <span style="color: #f92672">&lt;link</span> <span style="color: #a6e22e">href=</span><span style="color: #e6db74">&quot;https://fonts.googleapis.com/icon?family=Material+Icons&quot;</span> <span style="color: #a6e22e">rel=</span><span style="color: #e6db74">&quot;stylesheet&quot;</span><span style="color: #f92672">&gt;</span>
+
+  <span style="color: #75715e">&lt;!-- Plugins --&gt;</span>
+  <span style="color: #75715e">&lt;!-- CSS plugins goes here --&gt;</span>
+
+  <span style="color: #75715e">&lt;!-- Main Style --&gt;</span>
+  <span style="color: #f92672">&lt;link</span> <span style="color: #a6e22e">rel=</span><span style="color: #e6db74">&quot;stylesheet&quot;</span> <span style="color: #a6e22e">href=</span><span style="color: #e6db74">&quot;../css/style.min.css&quot;</span> <span style="color: #a6e22e">id=</span><span style="color: #e6db74">&quot;main-css&quot;</span><span style="color: #f92672">&gt;</span>
+
+  <span style="color: #75715e">&lt;!-- Choose your theme or leave blank for default --&gt;</span>
+  <span style="color: #75715e">&lt;!-- &lt;link rel=&quot;stylesheet&quot; href=&quot;../css/sidebar-blue.min.css&quot; id=&quot;sidebar-css&quot;&gt; --&gt;</span>
+  <span style="color: #75715e">&lt;!-- &lt;link rel=&quot;stylesheet&quot; href=&quot;../css/sidebar-cyan.min.css&quot; id=&quot;sidebar-css&quot;&gt; --&gt;</span>
+  <span style="color: #75715e">&lt;!-- &lt;link rel=&quot;stylesheet&quot; href=&quot;../css/sidebar-dark.min.css&quot; id=&quot;sidebar-css&quot;&gt; --&gt;</span>
+  <span style="color: #75715e">&lt;!-- &lt;link rel=&quot;stylesheet&quot; href=&quot;../css/sidebar-gray.min.css&quot; id=&quot;sidebar-css&quot;&gt; --&gt;</span>
+  <span style="color: #75715e">&lt;!-- &lt;link rel=&quot;stylesheet&quot; href=&quot;../css/sidebar-green.min.css&quot; id=&quot;sidebar-css&quot;&gt; --&gt;</span>
+  <span style="color: #75715e">&lt;!-- &lt;link rel=&quot;stylesheet&quot; href=&quot;../css/sidebar-pink.min.css&quot; id=&quot;sidebar-css&quot;&gt; --&gt;</span>
+  <span style="color: #75715e">&lt;!-- &lt;link rel=&quot;stylesheet&quot; href=&quot;../css/sidebar-purple.min.css&quot; id=&quot;sidebar-css&quot;&gt; --&gt;</span>
+  <span style="color: #75715e">&lt;!-- &lt;link rel=&quot;stylesheet&quot; href=&quot;../css/sidebar-red.min.css&quot; id=&quot;sidebar-css&quot;&gt; --&gt;</span>
+
+  <span style="color: #f92672">&lt;title&gt;</span>Mimity Admin<span style="color: #f92672">&lt;/title&gt;</span>
+<span style="color: #f92672">&lt;/head&gt;</span>
+
+<span style="color: #f92672">&lt;body&gt;</span>  <span style="color: #75715e">&lt;!-- use &lt;body class=&quot;sidebar-collapse&quot;&gt; to have a collapsed sidebar --&gt;</span>
+
+  <span style="color: #75715e">&lt;!-- Sidebar --&gt;</span>
+  <span style="color: #f92672">&lt;aside</span> <span style="color: #a6e22e">class=</span><span style="color: #e6db74">&quot;sidebar border-right&quot;</span><span style="color: #f92672">&gt;</span>
+    <span style="color: #75715e">&lt;!-- sidebar goes here --&gt;</span>
+  <span style="color: #f92672">&lt;/aside&gt;</span>
+  <span style="color: #75715e">&lt;!-- /Sidebar --&gt;</span>
+
+  <span style="color: #75715e">&lt;!-- Navbar --&gt;</span>
+  <span style="color: #f92672">&lt;nav</span> <span style="color: #a6e22e">class=</span><span style="color: #e6db74">&quot;navbar navbar-expand navbar-light fixed-top navbar-main&quot;</span><span style="color: #f92672">&gt;</span>
+    <span style="color: #75715e">&lt;!-- navbar goes here --&gt;</span>
+  <span style="color: #f92672">&lt;/nav&gt;</span>
+  <span style="color: #75715e">&lt;!-- /Navbar --&gt;</span>
+
+  <span style="color: #75715e">&lt;!-- Main Content --&gt;</span>
+  <span style="color: #f92672">&lt;main&gt;</span>
+
+    <span style="color: #75715e">&lt;!-- Breadcrumb --&gt;</span>
+    <span style="color: #f92672">&lt;nav</span> <span style="color: #a6e22e">aria-label=</span><span style="color: #e6db74">&quot;breadcrumb&quot;</span> <span style="color: #a6e22e">class=</span><span style="color: #e6db74">&quot;main-breadcrumb&quot;</span><span style="color: #f92672">&gt;</span>
+      <span style="color: #75715e">&lt;!-- breadcrumb goes here --&gt;</span>
+    <span style="color: #f92672">&lt;/nav&gt;</span>
+    <span style="color: #75715e">&lt;!-- /Breadcrumb --&gt;</span>
+
+    your content here
+
+  <span style="color: #f92672">&lt;/main&gt;</span>
+  <span style="color: #75715e">&lt;!-- /Main Content --&gt;</span>
+
+  <span style="color: #75715e">&lt;!-- Backdrop for expanded sidebar --&gt;</span>
+  <span style="color: #f92672">&lt;div</span> <span style="color: #a6e22e">class=</span><span style="color: #e6db74">&quot;sidebar-backdrop&quot;</span> <span style="color: #a6e22e">id=</span><span style="color: #e6db74">&quot;sidebarBackdrop&quot;</span> <span style="color: #a6e22e">data-toggle=</span><span style="color: #e6db74">&quot;sidebar&quot;</span><span style="color: #f92672">&gt;&lt;/div&gt;</span>
+
+  <span style="color: #75715e">&lt;!-- Main Scripts --&gt;</span>
+  <span style="color: #f92672">&lt;script </span><span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;../js/script.min.js&quot;</span><span style="color: #f92672">&gt;&lt;/script&gt;</span>
+  <span style="color: #f92672">&lt;script </span><span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;../js/app.min.js&quot;</span><span style="color: #f92672">&gt;&lt;/script&gt;</span>
+
+  <span style="color: #75715e">&lt;!-- Plugins --&gt;</span>
+  <span style="color: #75715e">&lt;!-- JS plugins goes here --&gt;</span>
+
+<span style="color: #f92672">&lt;/body&gt;</span>
+
+<span style="color: #f92672">&lt;/html&gt;</span>
+</pre></div>
+
+
+<h4 class="card-title mt-5">Collapsed sidebar</h4>
+<p>use the class <code>.sidebar-collapse</code> to the body tag to have a collapsed sidebar</p>
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #f92672">&lt;body</span> <span style="color: #a6e22e">class=</span><span style="color: #e6db74">&quot;sidebar-collapse&quot;</span><span style="color: #f92672">&gt;</span>
+</pre></div>
+
+<script>
+  App.loadPlugins(null, null).then(() => {
+
+    // your script here
+
+  }).then(() => App.stopLoading())
+</script>

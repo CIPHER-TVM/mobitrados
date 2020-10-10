@@ -1,0 +1,70 @@
+.nav-sub {
+  flex-direction: column;
+
+  // Links
+  .nav-link {
+    &:hover,
+    &:focus,
+    &.active {
+      background-color: transparent;
+    }
+    &:focus:not(:hover):not(.active) {
+      color: inherit;
+    }
+    &.active {
+      box-shadow: 3px 0 0 0 $component-active-bg inset;
+    }
+    &.dropdown-toggle {
+      &::after { // caret
+        margin-left: auto;
+        transform: rotate(-90deg);
+      }
+      &.show::after {
+        transform: none;
+      }
+      &.nav-link-sm + ul {
+        padding-left: ($nav-link-padding-x - .125rem) + ($nav-link-padding-x - .125rem) + $material-icons-size-sm;
+        a {
+          font-size: $font-size-sm;
+        }
+      }
+    }
+  }
+
+  // Icon
+  i {
+    margin-right: $nav-link-padding-x;
+  }
+  .nav-link-sm i {
+    margin-right: ($nav-link-padding-x - .125rem);
+  }
+
+  // Submenu
+  ul {
+    display: none;
+    height: 0;
+    padding-left: $nav-link-padding-x + $nav-link-padding-x + $material-icons-size;
+    list-style: none;
+    a {
+      position: relative;
+      display: block;
+      padding: .25rem 0;
+      color: lighten($body-color, 25%);
+      font-size: .9375rem;
+      &:hover {
+        text-decoration: none;
+        color: $body-color;
+      }
+      &.active {
+        color: $component-active-bg;
+      }
+      &:focus {
+        outline: 0;
+      }
+    }
+  }
+  .show + ul {
+    display: block;
+    height: auto;
+  }
+}

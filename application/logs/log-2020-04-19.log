@@ -1,0 +1,77 @@
+INFO - 2020-04-19 12:22:52 --> Config Class Initialized
+INFO - 2020-04-19 12:22:52 --> Hooks Class Initialized
+DEBUG - 2020-04-19 12:22:52 --> UTF-8 Support Enabled
+INFO - 2020-04-19 12:22:52 --> Utf8 Class Initialized
+INFO - 2020-04-19 12:22:52 --> URI Class Initialized
+INFO - 2020-04-19 12:22:52 --> Router Class Initialized
+INFO - 2020-04-19 12:22:52 --> Output Class Initialized
+INFO - 2020-04-19 12:22:52 --> Security Class Initialized
+DEBUG - 2020-04-19 12:22:52 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-04-19 12:22:52 --> Input Class Initialized
+INFO - 2020-04-19 12:22:52 --> Language Class Initialized
+INFO - 2020-04-19 12:22:52 --> Language Class Initialized
+INFO - 2020-04-19 12:22:52 --> Config Class Initialized
+INFO - 2020-04-19 12:22:52 --> Loader Class Initialized
+DEBUG - 2020-04-19 12:22:52 --> Config file loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/config/rest.php
+INFO - 2020-04-19 12:22:52 --> Helper loaded: url_helper
+INFO - 2020-04-19 12:22:52 --> Helper loaded: form_helper
+INFO - 2020-04-19 12:22:52 --> Helper loaded: adminurl_helper
+INFO - 2020-04-19 12:22:52 --> Helper loaded: site_helper
+INFO - 2020-04-19 12:22:52 --> Helper loaded: directory_helper
+INFO - 2020-04-19 12:22:52 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-04-19 12:22:52 --> Database Driver Class Initialized
+INFO - 2020-04-19 12:22:52 --> Email Class Initialized
+DEBUG - 2020-04-19 12:22:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-04-19 12:22:52 --> Session: Class initialized using 'files' driver.
+INFO - 2020-04-19 12:22:52 --> Form Validation Class Initialized
+INFO - 2020-04-19 12:22:52 --> Controller Class Initialized
+DEBUG - 2020-04-19 12:22:52 --> User_accounts MX_Controller Initialized
+DEBUG - 2020-04-19 12:22:52 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/controllers/../modules/website/web/controllers/Web.php
+DEBUG - 2020-04-19 12:22:52 --> Web MX_Controller Initialized
+DEBUG - 2020-04-19 12:22:52 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+DEBUG - 2020-04-19 12:22:52 --> File already loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+DEBUG - 2020-04-19 12:22:52 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/orders/models/Order_management.php
+DEBUG - 2020-04-19 12:22:52 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/header.php
+DEBUG - 2020-04-19 12:22:52 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/modals.php
+DEBUG - 2020-04-19 12:22:52 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/orders/views/user_side_panel.php
+DEBUG - 2020-04-19 12:22:52 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/orders/views/order_history.php
+DEBUG - 2020-04-19 12:22:52 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/search_all.php
+DEBUG - 2020-04-19 12:22:52 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/js.php
+DEBUG - 2020-04-19 12:22:52 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/views/sections/footer.php
+INFO - 2020-04-19 12:22:52 --> Final output sent to browser
+DEBUG - 2020-04-19 12:22:52 --> Total execution time: 0.1683
+INFO - 2020-04-19 12:22:53 --> Config Class Initialized
+INFO - 2020-04-19 12:22:53 --> Hooks Class Initialized
+DEBUG - 2020-04-19 12:22:53 --> UTF-8 Support Enabled
+INFO - 2020-04-19 12:22:53 --> Utf8 Class Initialized
+INFO - 2020-04-19 12:22:53 --> URI Class Initialized
+INFO - 2020-04-19 12:22:53 --> Router Class Initialized
+INFO - 2020-04-19 12:22:53 --> Output Class Initialized
+INFO - 2020-04-19 12:22:53 --> Security Class Initialized
+DEBUG - 2020-04-19 12:22:53 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-04-19 12:22:53 --> Input Class Initialized
+INFO - 2020-04-19 12:22:53 --> Language Class Initialized
+INFO - 2020-04-19 12:22:53 --> Language Class Initialized
+INFO - 2020-04-19 12:22:53 --> Config Class Initialized
+INFO - 2020-04-19 12:22:53 --> Loader Class Initialized
+DEBUG - 2020-04-19 12:22:53 --> Config file loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/config/rest.php
+INFO - 2020-04-19 12:22:53 --> Helper loaded: url_helper
+INFO - 2020-04-19 12:22:53 --> Helper loaded: form_helper
+INFO - 2020-04-19 12:22:53 --> Helper loaded: adminurl_helper
+INFO - 2020-04-19 12:22:53 --> Helper loaded: site_helper
+INFO - 2020-04-19 12:22:53 --> Helper loaded: directory_helper
+INFO - 2020-04-19 12:22:53 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-04-19 12:22:53 --> Database Driver Class Initialized
+INFO - 2020-04-19 12:22:53 --> Email Class Initialized
+DEBUG - 2020-04-19 12:22:53 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-04-19 12:22:53 --> Session: Class initialized using 'files' driver.
+INFO - 2020-04-19 12:22:53 --> Form Validation Class Initialized
+INFO - 2020-04-19 12:22:53 --> Controller Class Initialized
+DEBUG - 2020-04-19 12:22:53 --> User_accounts MX_Controller Initialized
+DEBUG - 2020-04-19 12:22:53 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/controllers/../modules/website/web/controllers/Web.php
+DEBUG - 2020-04-19 12:22:53 --> Web MX_Controller Initialized
+DEBUG - 2020-04-19 12:22:53 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+DEBUG - 2020-04-19 12:22:53 --> File already loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/web/models/Public_users_m.php
+DEBUG - 2020-04-19 12:22:53 --> File loaded: /opt/lampp/htdocs/medi_shop_codeigniter_hmvc/application/modules/website/orders/models/Order_management.php
+INFO - 2020-04-19 12:22:53 --> Final output sent to browser
+DEBUG - 2020-04-19 12:22:53 --> Total execution time: 0.1488

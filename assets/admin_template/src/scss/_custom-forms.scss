@@ -1,0 +1,155 @@
+// Radio / checkbox color picker
+.custom-color {
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin: -2px;
+  .color-item {
+    height: 1rem;
+    margin: 2px;
+    &.color-item-light {
+      label {
+        box-shadow: 0 0 2px 0 #bbb inset;
+      }
+      .custom-control-input:checked ~ label::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23333' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+      }
+    }
+  }
+  label {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+  }
+  .custom-control-input {
+    &:checked ~ label::after {
+      content: '';
+      width: 1rem;
+      height: 1rem;
+      display: block;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+      // background-image: $custom-checkbox-indicator-icon-checked;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: $custom-control-indicator-bg-size;
+    }
+    &:disabled ~ label {
+      opacity: $btn-disabled-opacity;
+      pointer-events: none;
+    }
+  }
+  &.custom-color-lg {
+    .color-item {
+      height: 1.5rem;
+    }
+    label,
+    .custom-control-input:checked ~ label::after {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+}
+
+// Custom spinner
+.custom-spinner {
+  display: inline-flex;
+  input[type="number"] {
+    -moz-appearance: textfield;
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      margin: 0;
+      -webkit-appearance: none;
+    }
+    text-align: center;
+    border: 0;
+    box-shadow: none;
+    &.form-control {
+      width: calc(100% - 76px);
+    }
+    &.form-control-sm {
+      width: calc(100% - 62px);
+    }
+    &.form-control-lg {
+      width: calc(100% - 96px);
+    }
+  }
+  .btn {
+    z-index: 1;
+    flex: none;
+  }
+  &.custom-spinner-vertical {
+    display: inline-block;
+    input[type="number"] {
+      padding-right: 0;
+      padding-left: 0;
+      &.form-control {
+        width: 38px;
+      }
+      &.form-control-sm {
+        width: 31px;
+      }
+      &.form-control-lg {
+        width: 48px;
+      }
+    }
+  }
+}
+
+// Custom checkboxes, radios, switchs hover
+.custom-control .custom-control-input:not(:disabled):not(:checked):not(:active):hover ~ .custom-control-label::before {
+  border-color: $body-color;
+}
+
+// Custom checkboxes, radios, switchs without labels
+.custom-control-nolabel {
+  display: inline-block;
+  width: $custom-control-indicator-size;
+  margin: 0;
+  padding-left: 0 !important;
+  vertical-align: middle;
+  .custom-control-label {
+    display: block;
+    &::before,
+    &::after {
+      left: 0 !important;
+    }
+  }
+  &.custom-switch {
+    width: $custom-switch-width;
+    .custom-control-label::after {
+      left: 2px !important;
+    }
+  }
+}
+
+// Switches
+.custom-switch {
+  .custom-control-input:not(:disabled):not(:active):checked ~ .custom-control-label::before {
+    border-color: $custom-control-indicator-checked-color;
+    background-color: $custom-control-indicator-checked-color;
+  }
+  .custom-control-input:not(:disabled):active:checked ~ .custom-control-label::before,
+  .custom-control-input:disabled:checked ~ .custom-control-label::before {
+    background-color: $custom-control-indicator-border-color;
+  }
+}
+
+// File browser
+.custom-file-label {
+  line-height: 1.6;
+  overflow: hidden;
+}
+
+// Validation
+.was-validated .custom-control-input:valid:checked ~ .custom-control-label::before,
+.custom-control-input.is-valid:checked ~ .custom-control-label::before {
+  background-color: inherit;
+}
+.was-validated .custom-control-input:valid:focus ~ .custom-control-label::before,
+.was-validated .custom-control-input:invalid:focus ~ .custom-control-label::before,
+.custom-control-input.is-valid:focus ~ .custom-control-label::before,
+.custom-control-input.is-invalid:focus ~ .custom-control-label::before {
+  box-shadow: none;
+}
+.was-validated .form-control:invalid, .form-control.is-invalid {
+  box-shadow: none;
+}

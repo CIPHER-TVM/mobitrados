@@ -1,0 +1,36 @@
+// Main navbar
+.navbar-main {
+  box-shadow: $box-shadow-sm;
+  &.navbar-light {
+    background-color: #fff;
+  }
+  &.navbar-dark {
+    background-color: $dark;
+  }
+}
+
+// Nav notif
+.nav-notif {
+  .dropdown-menu {
+    width: $nav-notif-width;
+  }
+  .card-body {
+    position: relative;
+    overflow: auto;
+    max-height: $nav-notif-max-height;
+    scrollbar-width: thin;
+  }
+  .list-group-flush .list-group-item:last-child {
+    border-bottom: 0;
+  }
+}
+@include media-breakpoint-down(xs) {
+  .nav-notif .dropdown-menu {
+    position: fixed !important;
+    top: $navbar-height - 6px;
+    right: ($grid-gutter-width / 2) - 1px;
+    left: ($grid-gutter-width / 2) - 1px;
+    width: auto;
+    margin: 0;
+  }
+}

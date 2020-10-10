@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Font & Icon -->
+  @@include('../html/include/font-icon.html')
+
+  <!-- Plugins -->
+  <!-- CSS plugins goes here -->
+
+  @@include('../html/include/main-css.html')
+
+  <title>Mimity Admin</title>
+</head>
+
+<body>
+
+  <!-- Ajax loader -->
+  <div id="ajaxloader" class="fade">
+    <button class="btn has-icon text-primary shadow-none bg-white" type="button">
+      <span class="spinner-border spinner-border-sm mr-1" role="status"></span>Loading...
+    </button>
+  </div>
+
+  @@include('../html/include/sidebar-ajax.html')
+
+  @@include('../html/include/navbar.html')
+
+  <!-- Main Content -->
+  <main>
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="main-breadcrumb" id="main-breadcrumb">
+      <ol class="breadcrumb breadcrumb-style2">
+        <li class="breadcrumb-item"><a href="#dashboard.html">Home</a></li>
+      </ol>
+    </nav>
+    <!-- /Breadcrumb -->
+
+    <div id="ajax-content">
+      <!-- AJAX CONTENT GOES HERE -->
+    </div>
+
+  </main>
+  <!-- /Main Content -->
+
+  @@include('../html/include/modal-search.html')
+
+  @@include('../html/include/modal-chat.html')
+
+  @@include('../html/include/sidebar-backdrop.html')
+
+  <script src="../js/script.min.js"></script>
+  <script src="../js/ajax.min.js" id="ajax-js"></script>
+
+  <!-- Plugins -->
+  <!-- JS plugins goes here -->
+
+  <script>
+    App.ajax({
+      'container': '#ajax-content',
+      'default': 'dashboard.html',
+      'breadcrumb': true
+    })
+  </script>
+
+</body>
+
+</html>

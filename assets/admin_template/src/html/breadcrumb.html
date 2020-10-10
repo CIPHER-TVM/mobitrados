@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Font & Icon -->
+  @@include('./include/font-icon.html')
+
+  <!-- Plugins -->
+  <!-- CSS plugins goes here -->
+
+  @@include('./include/main-css.html')
+
+  <title>Mimity Admin</title>
+</head>
+
+<body>
+
+  @@include('./include/sidebar.html', {
+    "menu": "ui",
+    "sub": "breadcrumb"
+  })
+
+  @@include('./include/navbar.html')
+
+  <!-- Main Content -->
+  <main>
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+      <ol class="breadcrumb breadcrumb-style2">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="javascript:void(0)">UI Elements</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Breadcrumb</li>
+      </ol>
+    </nav>
+    <!-- /Breadcrumb -->
+
+    <section>
+      <h5>Basic Styling</h5>
+      <p class="text-muted font-size-sm">
+        The example below is the basic styling of the breadcrumb from Bootstrap.
+      </p>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+          <li class="breadcrumb-item"><a href="javascript:void(0)">Library</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Data</li>
+        </ol>
+      </nav>
+    </section>
+
+    <hr class="my-5">
+
+    <section>
+      <h5>Custom Styling</h5>
+      <p class="text-muted font-size-sm">
+        The example below is the custom styling of the breadcrumb used by this template.
+      </p>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-style1">
+          <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+          <li class="breadcrumb-item"><a href="javascript:void(0)">Library</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Data</li>
+        </ol>
+      </nav>
+    </section>
+
+    <hr class="my-5">
+
+    <section>
+      <h5>Custom Divider</h5>
+      <p class="text-muted font-size-sm">
+        The example below is the custom styling of the breadcrumb using different divider.
+      </p>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-style2 bg-white">
+          <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+          <li class="breadcrumb-item"><a href="javascript:void(0)">Library</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Data</li>
+        </ol>
+      </nav>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-style3 bg-white">
+          <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+          <li class="breadcrumb-item"><a href="javascript:void(0)">Library</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Data</li>
+        </ol>
+      </nav>
+    </section>
+
+  </main>
+  <!-- /Main Content -->
+
+  @@include('./include/modal-search.html')
+
+  @@include('../html/include/modal-chat.html')
+
+  @@include('./include/sidebar-backdrop.html')
+
+  @@include('./include/main-js.html')
+
+  <!-- Plugins -->
+  <!-- JS plugins goes here -->
+
+</body>
+
+</html>

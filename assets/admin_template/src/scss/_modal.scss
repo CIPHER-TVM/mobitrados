@@ -1,0 +1,122 @@
+.modal-content {
+  box-shadow: $box-shadow;
+}
+
+// Modal transform
+.modal.fade .modal-dialog {
+  transform: scale(1.1);
+}
+.modal.show .modal-dialog {
+  transform: scale(1);
+}
+
+// Side modals
+.modal-content-top,
+.modal-content-right,
+.modal-content-bottom,
+.modal-content-left {
+  .modal-dialog {
+    margin: 0;
+  }
+  @if $enable-rounded {
+    .modal-content,
+    .modal-header {
+      border-radius: 0;
+    }
+  }
+}
+.modal-content-right,
+.modal-content-left {
+  .modal-dialog,
+  .modal-content {
+    min-height: 100vh;
+  }
+  .modal-header,
+  .modal-footer {
+    flex-shrink: 0;
+  }
+}
+.modal-content-right {
+  padding-right: 0 !important;
+  .modal-dialog {
+    margin-left: auto;
+  }
+  &.fade .modal-dialog {
+    transform: translateX(25px);
+  }
+  &.show .modal-dialog {
+    transform: translateX(0);
+  }
+}
+.modal-content-left {
+  &.fade .modal-dialog {
+    transform: translateX(-25px);
+  }
+  &.show .modal-dialog {
+    transform: translateX(0);
+  }
+}
+.modal-content-bottom,
+.modal-content-top {
+  padding-right: 0 !important;
+  .modal-dialog {
+    position: absolute;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  &.show .modal-dialog {
+    transform: translateY(0) !important;
+  }
+}
+.modal-content-bottom {
+  .modal-dialog {
+    bottom: 0;
+  }
+  &.fade .modal-dialog {
+    transform: translateY(25px);
+  }
+}
+.modal-content-top {
+  .modal-dialog {
+    top: 0;
+  }
+  &.fade .modal-dialog {
+    transform: translateY(-25px);
+  }
+}
+
+// Modal shown static
+.modal-shown-static {
+  position: static;
+  display: block !important;
+  overflow: unset;
+  height: auto;
+  opacity: 1 !important;
+  .modal-dialog {
+    max-width: unset !important;
+    min-height: auto;
+    transform: none !important;
+    .modal-content {
+      min-height: auto;
+      background-color: transparent;
+      .modal-header {
+        display: none;
+      }
+      .modal-body {
+        padding: 0;
+      }
+    }
+  }
+}
+
+// Because popovers & tooltips behind the other, see _variables line 91
+// We need to return it to the front when modal is shown
+.modal-backdrop {
+  ~ .tooltip {
+    z-index: 1070;
+  }
+  ~ .popover {
+    z-index: 1060;
+  }
+}

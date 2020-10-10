@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Font & Icon -->
+  @@include('./include/font-icon.html')
+
+  <!-- Plugins -->
+  <link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.css">
+  <link rel="stylesheet" href="../../plugins/simplemde/simplemde.min.css">
+
+  @@include('./include/main-css.html')
+
+  <title>Mimity Admin</title>
+</head>
+
+<body>
+
+  @@include('./include/sidebar.html', {
+    "menu": "forms",
+    "sub": "text-editor"
+  })
+
+  @@include('./include/navbar.html')
+
+  <!-- Main Content -->
+  <main>
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+      <ol class="breadcrumb breadcrumb-style2">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="javascript:void(0)">Forms</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Text Editor</li>
+      </ol>
+    </nav>
+    <!-- /Breadcrumb -->
+
+    <div class="row gutters-half">
+      <div class="col">
+
+        <section id="section1">
+          <h5>Summernote</h5>
+          <p class="text-muted font-size-sm">
+            Super simple WYSIWYG Editor.<br>
+          </p>
+          <div id="summernote-editor"><p>Hello World!</p>
+<p>Some initial <b>bold</b> text</p>
+<p><br></p></div>
+        </section>
+
+        <hr class="my-5">
+
+        <section id="section2">
+          <h5>Air-Mode</h5>
+          <p class="text-muted font-size-sm">
+            Air-mode give an interface without the Toolbar. To reveal popover Toolbar, select a text where you want to modify. Simply turn on <code>airMode</code> and just focus on text.
+          </p>
+          <div id="summernote-editor-air">
+            <p>This is an Air-mode editable area.</p>
+            <ul>
+              <li>Select a text to reveal the toolbar.</li>
+              <li>Edit rich document on-the-fly, so elastic!</li>
+            </ul>
+            <p>End of air-mode area</p>
+          </div>
+        </section>
+
+        <hr class="my-5">
+
+        <section id="section3">
+          <h5>SimpleMDE - Markdown Editor</h5>
+          <p class="text-muted font-size-sm">
+            A drop-in JavaScript textarea replacement for writing beautiful and understandable Markdown.
+          </p>
+          <textarea name="markdown-editor" id="markdown-editor">
+# Intro
+Go ahead, play around with the editor! Be sure to check out **bold** and *italic* styling, or even [links](https://google.com). You can type the Markdown syntax, use the toolbar, or use shortcuts like `cmd-b` or `ctrl-b`.
+
+## Lists
+Unordered lists can be started using the toolbar or by typing `* `, `- `, or `+ `. Ordered lists can be started by typing `1. `.
+
+#### Unordered
+* Lists are a piece of cake
+* They even auto continue as you type
+* A double enter will end them
+* Tabs and shift-tabs work too
+
+#### Ordered
+1. Numbered lists...
+2. ...work too!
+
+## What about images?
+![Yes](https://i.imgur.com/sZlktY7.png)
+          </textarea>
+        </section>
+
+      </div>
+
+      <div class="col-3 d-none d-xl-block">
+        <div class="nav-section">
+          <label class="text-muted">On This Page</label>
+          <nav id="navSection" class="nav flex-column">
+            <a href="#section1" class="nav-link nav-link-sm">Summernote</a>
+            <a href="#section2" class="nav-link nav-link-sm">Air-Mode</a>
+            <a href="#section3" class="nav-link nav-link-sm">SimpleMDE - Markdown Editor</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <!-- /Main Content -->
+
+  @@include('./include/modal-search.html')
+
+  @@include('../html/include/modal-chat.html')
+
+  @@include('./include/sidebar-backdrop.html')
+
+  @@include('./include/main-js.html')
+
+  <!-- Plugins -->
+  <script src="../../plugins/summernote/summernote-bs4.min.js"></script>
+  <script src="../../plugins/simplemde/simplemde.min.js"></script>
+  <script>
+    $(() => {
+
+      $('#summernote-editor').summernote()
+
+      $('#summernote-editor-air').summernote({
+        airMode: true
+      })
+
+      new SimpleMDE({
+        element: document.querySelector('#markdown-editor')
+      })
+
+    })
+  </script>
+
+</body>
+
+</html>

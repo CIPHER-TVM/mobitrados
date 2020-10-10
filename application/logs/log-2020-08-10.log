@@ -1,0 +1,93 @@
+INFO - 2020-08-10 06:39:26 --> Config Class Initialized
+INFO - 2020-08-10 06:39:26 --> Hooks Class Initialized
+DEBUG - 2020-08-10 06:39:26 --> UTF-8 Support Enabled
+INFO - 2020-08-10 06:39:27 --> Utf8 Class Initialized
+INFO - 2020-08-10 06:39:27 --> URI Class Initialized
+INFO - 2020-08-10 06:39:27 --> Router Class Initialized
+INFO - 2020-08-10 06:39:27 --> Output Class Initialized
+INFO - 2020-08-10 06:39:27 --> Security Class Initialized
+DEBUG - 2020-08-10 06:39:28 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-08-10 06:39:28 --> CSRF cookie sent
+INFO - 2020-08-10 06:39:28 --> Input Class Initialized
+INFO - 2020-08-10 06:39:28 --> Language Class Initialized
+INFO - 2020-08-10 06:39:28 --> Language Class Initialized
+INFO - 2020-08-10 06:39:28 --> Config Class Initialized
+INFO - 2020-08-10 06:39:28 --> Loader Class Initialized
+DEBUG - 2020-08-10 06:39:29 --> Config file loaded: D:\xampp\htdocs\mobitrados\application\config/rest.php
+INFO - 2020-08-10 06:39:29 --> Helper loaded: url_helper
+INFO - 2020-08-10 06:39:29 --> Helper loaded: form_helper
+INFO - 2020-08-10 06:39:29 --> Helper loaded: adminurl_helper
+INFO - 2020-08-10 06:39:29 --> Helper loaded: site_helper
+INFO - 2020-08-10 06:39:29 --> Helper loaded: directory_helper
+INFO - 2020-08-10 06:39:29 --> Helper loaded: mail_helper
+INFO - 2020-08-10 06:39:30 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-08-10 06:39:30 --> Database Driver Class Initialized
+INFO - 2020-08-10 06:39:30 --> Email Class Initialized
+DEBUG - 2020-08-10 06:39:30 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-08-10 06:39:31 --> Session: Class initialized using 'files' driver.
+INFO - 2020-08-10 06:39:31 --> Form Validation Class Initialized
+INFO - 2020-08-10 06:39:31 --> Controller Class Initialized
+DEBUG - 2020-08-10 06:39:31 --> Manage_products MX_Controller Initialized
+INFO - 2020-08-10 06:39:31 --> Config Class Initialized
+INFO - 2020-08-10 06:39:31 --> Hooks Class Initialized
+INFO - 2020-08-10 06:39:31 --> Config Class Initialized
+DEBUG - 2020-08-10 06:39:32 --> UTF-8 Support Enabled
+INFO - 2020-08-10 06:39:32 --> Hooks Class Initialized
+INFO - 2020-08-10 06:39:32 --> Utf8 Class Initialized
+DEBUG - 2020-08-10 06:39:32 --> UTF-8 Support Enabled
+INFO - 2020-08-10 06:39:32 --> URI Class Initialized
+INFO - 2020-08-10 06:39:32 --> Utf8 Class Initialized
+INFO - 2020-08-10 06:39:32 --> Router Class Initialized
+INFO - 2020-08-10 06:39:32 --> URI Class Initialized
+INFO - 2020-08-10 06:39:32 --> Output Class Initialized
+INFO - 2020-08-10 06:39:32 --> Router Class Initialized
+INFO - 2020-08-10 06:39:32 --> Security Class Initialized
+INFO - 2020-08-10 06:39:32 --> Output Class Initialized
+DEBUG - 2020-08-10 06:39:32 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-08-10 06:39:32 --> Security Class Initialized
+INFO - 2020-08-10 06:39:32 --> CSRF cookie sent
+DEBUG - 2020-08-10 06:39:32 --> Global POST, GET and COOKIE data sanitized
+INFO - 2020-08-10 06:39:32 --> Input Class Initialized
+INFO - 2020-08-10 06:39:33 --> CSRF cookie sent
+INFO - 2020-08-10 06:39:33 --> Language Class Initialized
+INFO - 2020-08-10 06:39:33 --> Input Class Initialized
+INFO - 2020-08-10 06:39:33 --> Language Class Initialized
+INFO - 2020-08-10 06:39:33 --> Language Class Initialized
+INFO - 2020-08-10 06:39:33 --> Config Class Initialized
+INFO - 2020-08-10 06:39:33 --> Language Class Initialized
+INFO - 2020-08-10 06:39:33 --> Loader Class Initialized
+INFO - 2020-08-10 06:39:33 --> Config Class Initialized
+DEBUG - 2020-08-10 06:39:33 --> Config file loaded: D:\xampp\htdocs\mobitrados\application\config/rest.php
+INFO - 2020-08-10 06:39:33 --> Loader Class Initialized
+INFO - 2020-08-10 06:39:33 --> Helper loaded: url_helper
+DEBUG - 2020-08-10 06:39:33 --> Config file loaded: D:\xampp\htdocs\mobitrados\application\config/rest.php
+INFO - 2020-08-10 06:39:33 --> Helper loaded: form_helper
+INFO - 2020-08-10 06:39:33 --> Helper loaded: url_helper
+INFO - 2020-08-10 06:39:33 --> Helper loaded: adminurl_helper
+INFO - 2020-08-10 06:39:33 --> Helper loaded: form_helper
+INFO - 2020-08-10 06:39:33 --> Helper loaded: site_helper
+INFO - 2020-08-10 06:39:34 --> Helper loaded: adminurl_helper
+INFO - 2020-08-10 06:39:34 --> Helper loaded: directory_helper
+INFO - 2020-08-10 06:39:34 --> Helper loaded: site_helper
+INFO - 2020-08-10 06:39:34 --> Helper loaded: mail_helper
+INFO - 2020-08-10 06:39:34 --> Helper loaded: directory_helper
+INFO - 2020-08-10 06:39:34 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-08-10 06:39:34 --> Helper loaded: mail_helper
+INFO - 2020-08-10 06:39:34 --> Database Driver Class Initialized
+INFO - 2020-08-10 06:39:34 --> Language file loaded: language/english/api_lang.php
+INFO - 2020-08-10 06:39:34 --> Email Class Initialized
+INFO - 2020-08-10 06:39:34 --> Database Driver Class Initialized
+DEBUG - 2020-08-10 06:39:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-08-10 06:39:34 --> Email Class Initialized
+INFO - 2020-08-10 06:39:34 --> Session: Class initialized using 'files' driver.
+DEBUG - 2020-08-10 06:39:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+INFO - 2020-08-10 06:39:34 --> Form Validation Class Initialized
+INFO - 2020-08-10 06:39:34 --> Session: Class initialized using 'files' driver.
+INFO - 2020-08-10 06:39:34 --> Controller Class Initialized
+INFO - 2020-08-10 06:39:34 --> Form Validation Class Initialized
+DEBUG - 2020-08-10 06:39:35 --> LocalPlaces MX_Controller Initialized
+INFO - 2020-08-10 06:39:35 --> Controller Class Initialized
+DEBUG - 2020-08-10 06:39:35 --> Home MX_Controller Initialized
+DEBUG - 2020-08-10 06:39:35 --> File loaded: D:\xampp\htdocs\mobitrados\application\modules/admin/home/views/login.php
+INFO - 2020-08-10 06:39:35 --> Final output sent to browser
+DEBUG - 2020-08-10 06:39:35 --> Total execution time: 3.4030

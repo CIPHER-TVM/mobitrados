@@ -1,0 +1,55 @@
+/* Change autocomplete styles in WebKit */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+select:-webkit-autofill,
+select:-webkit-autofill:hover {
+  -webkit-box-shadow: 0 0 0px 1000px $input-bg inset;
+  -webkit-text-fill-color: $input-color;
+}
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px $input-bg inset, $input-focus-box-shadow;
+}
+
+// Input icon
+.input-icon {
+  position: relative;
+  display: block;
+  width: 100%;
+  > i {
+    position: absolute;
+  }
+}
+// Icon top position
+.input-icon > i { top: 7px }
+.input-icon.input-icon-sm > i { top: 5px; font-size: $material-icons-size-sm !important; }
+.input-icon.input-icon-lg > i { top: 9px; font-size: $material-icons-size-lg !important; }
+// Icon left position
+.input-icon:not(.input-icon-right) > i { left: $input-padding-x - .25rem }
+.input-icon.input-icon-sm:not(.input-icon-right) > i { left: $input-padding-x-sm - .20rem }
+.input-icon.input-icon-lg:not(.input-icon-right) > i { left: $input-padding-x-lg - .20rem }
+// Input padding-left
+.input-icon:not(.input-icon-right) > input.form-control { padding-left: $input-padding-x + $material-icons-size }
+.input-icon.input-icon-sm:not(.input-icon-right) > input.form-control-sm { padding-left: $input-padding-x-sm + $material-icons-size-sm }
+.input-icon.input-icon-lg:not(.input-icon-right) > input.form-control-lg { padding-left: $input-padding-x-lg + $material-icons-size-lg }
+// Icon right position
+.input-icon.input-icon-right > i { right: $input-padding-x - .25rem }
+.input-icon.input-icon-right.input-icon-sm > i { right: $input-padding-x-sm - .20rem }
+.input-icon.input-icon-right.input-icon-lg > i { right: $input-padding-x-lg - .20rem }
+// Input padding-right
+.input-icon.input-icon-right > input.form-control { padding-right: $input-padding-x + $material-icons-size }
+.input-icon.input-icon-right.input-icon-sm > input.form-control-sm { padding-right: $input-padding-x-sm + $material-icons-size-sm }
+.input-icon.input-icon-right.input-icon-lg > input.form-control-lg { padding-right: $input-padding-x-lg + $material-icons-size-lg }
+
+// Select multiple
+select.form-control[multiple]:not(.select2):not(.chosen-select) {
+  padding: 5px;
+  > option {
+    padding: ($input-padding-y / 2) $input-padding-y;
+    @include border-radius($input-border-radius);
+    margin-bottom: 1px;
+  }
+}

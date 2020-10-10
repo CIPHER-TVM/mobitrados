@@ -1,0 +1,60 @@
+.steps {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 50px;
+  &::before {
+    position: absolute;
+    top: 24px;
+    width: 100%;
+    height: 4px;
+    content: '';
+    background-color: #ced1d6;
+  }
+  > a {
+    position: relative;
+    color: #bbb;
+    &:hover {
+      text-decoration: none;
+    }
+    &::before {
+      position: absolute;
+      top: -50px;
+      left: calc(50% - 25px);
+      width: 50px;
+      height: 50px;
+      padding-top: 5px;
+      content: attr(data-step);
+      text-align: center;
+      border: 4px solid #ced1d6;
+      border-radius: 50%;
+      background-color: #fff;
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+    &.done {
+      &::before {
+        content: '\2714';
+        text-align: center;
+        color: $success;
+        border-color: $success;
+      }
+    }
+    &.current {
+      color: $success;
+      font-weight: bold;
+      &::before {
+        text-align: center;
+        color: $success;
+        border-color: $success;
+      }
+    }
+    &:first-child::before {
+      left: 0;
+    }
+    &:last-child::before {
+      right: 0;
+      left: auto;
+    }
+  }
+}

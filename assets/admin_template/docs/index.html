@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Font & Icon -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Main Style -->
+  <link rel="stylesheet" href="../dist/css/style.min.css" id="main-css">
+
+  <!-- Choose your theme or leave blank for default -->
+  <link rel="stylesheet" href="../dist/css/sidebar-gray.min.css" id="sidebar-css">
+
+  <title>Mimity Admin - Documentation</title>
+</head>
+
+<body>
+
+  <!-- Ajax loader -->
+  <div id="ajaxloader" class="fade">
+    <button class="btn has-icon text-primary shadow-none bg-white" type="button">
+      <span class="spinner-border spinner-border-sm mr-1" role="status"></span>Loading...
+    </button>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar border-right">
+
+    <!-- Sidebar header -->
+    <div class="sidebar-header px-3">
+      <!-- Logo -->
+      <a href="index.html" class="logo d-flex align-items-center">
+        <i class="material-icons mr-3">menu_book</i>Documentation
+      </a>
+      <a href="#" class="nav-link nav-link-sm nav-icon rounded-circle ml-auto" data-toggle="sidebar">
+        <i class="material-icons">close</i>
+      </a>
+    </div>
+
+    <!-- Sidebar body -->
+    <div class="sidebar-body">
+      <!-- Menu -->
+      <ul class="nav nav-sub mt-3" id="menu">
+        <li class="nav-item">
+          <a class="nav-link has-icon active" href="#introduction.html"><i class="material-icons">home</i>Introduction</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link has-icon" href="#changelog.html"><i class="material-icons">change_history</i>Changelog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link has-icon" href="#layout.html"><i class="material-icons">apps</i>Layout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link has-icon" href="#ajax.html"><i class="material-icons">sync_alt</i>Ajax</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link has-icon" href="#customize.html"><i class="material-icons">build</i>Customize</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link has-icon" href="#credit.html"><i class="material-icons">star</i>Credits</a>
+        </li>
+      </ul>
+      <!-- /Menu -->
+    </div>
+    <!-- /Sidebar body -->
+
+  </aside>
+  <!-- /Sidebar -->
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand navbar-light fixed-top navbar-main">
+    <div class="navbar-nav nav-circle">
+      <a class="nav-link nav-icon" href="#" data-toggle="sidebar"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <!-- /Navbar -->
+
+  <!-- Main Content -->
+  <main>
+
+    <div id="ajax-content">
+      <!-- AJAX CONTENT GOES HERE -->
+    </div>
+
+  </main>
+  <!-- /Main Content -->
+
+  <!-- Backdrop for expanded sidebar -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop" data-toggle="sidebar"></div>
+
+  <!-- Main Scripts -->
+  <script src="../dist/js/script.min.js"></script>
+  <script src="../dist/js/ajax.js" id="ajax-js"></script>
+
+  <script>
+    App.ajax({
+      'container': '#ajax-content',
+      'default': 'introduction.html',
+      'breadcrumb': false
+    })
+  </script>
+
+</body>
+
+</html>

@@ -136,4 +136,17 @@ class Public_api extends REST_Controller {
 				$this->response(array('status' => 204, 'message' => "No Data Found" ,'response'=>$response ), REST_Controller::HTTP_NO_CONTENT );
 			}
 	 }
+	 public function get_categories_get()
+	 {
+		 	 $response=array();
+			 $categories = $this->public_api_model->get_categories();
+			 $response=$categories->result();
+			 $rows=$categories->num_rows();
+			 if($rows>0){
+						 $this->response(array('status' => 200, 'message' => "Success" ,'response'=>$response ), REST_Controller::HTTP_OK);
+			 }
+			 else {
+					 $this->response(array('status' => 204, 'message' => "No Data Found" ,'response'=>$response ), REST_Controller::HTTP_NO_CONTENT );
+			 }
+	 }
 }

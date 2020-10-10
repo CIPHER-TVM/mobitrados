@@ -125,4 +125,12 @@ class Public_api_model extends CI_Model {
               $query=$this->db->query($qry);
               return $query;
     }
+    public function get_categories()
+    {
+        $base_url=base_url();
+        $icon="CONCAT('$base_url',icon) as icon";
+        $qry="SELECT pcid,product_catogory_name,$icon FROM product_catogory WHERE display_status=1 AND is_deleted=0";
+        $query=$this->db->query($qry);
+        return $query;
+    }
 }

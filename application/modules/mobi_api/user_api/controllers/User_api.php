@@ -30,7 +30,171 @@ class User_api extends REST_Controller {
    {
       $this->response(array('status' => 103, 'result' => 'Unknown Methodx'), REST_Controller::HTTP_NOT_FOUND);
    }
+   public function user_registration_post()
+   {
+      $mobile_number=$this->input->post('mobile_number');
+      $response=array();
+      if($mobile_number){
+          if(preg_match('/^[0-9]{10}+$/', $mobile_number))
+          {
 
+            $check_exist=checkexist("app_user_id","app_usres","where mobile_number='$mobile_number' AND is_deleted=0 AND account_verified=1");
+            if($check_exist==0)
+            {
+              $exist_user=getAfield("app_user_id","app_usres","where mobile_number='$mobile_number' AND  is_deleted=0 AND account_verified=0");
+              $otp= rand(100000, 999999);
+            //  $otp="CI".$otp;
+              $str=rand();
+              $string = md5($str);
+              $registration_token=secretkeyGneration("encrypt",$string,$key="CImsdYkmPHnsfruypojkeER",0);
+              $ins_data=array(
+                'mobile_number'=>$mobile_number,
+                'account_verified'=>0,
+                'name'=>'',
+                'email'=>'',
+                'password'=>'',
+                'otp'=>$otp,
+                'registration_token'=>$registration_token
+              );
+              $sms_text="Your One Time Verfication Code Is $otp";
+              $sendotp=sendSms($mobile_number,$sms_text);
+              if($exist_user>0)
+              {
+                  $where=array('app_user_id'=>$exist_user);
+                  $ins=$this->user_api_model->update("app_usres",$ins_data,$where);
+              }
+              else{
+                // create new user
+                $ins=$this->user_api_model->insert("app_usres",$ins_data);
+              }
+                if($ins)
+                {
+                  $response['registration_token']=$registration_token;
+                  $this->response(array('status' => 200, 'message'=>'Account Created, OTP sent','response' => $response), REST_Controller::HTTP_OK);
+                }
+                else{
+                   $this->response(array('status' => 410, 'message' => "Failed to save" ,'response'=>'' ), REST_Controller::HTTP_GONE);
+                }
+
+            }
+            else{
+
+              	$this->response(array('status' => 409, 'message' => 'User Already exist','response'=>$response), REST_Controller::HTTP_CONFLICT );
+            }
+
+          }else{
+            	$this->response(array('status' => 400, 'message' => 'Invalid Mobile Number','response'=>$response), REST_Controller::HTTP_BAD_REQUEST );
+          }
+      }
+   }
+   public function user_otp_verfication_post()
+   {
+     $response=array();
+     $mobile_number=$this->input->post('mobile_number');
+     $otp=$this->input->post('otp');
+     $registration_token=$this->input->post('registration_token');
+     if($mobile_number && $otp && $registration_token)
+     {
+        $exist_user=getAfield("app_user_id","app_usres","where mobile_number='$mobile_number' AND  is_deleted=0 AND otp!=''");
+        if($exist_user>0)
+        {
+          $reg_get_token=getAfield("registration_token","app_usres","where app_user_id=$exist_user");
+
+          if (strcmp($reg_get_token, $registration_token) != 0)
+          {
+              $this->response(array('status' => 203, 'message' => 'Invalid Attempt','response'=>$response), REST_Controller::HTTP_NON_AUTHORITATIVE_INFORMATION );
+              exit;
+          }
+
+              $verfication=getAfield("otp_verified","app_usres","where app_user_id ='$exist_user'");
+              if($verfication==0){
+                  $ext_otp=getAfield("otp","app_usres","where app_user_id ='$exist_user'");
+                  if($ext_otp==$otp)
+                  {
+                    $ins_data=array('otp_verified'=>1);
+                    $where=array('app_user_id'=>$exist_user);
+                    $ins=$this->user_api_model->update("app_usres",$ins_data,$where);
+                      if($ins)
+                      {
+                          $this->response(array('status' => 200, 'message'=>'Otp Verification Success','response' => $response), REST_Controller::HTTP_OK);
+                      }
+                      else{
+                         $this->response(array('status' => 410, 'message' => "Failed to verify" ,'response'=>'' ), REST_Controller::HTTP_GONE);
+                      }
+                  }else{
+                      $this->response(array('status' => 203, 'message' => 'Invalid OTP','response'=>$response), REST_Controller::HTTP_NON_AUTHORITATIVE_INFORMATION);
+                  }
+              }
+              else{
+                   $this->response(array('status' => 409, 'message' => 'Otp Already Verified','response'=>''), REST_Controller::HTTP_CONFLICT );
+              }
+        }
+        else{
+            $this->response(array('status' => 204, 'message' => "No user found" ,'response'=>'' ), REST_Controller::HTTP_NO_CONTENT);
+        }
+
+     }
+     else{
+       $this->response(array('status' => 400, 'message' => 'Invalid Input','response'=>$response), REST_Controller::HTTP_BAD_REQUEST );
+     }
+   }
+   public function complete_registration_post()
+   {
+      $response=array();
+      $mobile_number=$this->input->post('mobile_number');
+      $registration_token=$this->input->post('registration_token');
+      $name=$this->input->post('name');
+      $email=$this->input->post('email');
+      $password=$this->input->post('password');
+      if($mobile_number && $registration_token && $name && $email && $password)
+      {
+        $exist_user=getAfield("app_user_id","app_usres","where mobile_number='$mobile_number' AND  is_deleted=0 AND otp_verified=1 AND registration_token!=''");
+        if($exist_user>0)
+        {
+          $reg_get_toekn=getAfield("registration_token","app_usres","where app_user_id=$exist_user");
+          if (strcmp($reg_get_toekn, $registration_token) == 0)
+          {
+            $password=secretkeyGneration("encrypt",$password,$key="CImsdYkmPHnsfruypojkeER",$out=0);
+            $dynamic_token= $this->user_api_model->random_num(12);
+            $ins_data=array(
+              'name'=>$name,
+              'email'=>$email,
+              'password'=>$password,
+              'otp'=>'',
+              'registration_token'=>'',
+              'account_verified'=>1,
+              'token'=>$dynamic_token
+            );
+            $where=array('app_user_id'=>$exist_user);
+            $ins=$this->user_api_model->update("app_usres",$ins_data,$where);
+            if($ins)
+            {
+               // generate login
+               $tokenData['user_id'] = $exist_user;
+               $tokenData['access_token'] = $dynamic_token;
+               $jwtToken = $this->objOfJwt->GenerateToken($tokenData);
+               $login['access_token']=$jwtToken;
+               $response=$login;
+               $this->response(array('status' => 200, 'message'=>'Registration  Success','response' => $response), REST_Controller::HTTP_OK);
+            }
+            else{
+               $this->response(array('status' => 410, 'message' => "Failed to verify" ,'response'=>'' ), REST_Controller::HTTP_GONE);
+            }
+
+          }
+          else{
+            $this->response(array('status' => 203, 'message' => 'Invalid Attempt','response'=>$response), REST_Controller::HTTP_NON_AUTHORITATIVE_INFORMATION);
+          }
+        }
+        else{
+          $this->response(array('status' => 203, 'message' => 'Invalid request','response'=>$response), REST_Controller::HTTP_NON_AUTHORITATIVE_INFORMATION);
+        }
+      }
+      else{
+        $this->response(array('status' => 400, 'message' => 'Invalid Input','response'=>$response), REST_Controller::HTTP_BAD_REQUEST);
+      }
+
+   }
    public function login_post()
    {
      $mobile_number=$this->input->post('mobile_number');
@@ -147,7 +311,7 @@ class User_api extends REST_Controller {
         $where=array('product_id'=>$pr_id,'user_id'=>$userid);
         $delete=$this->user_api_model->delete("wish_list",$where);
         if($delete){
-           $this->response(array('status' => 200, 'message' => "Removed Successfully" ,'response'=>'' ), REST_Controller::HTTP_OK);
+           $this->response(array('status' => 201, 'message' => "Removed Successfully" ,'response'=>'' ), REST_Controller::HTTP_OK);
         }else{
           $this->response(array('status' => 410, 'message' => "Failed to Remove" ,'response'=>'' ), REST_Controller::HTTP_GONE);
         }

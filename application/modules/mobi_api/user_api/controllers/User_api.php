@@ -296,7 +296,14 @@ class User_api extends REST_Controller {
          }
        }
        else{
-           $this->response(array('status' => 409, 'message' => 'Data already exist','response'=>''), REST_Controller::HTTP_CONFLICT );
+         $where=array('product_id'=>$pr_id,'user_id'=>$userid);
+         $delete=$this->user_api_model->delete("wish_list",$where);
+         if($delete){
+            $this->response(array('status' => 201, 'message' => "Removed Successfully" ,'response'=>'' ), REST_Controller::HTTP_OK);
+         }else{
+           $this->response(array('status' => 410, 'message' => "Failed to Remove" ,'response'=>'' ), REST_Controller::HTTP_GONE);
+         }
+          // $this->response(array('status' => 409, 'message' => 'Data already exist','response'=>''), REST_Controller::HTTP_CONFLICT );
        }
      }
      else{

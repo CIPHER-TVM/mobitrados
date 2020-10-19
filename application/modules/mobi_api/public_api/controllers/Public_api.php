@@ -139,7 +139,9 @@ class Public_api extends REST_Controller {
 	 public function get_categories_get()
 	 {
 		 	 $response=array();
-			 $categories = $this->public_api_model->get_categories();
+			 $serach_item=$this->input->get("search_word");
+			 if(!$serach_item) $serach_item="";
+			 $categories = $this->public_api_model->get_categories($serach_item);
 			 $response=$categories->result();
 			 $rows=$categories->num_rows();
 			 if($rows>0){

@@ -136,10 +136,10 @@ class Public_api extends REST_Controller {
 				$this->response(array('status' => 204, 'message' => "No Data Found" ,'response'=>$response ), REST_Controller::HTTP_NO_CONTENT );
 			}
 	 }
-	 public function get_categories_get()
+	 public function get_categories_post()
 	 {
 		 	 $response=array();
-			 $serach_item=$this->input->get("search_word");
+			 $serach_item=$this->input->post("search_word");
 			 if(!$serach_item) $serach_item="";
 			 $categories = $this->public_api_model->get_categories($serach_item);
 			 $response=$categories->result();
@@ -151,4 +151,104 @@ class Public_api extends REST_Controller {
 					 $this->response(array('status' => 204, 'message' => "No Data Found" ,'response'=>$response ), REST_Controller::HTTP_NO_CONTENT );
 			 }
 	 }
+	 public function get_state_get()
+	 {
+		  $response=array();
+		  $state = $this->public_api_model->get_state();
+			$response=$state->result();
+			$rows=$state->num_rows();
+			if($rows>0){
+						$this->response(array('status' => 200, 'message' => "Success" ,'response'=>$response ), REST_Controller::HTTP_OK);
+			}
+			else {
+					$this->response(array('status' => 204, 'message' => "No Data Found" ,'response'=>$response ), REST_Controller::HTTP_NO_CONTENT );
+			}
+	 }
+	 public function get_district_get()
+	 {
+		  $response=array();
+			$state_id=$this->input->get('StateID');
+		  $district = $this->public_api_model->get_district($state_id);
+			$response=$district->result();
+			$rows=$district->num_rows();
+			if($rows>0){
+						$this->response(array('status' => 200, 'message' => "Success" ,'response'=>$response ), REST_Controller::HTTP_OK);
+			}
+			else {
+					$this->response(array('status' => 204, 'message' => "No Data Found" ,'response'=>$response ), REST_Controller::HTTP_NO_CONTENT );
+			}
+	 }
+	 public function get_place_get()
+	 {
+		 $response=array();
+		 $district_id=$this->input->get('DistrictID'); if(!$district_id) $district_id=0;
+ 	 	 $place_id=$this->input->get('PlaceID');  if(!$place_id) $place_id=0;
+		 $pincode=$this->input->get('pincode'); if(!$pincode) $pincode=0;
+		 $place = $this->public_api_model->get_place($district_id,$place_id,$pincode);
+		 $response=$place->result();
+		 $rows=$place->num_rows();
+		 if($rows>0){
+					 $this->response(array('status' => 200, 'message' => "Success" ,'response'=>$response ), REST_Controller::HTTP_OK);
+		 }
+		 else {
+				 $this->response(array('status' => 204, 'message' => "No Data Found" ,'response'=>$response ), REST_Controller::HTTP_NO_CONTENT );
+		 }
+	 }
+
+	 public function test_get()
+	 {
+		 	$json=array();
+			$qry="SELECT VisitId,VisitDate FROM as_reviewsymptoms GROUP BY VisitId,VisitDate";
+			$qrry=$this->db->query($qry);
+			$dates=json_encode($qrry->result());
+
+			$qry2="SELECT DISTINCT SymptomId FROM as_reviewsymptoms";
+			$qrry2=$this->db->query($qry2);
+			$SymptomId=json_encode($qrry2->result());
+			$table="<table><tr><td>
+			Symptom
+			</td>";
+			foreach($qrry->result() as $key)
+			{
+					$visitId=$key->VisitId;
+					$VisitDate=$key->VisitDate;
+					$table.="<td>$VisitDate</td>";
+			}
+			$table.="</tr>";
+
+$out=array();
+
+				foreach($qrry2->result() as $key2)
+				{
+					$SymptomId=$key2->SymptomId;
+					$table.="<tr>
+					<td>
+						$SymptomId
+					</td>";
+					$list=array();
+					$list['simptomId']=$SymptomId;
+
+					$i=0;
+					foreach($qrry->result() as $key)
+					{
+						$i++;
+						$visitId=$key->VisitId;
+						$VisitDate=$key->VisitDate;
+						$qry3="SELECT Id,IsChecked FROM as_reviewsymptoms WHERE SymptomId=$SymptomId AND VisitId=$visitId";
+						$qrry3=$this->db->query($qry3);
+						$res=$qrry3->row();
+						$id=$res->Id;
+						$IsChecked=$res->IsChecked;
+						$table.="<td>$IsChecked</td>";
+						$list['VisitId'.$i]=$visitId;
+						$list['isChecked'.$i]=$IsChecked;
+					}
+					array_push($out,$list);
+					$table.="</tr>";
+				}
+			$table.="</table>";
+			echo json_encode($out);
+		//	echo $table;
+	 }
+
 }

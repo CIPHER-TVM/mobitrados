@@ -59,7 +59,7 @@ class Public_api_model extends CI_Model {
     {
       $this->db->select('*');
       $this->db->from('products');
-      $this->db->where(array('display_status' => 1,'is_deleted'=>0));
+      $this->db->where(array('display_status' => 1,'is_deleted'=>0,'pr_id'=>$pr_id));
       $query = $this->db->get();
       return $query;
     }
@@ -136,5 +136,39 @@ class Public_api_model extends CI_Model {
         $qry="SELECT pcid,product_catogory_name,$icon FROM product_catogory WHERE display_status=1 AND is_deleted=0 $cond";
         $query=$this->db->query($qry);
         return $query;
+    }
+
+    public function get_state()
+    {
+      $this->db->select(array('StateID','StateName'));
+      $this->db->from('state');
+      $this->db->where(array('DisplayStatus' => 1));
+      $query = $this->db->get();
+      return $query;
+    }
+    public function get_district($state_id)
+    {
+      $this->db->select(array('DistrictId','DistrictName'));
+      $this->db->from('districts');
+      $this->db->where(array('DisplayStatus' => 1,'StateID'=>$state_id));
+      $query = $this->db->get();
+      return $query;
+    }
+    public function get_place($district_id,$place_id,$pincode)
+    {
+      $this->db->select(array('PlaceID','PlaceName','pincode','delivery_fee','expected_delivery_time','DistrictID'));
+      $this->db->from('places');
+      $this->db->where(array('DisplayStatus' => 1,'is_deleted'=>0));
+      if($district_id){
+          $this->db->where(array('DistrictID' => $district_id));
+      }
+      if($place_id){
+          $this->db->where(array('PlaceID ' => $place_id));
+      }
+      if($pincode){
+          $this->db->where(array('pincode ' => $pincode));
+      }
+      $query = $this->db->get();
+      return $query;
     }
 }

@@ -110,7 +110,7 @@ class User_api_model extends CI_Model {
     {
 
         $base_url=base_url();
-        $qry="SELECT  p.pr_id,p.product_name,ct.qty as cart_qty, p.product_dispn,p.mrp,p.selling_price,p.available_stock,p.product_catogory,
+        $qry="SELECT  p.pr_id,p.product_name,ct.qty as cart_qty, p.product_dispn,p.mrp,p.selling_price,p.available_stock,p.product_catogory,  p.tax_id,
         CONCAT('$base_url',pdi.image_path) as product_image,pdi.img_id
         FROM  cart ct
         INNER JOIN  products p  ON p.pr_id=ct.product_id
@@ -127,6 +127,32 @@ class User_api_model extends CI_Model {
 
         $query=$this->db->query($qry);
         return $query;
+    }
+    public function get_address($userid,$deafult_flag)
+    {
+      $cond="";
+      if($deafult_flag) $cond.=" AND is_default=1";
+      $qry="SELECT address_id, name, mobile_number, pincode, locality, full_address, city_town, state_id, district_id, land_mark, alternative_mobile, address_type,is_default
+        FROM user_address WHERE user_id=$userid $cond";
+
+        $query=$this->db->query($qry);
+        return $query;
+    }
+    public function product_stock_updates($operator,$stock,$prod_id)
+    {
+      $existstoc=getAfield("available_stock","products","where pr_id='$prod_id'");
+      if($operator=='-')
+      {
+            $newstock=$existstoc-$stock;
+      }
+      else if($operator=="+")
+      {
+         $newstock=$existstoc+$stock;
+      }
+      $update=array('available_stock'=>$newstock);
+      $where=array('pr_id'=>$prod_id);
+      $ins=update("products",$update,$where);
+      if($ins) return true; else return false;
     }
 
 }

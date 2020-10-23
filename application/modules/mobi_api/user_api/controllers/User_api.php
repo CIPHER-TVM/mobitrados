@@ -428,5 +428,243 @@ class User_api extends REST_Controller {
         $this->response(array('status' => 203, 'message' => 'Authentication Failed','response'=>''), REST_Controller::HTTP_NON_AUTHORITATIVE_INFORMATION );
      }
    }
+   public function add_address_post()
+   {
+     if($userid=$this->check_user())
+     {
+       $rawdata = file_get_contents("php://input");
+       $content=json_decode($rawdata);
+       if($content)
+       {
+         $count_address=getAfield("count(address_id)","user_address","where user_id=$userid");
+         if($count_address==0)  $data['is_default']=1;
+         $data['user_id']=$userid;
+         $data['name'] =$content->name;
+         $data['mobile_number'] =$content->mobile_number;
+         $data['pincode'] =$content->pincode;
+         $data['locality'] =$content->locality;
+         $data['full_address'] =$content->full_address;
+         $data['city_town'] =$content->city_town;
+         $data['state_id'] =$content->state_id;
+         $data['district_id'] =$content->district_id;
+         $data['land_mark'] =$content->land_mark;
+         $data['alternative_mobile'] =$content->alternative_mobile;
+         $data['address_type'] =$content->address_type;
+         $ins=  $this->user_api_model->insert("user_address",$data);
+         if($ins)
+         {
+           $this->response(array('status' => 200, 'message' => "Success" ,'response'=>"" ), REST_Controller::HTTP_OK);
+         }
+         else{
+              $this->response(array('status' => 410, 'message' => "Failed to add" ,'response'=>'' ), REST_Controller::HTTP_GONE);
+         }
+       }
+
+     }
+     else{
+       $this->response(array('status' => 203, 'message' => 'Authentication Failed','response'=>''), REST_Controller::HTTP_NON_AUTHORITATIVE_INFORMATION );
+     }
+   }
+   public function get_address_get()
+   {
+     if($userid=$this->check_user())
+     {
+       $deafult_flag=$this->input->get("get_default");
+       if(!$deafult_flag) $deafult_flag=0;
+       $address = $this->user_api_model->get_address($userid,$deafult_flag);
+       $response=$address->result();
+       $rows=$address->num_rows();
+       if($rows>0)
+  		 {
+  					 $this->response(array('status' => 200, 'message' => "Success" ,'response'=>$response ), REST_Controller::HTTP_OK);
+  		 }
+  		 else
+  		 {
+  				 $this->response(array('status' => 205, 'message' => "No items found" ,'response'=>$response ), REST_Controller::HTTP_RESET_CONTENT );
+  		 }
+     }
+     else{
+       $this->response(array('status' => 203, 'message' => 'Authentication Failed','response'=>''), REST_Controller::HTTP_NON_AUTHORITATIVE_INFORMATION );
+     }
+   }
+   public function remove_address_get()
+   {
+     if($userid=$this->check_user())
+     {
+       $address_id=$this->input->get("address_id");
+       if($address_id>0){
+         $where=array('address_id'=>$address_id,'user_id'=>$userid);
+         $delete= $this->user_api_model->delete("user_address",$where);
+          if($delete)
+          {
+            $count_of_default_address=getAfield("count(address_id)","user_address","where user_id=$userid AND is_default=1");
+            if($count_of_default_address==0){
+              // set a default
+              $adres_id_update=getAfield("address_id","user_address","where user_id=$userid ORDER BY address_id  DESC LIMIT 1");
+              if($adres_id_update>0){
+                $updata=array('is_default'=>1);
+                $where=array('address_id'=>$adres_id_update,'user_id'=>$userid);
+                $ups= $this->user_api_model->update("user_address",$updata,$where);
+              }
+              $this->response(array('status' => 200, 'message' => "Success" ,'response'=>'' ), REST_Controller::HTTP_OK);
+            }
+          }else{
+              $this->response(array('status' => 410, 'message' => "Failed to delete" ,'response'=>'' ), REST_Controller::HTTP_GONE);
+          }
+       }
+     }
+     else{
+       $this->response(array('status' => 203, 'message' => 'Authentication Failed','response'=>''), REST_Controller::HTTP_NON_AUTHORITATIVE_INFORMATION );
+     }
+   }
+   public function set_default_address_get()
+   {
+     if($userid=$this->check_user())
+     {
+       $address_id=$this->input->get('address_id');
+        if($address_id>0)
+        {
+          $updata=array('is_default'=>0);
+          $where=array('user_id'=>$userid);
+          $ups= $this->user_api_model->update("user_address",$updata,$where);
+            if($ups)
+            {
+              $updata1=array('is_default'=>1);
+              $where1=array('user_id'=>$userid,'address_id'=>$address_id,);
+              $ups1= $this->user_api_model->update("user_address",$updata1,$where1);
+                if($ups1)
+                {
+                  $this->response(array('status' => 200, 'message' => "Success" ,'response'=>'' ), REST_Controller::HTTP_OK);
+                }
+                else{
+                    $this->response(array('status' => 410, 'message' => "Failed to add" ,'response'=>'' ), REST_Controller::HTTP_GONE);
+                }
+            }
+        }
+     }
+     else{
+        $this->response(array('status' => 203, 'message' => 'Authentication Failed','response'=>''), REST_Controller::HTTP_NON_AUTHORITATIVE_INFORMATION );
+     }
+   }
+   public function place_order_post()
+   {
+     if($userid=$this->check_user())
+     {
+       $address_id=$this->input->post('address_id');
+       // check is delivery available
+       $pincode=getAfield("pincode","user_address","where address_id =$address_id");
+       $chekDelivery=getAfield("PlaceID","places","where pincode ='$pincode' AND is_deleted=0 AND DisplayStatus=1");
+        if($chekDelivery>0)
+        {
+          $state= getAfield("state_id","user_address","where address_id =$address_id");
+          $cartRp= $this->user_api_model->get_cart_products($userid);
+          $cart=$cartRp->result();
+          $rows=$cartRp->num_rows();
+            if($rows>0)
+            {
+              $ordercount=getAfield("count(order_master_id)","order_master","");
+              $ordercount=$ordercount+1;
+              $shipping_charge=getAfield("delivery_fee","places","where PlaceID  =$chekDelivery");
+              $order_total=0;
+              $order_date=date('Y-m-d');
+              if($state!=1) $is_interstate=1; else $is_interstate=0;
+              $orderNumber="MOBTRADOS-ORD-".$ordercount;
+              $ins=array(
+                'order_number'=>$orderNumber,
+                'user_id'=>$userid,
+                'address_id'=>$address_id,
+                'place_id'=>$chekDelivery,
+                'is_interstate'=>$is_interstate,
+                'order_total'=>0,
+                'discount'=>0,
+                'shipping_charge'=>$shipping_charge,
+                'order_placed_date'=>$order_date
+              );
+              $insrted_id=insertInDb("order_master",$ins);
+                if($insrted_id)
+                {
+                  $ins_count=0;
+                  foreach($cart as $key)
+                  {
+                    $product_id=$key->pr_id;
+                    $unit_rate=$key->selling_price;
+                    $qty=$key->cart_qty;
+                    $total_amount=$unit_rate*$qty;
+                    $tax_id=$key->tax_id;
+                    /*************** TAX CALCULATION*************************/
+                    $tax_value=getAfield("tax_value","tax_master","where id=$tax_id");
+                    $taxable=$total_amount/(100+$tax_value);
+                    $taxable_value=$taxable*100;
+                    $tax_amnt=($tax_value/100)*$taxable_value;
+                    if($is_interstate==1){
+                        $igst=$tax_amnt;
+                        $cgst=0;
+                        $sgst=0;
+                      }
+                    else{
+                      $igst=0;
+                      $cgst=$tax_amnt/2;
+                      $sgst=$cgst;
+                    }
+                  /***********************************************************/
+                  $ins_child=array(
+                    'order_master_id'=>$insrted_id,
+                    'product_id'=>$product_id,
+                    'unit_rate'=>$unit_rate,
+                    'qty'=>$qty,
+                    'total_amount'=>$total_amount,
+                    'tax_id'=>$tax_id,
+                    'tax_value'=>$tax_value,
+                    'taxable_value'=>$taxable_value,
+                    'tax_amount'=>$tax_amnt,
+                    'cgst'=>$cgst,
+                    'sgst'=>$sgst,
+                    'igst'=>$igst
+                  );
+                    $insrted_child_id=insertInDb("order_child",$ins_child);
+                    if($insrted_child_id)
+                    {
+                      $order_total=$order_total+$total_amount;
+                      $ins_count++;
+                       // stock decrease
+                      $updateStock=$this->user_api_model->product_stock_updates('-',$qty,$product_id);
+                      // CART DELETION///
+                      $car_delete_where=array('user_id'=>$userid,'product_id'=>$product_id);
+                      $deleteCart=$this->user_api_model->delete("cart",$car_delete_where);
+                    }
+
+                  } // foreach child tb insertion
+                    if($ins_count>0)
+                    {
+                      /////////////////////////////////
+                        $ups_data=array(
+                          'order_total'=>$order_total,
+                          'no_items'=>$ins_count
+                        );
+                        $where=array('order_master_id'=>$insrted_id);
+                        $ups=update("order_master",$ups_data, $where);
+                        //////////////////////////////////////
+
+
+                        $this->response(array('status' => 200, 'message' => "Success" ,'response'=>'' ), REST_Controller::HTTP_OK);
+                    }
+                    else{
+                        $this->response(array('status' => 410, 'message' => "Unable to save order child" ,'response'=>'' ), REST_Controller::HTTP_GONE);
+                    }
+                }
+                else
+                {
+                    $this->response(array('status' => 410, 'message' => "Unable to save order master" ,'response'=>'' ), REST_Controller::HTTP_GONE);
+                }
+            }
+            else{
+               $this->response(array('status' => 205, 'message' => "Cart Is Empty" ,'response'=>$response ), REST_Controller::HTTP_RESET_CONTENT );
+            }
+        }
+        else{
+           $this->response(array('status' => 205, 'message' => "Unable to deliver in this undress" ,'response'=>$response ), REST_Controller::HTTP_RESET_CONTENT );
+        }
+     }
+   }
 
 }

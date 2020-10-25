@@ -450,7 +450,25 @@ class User_api extends REST_Controller {
          $data['land_mark'] =$content->land_mark;
          $data['alternative_mobile'] =$content->alternative_mobile;
          $data['address_type'] =$content->address_type;
-         $ins=  $this->user_api_model->insert("user_address",$data);
+
+         $address_id=$content->address_id;
+         $is_default=$content->is_default;
+         if($is_default==1)
+         {
+           $data['is_default']=1;
+           $updata=array('is_default'=>0);
+           $where2=array('user_id'=>$userid);
+           $ups= $this->user_api_model->update("user_address",$updata,$where2);
+         }
+         if($address_id>0)
+         {
+           $where=array('address_id'=>$address_id);
+           $ins=  $this->user_api_model->update("user_address",$data);
+         }
+         else{
+            $ins=  $this->user_api_model->insert("user_address",$data);
+         }
+
          if($ins)
          {
            $this->response(array('status' => 200, 'message' => "Success" ,'response'=>"" ), REST_Controller::HTTP_OK);

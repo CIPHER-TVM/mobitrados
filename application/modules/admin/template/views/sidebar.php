@@ -28,6 +28,19 @@
         <li class="nav-item">
           <a class="nav-link has-icon " href="<?php echo admin_url() ?>dashboard"><i style="font-size : 19px" class="material-icons">dashboard</i>Dashboard</a>
 				</li>
+
+<li class="nav-item <?php if($mainpage == 'order_management') echo 'active' ?>">
+  <a class="nav-link has-icon dropdown-toggle <?php if($page == 'order_management') echo 'active' ?>" href="#"><i style="font-size : 19px" class="material-icons">redeem</i>Order Management</a>
+  <ul>
+    <!-- <li><a href="<?php //echo base_url() ?>webuser/States">Add State</a></li>
+    <li><a href="<?php //echo base_url() ?>webuser/districts">Add District</a></li> -->
+      <li><a class="<?php if($page == 'order_management') echo 'active' ?>"  href="<?php echo admin_url() ?>order_management">Manage Orders</a></li>
+      <li><a class="<?php if($page == 'invoice') echo 'active' ?>"  href="<?php echo admin_url() ?>order_management/generate_invoice">Print Invoice</a></li>
+  </ul>
+</li>
+
+
+
         <a class="nav-link has-icon <?php if($page == 'catagory') echo 'active' ?>" href="<?php echo admin_url() ?>category"><i style="font-size : 19px" class="material-icons">assignment</i>Manage Category</a>
 
           <li class="nav-item <?php if($page == 'localPlaces') echo 'active' ?>">

@@ -124,6 +124,7 @@
             <th>View</th>
             <th>Action</th>
             <th>Order Total</th>
+            <th>Payment</th>
             <th>Order Number</th>
             <th>Order date</th>
             <th>Customer Name</th>
@@ -189,6 +190,13 @@ table = $('#example').DataTable({
 
          },
           { "data": 'order_total'},
+          {
+            "data" : "payment_type",
+              "render": function(data, type, full, meta)
+              {
+                if(data==1) return "<b>COD</b>"; else return "Online";
+              }
+          },
           { "data": "order_number" },
           { "data": "order_date" },
           { "data": "name" },
@@ -209,10 +217,17 @@ table = $('#example').DataTable({
 
     var data = table.row($(this).parents('tr')).data();
     order_id=data.order_master_id;
+    paytype=data.payment_type;
+
     value=$(this).val();
+    msg="Are you sure to change the status of this order?";
+    if(value==4 && paytype==1)
+    {
+      msg=msg+" Since the order is cash on delivery, confirming will mark payment success ";
+    }
 
  		 const confirmRemove = bootbox.confirm({
-        message: 'Are you sure to change the status of this order?',
+        message: msg,
         buttons: {
           confirm: {
             label: 'Yes',

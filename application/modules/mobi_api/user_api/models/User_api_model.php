@@ -128,10 +128,12 @@ class User_api_model extends CI_Model {
         $query=$this->db->query($qry);
         return $query;
     }
-    public function get_address($userid,$deafult_flag)
+    public function get_address($userid,$deafult_flag,$address_id=0,$fororder=0)
     {
       $cond="";
       if($deafult_flag) $cond.=" AND is_default=1";
+      if($address_id>0) $cond.=" AND address_id=$address_id";
+      if($fororder==0) $cond.="  AND is_deleted=0 ";
       $qry="SELECT address_id, name, mobile_number, pincode, locality, full_address, city_town, state_id, district_id, land_mark, alternative_mobile, address_type,is_default
         FROM user_address WHERE user_id=$userid $cond";
 
@@ -155,4 +157,40 @@ class User_api_model extends CI_Model {
       if($ins) return true; else return false;
     }
 
+    public function list_orders($userid)
+    {
+      $qry="SELECT order_master_id ,order_number,address_id,place_id,order_total,no_items,order_status,order_placed_date,order_cancel,payment_type,payment_confirm
+            FROM order_master WHERE user_id=$userid ORDER BY order_master_id DESC";
+        $qrry=$this->db->query($qry);
+      return $qrry;
+    }
+    public function order_details($userid,$order_master_id)
+    {
+      $base_url=base_url();
+      $qry="SELECT oc.product_id,oc.unit_rate,oc.qty,oc.total_amount,p.product_name,p.product_dispn,
+      CONCAT('$base_url',pdi.image_path) as product_image,pdi.img_id
+        FROM order_child oc
+        INNER JOIN products p  ON p.pr_id =oc.product_id
+        INNER JOIN
+           (
+             SELECT product_id,  image_path,max(img_id) img_id
+             FROM product_images
+             GROUP BY product_id
+           ) pdi ON pdi.product_id = p.pr_id
+        INNER JOIN order_master om on om.order_master_id =oc.order_master_id
+        WHERE om.order_master_id=$order_master_id AND user_id=$userid
+        ORDER BY oc.order_child_id  ASC
+      ";
+
+      $query=$this->db->query($qry);
+      return $query;
+    }
+    public function track_order($order_master_id)
+    {
+      $qry="SELECT status,status_text, DATE_FORMAT(created_date,'%d/%m/%Y %h:%i %p') AS status_date,created_date as status_date_24_formate
+            FROM order_delivery_management
+            WHERE order_master_id=$order_master_id ORDER BY id  ASC";
+          $query=$this->db->query($qry);
+          return $query;
+    }
 }

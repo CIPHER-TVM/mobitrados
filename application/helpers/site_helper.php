@@ -161,6 +161,5 @@ function sendSms($mobile_number,$sms_text)
 
 
 }
-
 /////////////////////////////////////////
  ?>

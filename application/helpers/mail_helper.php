@@ -1,7 +1,8 @@
-<?php 
+<?php
 
 function SendMail($to,$sub,$data,$view)
 {
+//echo "$to,$sub,$data,$view";
 	$ci =& get_instance();
 	$ci->load->library('email');
 	$msg = $ci->load->view('email/header',$data,true);
@@ -26,6 +27,8 @@ function SendMail($to,$sub,$data,$view)
 	$ci->email->subject($sub);
 	$ci->email->message($msg);
 	$x =  $ci->email->send();
+		$d = $ci->email->print_debugger();
+	//	print_r($d);
 	if(!$x){
 		$d = $ci->email->print_debugger();
 		log_message('error', 'Switching to normal mail,SMTP mail failed :'.$d);

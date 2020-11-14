@@ -535,5 +535,7 @@ $config['modules_locations'] = array(
 	APPPATH.'modules/website/' => '../modules/website/',
 	APPPATH.'modules/shop_user/' => '../modules/shop_user/',
 	APPPATH.'modules/others/' => '../modules/others/',
-	APPPATH.'modules/mobi_api/' => '../modules/mobi_api/'
+	APPPATH.'modules/mobi_api/' => '../modules/mobi_api/',
+	APPPATH.'modules/email/' => '../modules/email/',
+
 );

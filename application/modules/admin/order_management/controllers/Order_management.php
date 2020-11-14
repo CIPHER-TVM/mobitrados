@@ -103,13 +103,43 @@ public function counts_of_pendings()
 		if (!$this->input->is_ajax_request()) { exit('No direct script access allowed');}
 		$order_id=$this->input->post('order_id');
 		$next_order_status=$this->input->post('next_order_status');
+    $data=array();
+    if($next_order_status==1)
+    {
+      // generate Bill
+      $bill_id= $this->orders->generate_bill_numer($order_id);
+      $bill_number=getAfield("bill_text","bill_number","where id=$bill_id");
+      $data['bill_id']=$bill_id;
+      $data['bill_number']=$bill_number;
+    }
 
-		$data=array('order_status'=>$next_order_status);
+    if($next_order_status==4)
+    {
+      $payment_type=getAfield("payment_type","order_master","where order_master_id=$order_id");
+      $order_amount=getAfield("sum(order_total+shipping_charge)","order_master","where order_master_id=$order_id");
+
+      if($payment_type==1)
+      {
+        // insert transaction
+        $tr_ins=array(
+          'order_master_id'=>$order_id,
+          'transaction_type'=>1,
+          'transaction_for'=>1,
+          'transaction_date'=>date('Y-m-d'),
+          'amount'=>$order_amount
+        );
+        $ins=insertInDb("transactions",$tr_ins);
+        $data['transaction_id']=$ins;
+      }
+    }
+
+    $data['order_status']=$next_order_status;
 		$where=array('order_master_id'=>$order_id,'order_cancel'=>0);
 		$up=update("order_master",$data,$where);
 		if($up)
 		{
       $address_id=getAfield("address_id","order_master","where order_master_id=$order_id");
+
 			$order_mobile=getAfield("mobile_number","user_address","where address_id =$address_id");
 			$order_num=getAfield("order_number","order_master","where order_master_id=$order_id");
 
@@ -137,7 +167,7 @@ public function counts_of_pendings()
 			}
 			else if($next_order_status==4)
 			{
-				$sub = 'Order deliverd';
+        $sub = 'Order deliverd';
 				$sms_text="Delivered: Your Order (#$order_num) has been deliverd, if not contact the shop as soon as possible";
 
 			}
@@ -152,9 +182,9 @@ public function counts_of_pendings()
         'status_text'=>$sub
       );
       $insrt=insertInDb("order_delivery_management",$ins_data);
-  		$sendsms=sendSms($order_mobile,$sms_text);
+  	//	$sendsms=sendSms($order_mobile,$sms_text);
 
-		//	SendMail($order_email,$sub,array('head'=>strtoupper($sub),'name'=>$deliver_name,'order_no'=>$order_num,'txt'=>$sms_text),'email/order_status');
+			//SendMail($order_email,$sub,array('head'=>strtoupper($sub),'name'=>"Customer",'order_no'=>$order_num,'txt'=>$sms_text),'email/order_status');
 
 			print 1;
 		}

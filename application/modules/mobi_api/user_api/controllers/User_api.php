@@ -246,7 +246,7 @@ class User_api extends REST_Controller {
        $jwtData = $this->objOfJwt->DecodeToken($token);
        $user_id=$jwtData['user_id'];
        $access_token=$jwtData['access_token'];
-       $user_token=getAfield("token","app_usres","where app_user_id =$user_id");
+       $user_token=getAfield("token","app_usres","where app_user_id =$user_id and is_deleted=0");
        	if (strcmp($user_token, $access_token) == 0)
         {
             return $user_id;
@@ -463,9 +463,10 @@ class User_api extends REST_Controller {
          if($address_id>0)
          {
            $where=array('address_id'=>$address_id);
-           $ins=  $this->user_api_model->update("user_address",$data);
+           $ins=  $this->user_api_model->update("user_address",$data,$where);
          }
          else{
+
             $ins=  $this->user_api_model->insert("user_address",$data);
          }
 
@@ -476,6 +477,9 @@ class User_api extends REST_Controller {
          else{
               $this->response(array('status' => 410, 'message' => "Failed to add" ,'response'=>'' ), REST_Controller::HTTP_GONE);
          }
+       }
+       else{
+
        }
 
      }
@@ -511,8 +515,10 @@ class User_api extends REST_Controller {
      {
        $address_id=$this->input->get("address_id");
        if($address_id>0){
+         $data=array('is_deleted'=>1);
          $where=array('address_id'=>$address_id,'user_id'=>$userid);
-         $delete= $this->user_api_model->delete("user_address",$where);
+          $delete= $this->user_api_model->update("user_address",$data,$where);
+
           if($delete)
           {
             $count_of_default_address=getAfield("count(address_id)","user_address","where user_id=$userid AND is_default=1");
@@ -524,6 +530,9 @@ class User_api extends REST_Controller {
                 $where=array('address_id'=>$adres_id_update,'user_id'=>$userid);
                 $ups= $this->user_api_model->update("user_address",$updata,$where);
               }
+              $this->response(array('status' => 200, 'message' => "Success" ,'response'=>'' ), REST_Controller::HTTP_OK);
+            }
+            else{
               $this->response(array('status' => 200, 'message' => "Success" ,'response'=>'' ), REST_Controller::HTTP_OK);
             }
           }else{
@@ -569,6 +578,8 @@ class User_api extends REST_Controller {
      if($userid=$this->check_user())
      {
        $address_id=$this->input->post('address_id');
+       $payment_type=$this->input->post('payment_type');
+       if(!$payment_type) $payment_type=1;
        // check is delivery available
        $pincode=getAfield("pincode","user_address","where address_id =$address_id");
        $chekDelivery=getAfield("PlaceID","places","where pincode ='$pincode' AND is_deleted=0 AND DisplayStatus=1");
@@ -596,7 +607,8 @@ class User_api extends REST_Controller {
                 'order_total'=>0,
                 'discount'=>0,
                 'shipping_charge'=>$shipping_charge,
-                'order_placed_date'=>$order_date
+                'order_placed_date'=>$order_date,
+                'payment_type'=>$payment_type
               );
               $insrted_id=insertInDb("order_master",$ins);
                 if($insrted_id)
@@ -664,7 +676,7 @@ class User_api extends REST_Controller {
                         //////////////////////////////////////
 
 
-                        $this->response(array('status' => 200, 'message' => "Success" ,'response'=>'' ), REST_Controller::HTTP_OK);
+                        $this->response(array('status' => 200, 'message' => "Your order will be arriving within 3 days" ,'response'=>$orderNumber ), REST_Controller::HTTP_OK);
                     }
                     else{
                         $this->response(array('status' => 410, 'message' => "Unable to save order child" ,'response'=>'' ), REST_Controller::HTTP_GONE);
@@ -685,4 +697,211 @@ class User_api extends REST_Controller {
      }
    }
 
+   public function get_order_get()
+   {
+       if($userid=$this->check_user())
+       {
+         $order_list = $this->user_api_model->list_orders($userid);
+         $response=$order_list->result();
+         $rows=$order_list->num_rows();
+         if($rows>0)
+    		 {
+    					 $this->response(array('status' => 200, 'message' => "Success" ,'response'=>$response ), REST_Controller::HTTP_OK);
+    		 }
+    		 else
+    		 {
+    				 $this->response(array('status' => 205, 'message' => "No items found" ,'response'=>$response ), REST_Controller::HTTP_RESET_CONTENT );
+    		 }
+       }
+       else{
+           $this->response(array('status' => 203, 'message' => 'Authentication Failed','response'=>''), REST_Controller::HTTP_NON_AUTHORITATIVE_INFORMATION );
+       }
+   }
+   public function get_order_details_get()
+   {
+     if($userid=$this->check_user())
+     {
+       $order_master_id=$this->input->get("order_master_id");
+       $order_list = $this->user_api_model->order_details($userid,$order_master_id);
+       $rows=$order_list->num_rows();
+       if($rows>0)
+       {
+              $response['order_child_data']=$order_list->result();
+              $address_id=getAfield("address_id","order_master","where order_master_id = $order_master_id");
+              $track_details=$this->user_api_model->track_order($order_master_id);
+              $response['track_details']=$track_details->result();
+              $address = $this->user_api_model->get_address($userid,0,$address_id,1);
+              $response['address_details']=$address->row();
+             $this->response(array('status' => 200, 'message' => "Success" ,'response'=>$response ), REST_Controller::HTTP_OK);
+       }
+       else
+       {
+           $this->response(array('status' => 205, 'message' => "No items found" ,'response'=>$response ), REST_Controller::HTTP_RESET_CONTENT );
+       }
+     }
+     else{
+       $this->response(array('status' => 203, 'message' => 'Authentication Failed','response'=>''), REST_Controller::HTTP_NON_AUTHORITATIVE_INFORMATION );
+     }
+   }
+   public function update_profile_post()
+   {
+     if($userid=$this->check_user())
+     {
+       $name=$this->input->post('name');
+       $mobile_number=$this->input->post('mobile_number');
+       $email=$this->input->post('email');
+       $check_exit=getAfield("app_user_id","app_usres","where mobile_number='$mobile_number' AND app_user_id!=$userid");
+       if($check_exit==0)
+       {
+         $update=array(
+           'name'=>$name,
+           'mobile_number'=>$mobile_number,
+           'email'=>$email
+         );
+         $where=array('app_user_id'=>$userid);
+         $ins=$this->user_api_model->update("app_usres",$update,$where);
+         if($ins)
+         {
+            $this->response(array('status' => 200, 'message' => "Success" ,'response'=>'' ), REST_Controller::HTTP_OK);
+         }
+         else{
+           $this->response(array('status' => 410, 'message' => "Unable to update" ,'response'=>'' ), REST_Controller::HTTP_GONE);
+         }
+       }
+       else{
+          $this->response(array('status' => 409, 'message' => "Mobile number alredy have another account" ,'HTTP_CONFLICT'=>'' ), REST_Controller::HTTP_GONE);
+       }
+
+     }
+     else{
+       $this->response(array('status' => 203, 'message' => 'Authentication Failed','response'=>''), REST_Controller::HTTP_NON_AUTHORITATIVE_INFORMATION );
+     }
+   }
+   public function update_password_post()
+   {
+     if($userid=$this->check_user())
+     {
+       $response=array();
+       $password=$this->input->post('password');
+       $password=secretkeyGneration("encrypt",$password,$key="CImsdYkmPHnsfruypojkeER",$out=0);
+
+         $dynamic_token= $this->user_api_model->random_num(12);
+
+       $update=array(
+         'password'=>$password,
+         'token'=>$dynamic_token
+       );
+       $where=array('app_user_id'=>$userid);
+       $ins=$this->user_api_model->update("app_usres",$update,$where);
+       if($ins)
+       {
+         $tokenData['user_id'] = $userid;
+         $tokenData['access_token'] = $dynamic_token;
+         $jwtToken = $this->objOfJwt->GenerateToken($tokenData);
+         $response['access_token']=$jwtToken;
+          $this->response(array('status' => 200, 'message' => "Success" ,'response'=>$response ), REST_Controller::HTTP_OK);
+       }
+       else{
+         $this->response(array('status' => 410, 'message' => "Unable to update" ,'response'=>'' ), REST_Controller::HTTP_GONE);
+       }
+     }
+     else{
+        $this->response(array('status' => 203, 'message' => 'Authentication Failed','response'=>''), REST_Controller::HTTP_NON_AUTHORITATIVE_INFORMATION );
+     }
+   }
+   public function delete_user_get()
+   {
+     if($userid=$this->check_user())
+     {
+       $data=array('is_deleted'=>1);
+       $where=array('app_user_id'=>$userid);
+       $ins=$this->user_api_model->update("app_usres",$data,$where);
+       if($ins)
+       {
+          $this->response(array('status' => 200, 'message' => "Success" ,'response'=>'' ), REST_Controller::HTTP_OK);
+       }
+       else{
+         $this->response(array('status' => 410, 'message' => "Unable to delete" ,'response'=>'' ), REST_Controller::HTTP_GONE);
+       }
+     }
+     else
+     {
+       $this->response(array('status' => 203, 'message' => 'Authentication Failed','response'=>''), REST_Controller::HTTP_NON_AUTHORITATIVE_INFORMATION );
+     }
+   }
+   public function forgot_password_request_post()
+   {
+     $mobile_number=$this->input->post('mobile_number');
+     $app_user_id=checkexist("app_user_id","app_usres","where mobile_number='$mobile_number' AND is_deleted=0 AND account_verified=1");
+     if($app_user_id>0)
+     {
+       $response=array();
+       // delete existing requests
+       $del_where=array('user_id'=>$app_user_id);
+       $del=$this->user_api_model->delete("forgot_password",$del_where);
+       $otp= rand(100000, 999999);
+       $str=rand();
+       $string = md5($str);
+       $token=secretkeyGneration("encrypt",$string,$key="CImsdYkmPHnsfruypojkeER",0);
+       $ins_data=array(
+         'user_id'=>$app_user_id,
+         'otp'=>$otp,
+         'forgot_pwd_token'=>$token
+       );
+       $ins=$this->user_api_model->insert("forgot_password",$ins_data);
+        if($ins)
+        {
+          $sms_text="Your One Time Verfication Code for reset password is $otp";
+          $sendotp=sendSms($mobile_number,$sms_text);
+          $response['reset_token']=$token;
+          $this->response(array('status' => 200, 'message'=>'OTP sent','response' => $response), REST_Controller::HTTP_OK);
+        }
+        else{
+           $this->response(array('status' => 410, 'message' => "Failed to save" ,'response'=>'' ), REST_Controller::HTTP_GONE);
+        }
+     }
+     else{
+       	$this->response(array('status' => 400, 'message' => 'Invalid Mobile Number','response'=>''), REST_Controller::HTTP_BAD_REQUEST );
+     }
+   }
+   public function reset_forgot_password_post()
+   {
+     $mobile_number=$this->input->post('mobile_number');
+     $reset_token=$this->input->post('reset_token');
+     $otp=$this->input->post('otp');
+     $password=$this->input->post('password');
+     $app_user_id=checkexist("app_user_id","app_usres","where mobile_number='$mobile_number' AND is_deleted=0 AND account_verified=1");
+     if($app_user_id>0)
+     {
+       $get_reste_oken=getAfield("forgot_pwd_token","forgot_password","where user_id=$app_user_id");
+       if (strcmp($get_reste_oken, $reset_token) != 0)
+       {
+           $this->response(array('status' => 203, 'message' => 'Invalid Attempt','response'=>''), REST_Controller::HTTP_NON_AUTHORITATIVE_INFORMATION );
+       }
+       else{
+         $ext_otp=getAfield("otp","forgot_password","where user_id ='$app_user_id'");
+         if($ext_otp==$otp)
+         {
+           $password=secretkeyGneration("encrypt",$password,"CImsdYkmPHnsfruypojkeER",$out=0);
+           $up_data=array('password'=>$password); $where=array('app_user_id'=>$app_user_id);
+           $update=$this->user_api_model->update("app_usres",$up_data,$where);
+           if($update)
+           {
+             $del_where=array('user_id'=>$app_user_id);
+             $del=$this->user_api_model->delete("forgot_password",$del_where);
+             $this->response(array('status' => 200, 'message'=>'Success , Now try re-login','response' => ''), REST_Controller::HTTP_OK);
+           }
+           else{
+             $this->response(array('status' => 410, 'message' => "Failed to verify" ,'response'=>'' ), REST_Controller::HTTP_GONE);
+           }
+         }
+         else{
+            $this->response(array('status' => 203, 'message' => 'Invalid OTP','response'=>''), REST_Controller::HTTP_NON_AUTHORITATIVE_INFORMATION);
+         }
+       }
+     }
+     else{
+       $this->response(array('status' => 400, 'message' => 'Invalid Mobile Number','response'=>''), REST_Controller::HTTP_BAD_REQUEST );
+     }
+   }
 }

@@ -67,5 +67,27 @@ class Order_management_m extends CI_Model
     $qrry=$this->db->query($qry);
     return $qrry->row();
   }
+  public function generate_bill_numer($order_id)
+  {
+    $bill_number=0;
+    $count_of_bill=getAfield("max(auto_bill_number)","bill_number","where id>0");
+    $bill_prefix=getAfield("bill_prefix","app_settings","where id=1");
+
+      if($count_of_bill>0)
+      {
+        $bill_number=$count_of_bill+1;
+      }
+      else{
+        $bill_number=getAfield("starting_bill_number","app_settings","where id=1");
+      }
+      $ins_bill=$bill_prefix.$bill_number;
+      $data=array(
+        'auto_bill_number'=>$bill_number,
+        'bill_text'=>$ins_bill,
+        'order_master_id'=>$order_id
+      );
+      $ins=insertInDb("bill_number",$data);
+      return $ins;
+  }
 
 }

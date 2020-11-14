@@ -76,7 +76,15 @@
                   <li><a class="<?php if($page == 'featured_products') echo 'active' ?>"  href="<?php echo admin_url() ?>manage_app/featured_products">Fetured Products</a></li>
                 </ul>
              </li>
+             <a class="nav-link has-icon <?php if($page == 'c_stock') echo 'active' ?>" href="<?php echo admin_url() ?>reports/current_stock"><i style="font-size : 19px" class="material-icons">book</i>Current Stock Report</a>
 
+               <li class="nav-item <?php if($mainpage == 'sales_report') echo 'active' ?>">
+                 <a class="nav-link has-icon dropdown-toggle <?php if($page == 'sales_report') echo 'active' ?>" href="#"><i style="font-size : 19px" class="material-icons">book</i>Sales Report</a>
+                 <ul>
+                   <li><a class="<?php if($page == 'basic_sales') echo 'active' ?>"  href="<?php echo admin_url() ?>reports/basic_sales_report">Basic Sales Report</a></li>
+                    <li><a class="<?php if($page == 'product_sales') echo 'active' ?>"  href="<?php echo admin_url() ?>reports/product_sales_report">Produt Wise Sales Report</a></li>
+                 </ul>
+              </li>
       </ul>
       <!-- /Menu -->
     </div>

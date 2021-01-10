@@ -50,7 +50,7 @@
     <label>Bill Type</label>
       <select class="form-control" id="order_status">
           <option value="0">Not Canceled</option>
-          <option value="2">Canceled </option>
+          <option value="1">Canceled </option>
       </select>
   </div>
     <div class="col-md-2">

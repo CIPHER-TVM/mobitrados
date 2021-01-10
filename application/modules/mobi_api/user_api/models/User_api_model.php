@@ -159,8 +159,15 @@ class User_api_model extends CI_Model {
 
     public function list_orders($userid)
     {
-      $qry="SELECT order_master_id ,order_number,address_id,place_id,order_total,no_items,order_status,order_placed_date,order_cancel,payment_type,payment_confirm
-            FROM order_master WHERE user_id=$userid ORDER BY order_master_id DESC";
+      // $qry="SELECT order_master_id ,order_number,address_id,place_id,order_total,no_items,order_status,order_placed_date,order_cancel,payment_type,payment_confirm
+      //       FROM order_master WHERE user_id=$userid ORDER BY order_master_id DESC";
+
+    $qry="SELECT
+          om.order_master_id ,om.order_number,om.address_id,om.place_id,om.order_total,om.no_items,om.order_status,
+          om.order_placed_date,om.order_cancel,om.payment_type,om.payment_confirm,oc.cancel_reason,oc.cancellation_date,om.delivey_expected_time
+          FROM order_master om
+          LEFT JOIN order_cancellation oc on oc.order_master_id= om.order_master_id
+          WHERE user_id=$userid ORDER BY order_master_id DESC";
         $qrry=$this->db->query($qry);
       return $qrry;
     }

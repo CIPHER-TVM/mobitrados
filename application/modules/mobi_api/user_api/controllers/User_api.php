@@ -726,13 +726,27 @@ class User_api extends REST_Controller {
        $rows=$order_list->num_rows();
        if($rows>0)
        {
+
+         $cancel_flag=getAfield("order_cancel","order_master","where order_master_id = $order_master_id");
+         if($cancel_flag==1)
+         {
+           $cancel_reason=getAfield("cancel_reason","order_cancellation","where order_master_id = $order_master_id");
+         }
+         else{
+           $cancel_reason="";
+           $cancel_flag=0;
+         }
+         $response['iscancelled']=$cancel_flag;
+         $response['cancel_reason']=$cancel_reason;
+
               $response['order_child_data']=$order_list->result();
               $address_id=getAfield("address_id","order_master","where order_master_id = $order_master_id");
               $track_details=$this->user_api_model->track_order($order_master_id);
               $response['track_details']=$track_details->result();
               $address = $this->user_api_model->get_address($userid,0,$address_id,1);
               $response['address_details']=$address->row();
-             $this->response(array('status' => 200, 'message' => "Success" ,'response'=>$response ), REST_Controller::HTTP_OK);
+
+              $this->response(array('status' => 200, 'message' => "Success" ,'response'=>$response ), REST_Controller::HTTP_OK);
        }
        else
        {
@@ -832,7 +846,7 @@ class User_api extends REST_Controller {
    public function forgot_password_request_post()
    {
      $mobile_number=$this->input->post('mobile_number');
-     $app_user_id=checkexist("app_user_id","app_usres","where mobile_number='$mobile_number' AND is_deleted=0 AND account_verified=1");
+     $app_user_id=getAfield("app_user_id","app_usres","where mobile_number='$mobile_number' AND is_deleted=0 AND account_verified=1");
      if($app_user_id>0)
      {
        $response=array();
@@ -870,7 +884,7 @@ class User_api extends REST_Controller {
      $reset_token=$this->input->post('reset_token');
      $otp=$this->input->post('otp');
      $password=$this->input->post('password');
-     $app_user_id=checkexist("app_user_id","app_usres","where mobile_number='$mobile_number' AND is_deleted=0 AND account_verified=1");
+     $app_user_id=getAfield("app_user_id","app_usres","where mobile_number='$mobile_number' AND is_deleted=0 AND account_verified=1");
      if($app_user_id>0)
      {
        $get_reste_oken=getAfield("forgot_pwd_token","forgot_password","where user_id=$app_user_id");
@@ -882,7 +896,7 @@ class User_api extends REST_Controller {
          $ext_otp=getAfield("otp","forgot_password","where user_id ='$app_user_id'");
          if($ext_otp==$otp)
          {
-           $password=secretkeyGneration("encrypt",$password,"CImsdYkmPHnsfruypojkeER",$out=0);
+           $password=secretkeyGneration("encrypt",$password,$key="CImsdYkmPHnsfruypojkeER",$out=0);
            $up_data=array('password'=>$password); $where=array('app_user_id'=>$app_user_id);
            $update=$this->user_api_model->update("app_usres",$up_data,$where);
            if($update)
@@ -902,6 +916,100 @@ class User_api extends REST_Controller {
      }
      else{
        $this->response(array('status' => 400, 'message' => 'Invalid Mobile Number','response'=>''), REST_Controller::HTTP_BAD_REQUEST );
+     }
+   }
+   public function cancel_order_post()
+   {
+     if($userid=$this->check_user())
+     {
+       $order_master_id=$this->input->post('order_master_id');
+       $qry="SELECT order_status,order_cancel,address_id,order_number FROM order_master where order_master_id ='$order_master_id' AND user_id=$userid";
+       $qrry=$this->db->query($qry);
+       $order_data=$qrry->row();
+
+       $order_current_status=$order_data->order_status;
+       $current_cancel_flag=$order_data->order_cancel;
+        if($current_cancel_flag==0)
+        {
+            $is_cancel_available=getAfield("cancelation_step","app_settings","where id=1");
+            if($order_current_status<=$is_cancel_available)
+            {
+              $reason=$this->input->post('cancel_reason');
+              $ins_data=array(
+                'order_master_id'=>$order_master_id,
+                'cancel_reason'=>$reason,
+                'cancellation_date'=>date('Y-m-d')
+              );
+              $ins=$this->user_api_model->insert("order_cancellation",$ins_data);
+              if($ins)
+              {
+                $up_data=array('order_cancel'=>1);
+                $where=array('order_master_id'=>$order_master_id);
+                $update=$this->user_api_model->update("order_master",$up_data,$where);
+                  if($update)
+                  {
+                    // order number
+                    $order_number=$order_data->order_number;
+                    $address_id=$order_data->address_id;
+                    $customer_number=getAfield("mobile_number","user_address","where address_id =$address_id");
+                    $sms_text="Your Order #$order_number has been cancelled, refund will process soon, if any payment made";
+                    $sendotp=sendSms($customer_number,$sms_text);
+                    $owner_mobile=getAfield("sms_mobile","software_profile","where id =1");
+                    $sms_text="Order  #$order_number has been cancelled,check admin panel for more details";
+                    $sendotp=sendSms($owner_mobile,$sms_text);
+                    $this->response(array('status' => 200, 'message'=>'Order Cancelled sucssfully','response' => ''), REST_Controller::HTTP_OK);
+                  }
+              }
+              else{
+                 $this->response(array('status' => 410, 'message' => "Failed to cancel" ,'response'=>'' ), REST_Controller::HTTP_GONE);
+              }
+            }
+            else{
+              $this->response(array('status' => 410, 'message' => "You are not allowed to cancel this order" ,'response'=>'' ), REST_Controller::HTTP_GONE);
+            }
+
+        }else{
+          $this->response(array('status' => 205, 'message' => "Order already canceled" ,'response'=>'' ), REST_Controller::HTTP_RESET_CONTENT );
+        }
+     }
+     else{
+       $this->response(array('status' => 203, 'message' => 'Authentication Failed','response'=>''), REST_Controller::HTTP_NON_AUTHORITATIVE_INFORMATION );
+     }
+   }
+   public function add_review_post()
+   {
+     if($userid=$this->check_user())
+     {
+        $review_id=$this->input->post('id');
+        $star_rating=$this->input->post('star_rating');
+        $review_details=$this->input->post('review_details');
+        $product_id=$this->input->post('product_id');
+
+        $in_data=array(
+          'user_id'=>$userid,
+          'product_id'=>$product_id,
+          'star_rating'=>$star_rating,
+          'review_details'=>$review_details
+        );
+        if($review_id>0)
+        {
+          $where=array('id'=>$review_id);
+          $ins=$this->user_api_model->update("product_rating",$in_data, $where);
+        }
+        else{
+          $ins=$this->user_api_model->insert("product_rating",$in_data);
+        }
+
+        if($ins)
+        {
+             $this->response(array('status' => 200, 'message' => "Review added" ,'response'=>'' ), REST_Controller::HTTP_OK);
+        }
+        else{
+           $this->response(array('status' => 410, 'message' => "Failed to add" ,'response'=>'' ), REST_Controller::HTTP_GONE);
+        }
+     }
+     else{
+       $this->response(array('status' => 203, 'message' => 'Authentication Failed','response'=>''), REST_Controller::HTTP_NON_AUTHORITATIVE_INFORMATION );
      }
    }
 }

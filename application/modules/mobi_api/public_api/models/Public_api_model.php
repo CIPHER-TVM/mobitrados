@@ -171,4 +171,13 @@ class Public_api_model extends CI_Model {
       $query = $this->db->get();
       return $query;
     }
+
+    public function get_rating($product_id)
+    {
+      $qry="SELECT r.star_rating,r.review_details,u.name FROM  product_rating r
+            INNER JOIN app_usres u on u.app_user_id =r.user_id
+            WHERE r.product_id=$product_id";
+      return $this->db->query($qry);
+
+    }
 }

@@ -27,9 +27,14 @@ class Public_api extends REST_Controller {
 
 	 public function app_version_get()
 	 {
+		 // $response=array();
+		 // $version=getAfield("version","app_version","where id=1");
+		 // $response['app_version']=$version;
+		 // $this->response(array('status' => 200, 'message' => "Success" ,'response'=>$response ), REST_Controller::HTTP_OK);
 		 $response=array();
-		 $version=getAfield("version","app_version","where id=1");
-		 $response['app_version']=$version;
+		 $qry="SELECT * FROM app_settings";
+		 $qrry=$this->db->query($qry);
+		 $response=$qrry->row();
 		 $this->response(array('status' => 200, 'message' => "Success" ,'response'=>$response ), REST_Controller::HTTP_OK);
 	 }
 	 public function get_banners_get()
@@ -195,60 +200,29 @@ class Public_api extends REST_Controller {
 		 }
 	 }
 
-	 public function test_get()
+	 public function get_app_settings_get()
 	 {
-		 	$json=array();
-			$qry="SELECT VisitId,VisitDate FROM as_reviewsymptoms GROUP BY VisitId,VisitDate";
-			$qrry=$this->db->query($qry);
-			$dates=json_encode($qrry->result());
+		 $response=array();
+		 $qry="SELECT * FROM app_settings";
+		 $qrry=$this->db->query($qry);
+		 $response=$qrry->row();
+		 $this->response(array('status' => 200, 'message' => "Success" ,'response'=>$response ), REST_Controller::HTTP_OK);
+	 }
 
-			$qry2="SELECT DISTINCT SymptomId FROM as_reviewsymptoms";
-			$qrry2=$this->db->query($qry2);
-			$SymptomId=json_encode($qrry2->result());
-			$table="<table><tr><td>
-			Symptom
-			</td>";
-			foreach($qrry->result() as $key)
-			{
-					$visitId=$key->VisitId;
-					$VisitDate=$key->VisitDate;
-					$table.="<td>$VisitDate</td>";
-			}
-			$table.="</tr>";
-
-$out=array();
-
-				foreach($qrry2->result() as $key2)
-				{
-					$SymptomId=$key2->SymptomId;
-					$table.="<tr>
-					<td>
-						$SymptomId
-					</td>";
-					$list=array();
-					$list['simptomId']=$SymptomId;
-
-					$i=0;
-					foreach($qrry->result() as $key)
-					{
-						$i++;
-						$visitId=$key->VisitId;
-						$VisitDate=$key->VisitDate;
-						$qry3="SELECT Id,IsChecked FROM as_reviewsymptoms WHERE SymptomId=$SymptomId AND VisitId=$visitId";
-						$qrry3=$this->db->query($qry3);
-						$res=$qrry3->row();
-						$id=$res->Id;
-						$IsChecked=$res->IsChecked;
-						$table.="<td>$IsChecked</td>";
-						$list['VisitId'.$i]=$visitId;
-						$list['isChecked'.$i]=$IsChecked;
-					}
-					array_push($out,$list);
-					$table.="</tr>";
-				}
-			$table.="</table>";
-			echo json_encode($out);
-		//	echo $table;
+	 public function get_product_review_get()
+	 {
+		 $response=array();
+		 $product_id=$this->input->get('product_id');
+		 $average_star=getAfield('AVG(star_rating)',"product_rating","where product_id=$product_id");
+		 $list_rating = $this->public_api_model->get_rating($product_id);
+		 $response=$list_rating->result();
+		 $rows=$list_rating->num_rows();
+		 if($rows>0){
+					$this->response(array('status' => 200, 'message' => "Success" ,'avg_star'=>$average_star,'response'=>$response ), REST_Controller::HTTP_OK);
+		}
+		else {
+				$this->response(array('status' => 204, 'message' => "No Data Found" ,'response'=>$response ), REST_Controller::HTTP_NO_CONTENT );
+		}
 	 }
 
 }

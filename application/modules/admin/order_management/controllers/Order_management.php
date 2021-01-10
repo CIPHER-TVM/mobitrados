@@ -18,10 +18,10 @@ class Order_management extends MY_Controller {
 public function counts_of_pendings()
   {
     if (!$this->input->is_ajax_request()) { exit('No direct script access allowed');}
-    $orders_verify_pending=getAfield('count(order_master_id)',"order_master","where order_status=0"); // order verification pending
-    $orders_packing_pending=getAfield('count(order_master_id)',"order_master","where order_status=1"); //  packing pending
-    $orders_shipping_pending=getAfield('count(order_master_id)',"order_master","where order_status=2"); // shipping pending
-    $orders_delivery_pending=getAfield('count(order_master_id)',"order_master","where order_status=3"); // delivery confirmation pending
+    $orders_verify_pending=getAfield('count(order_master_id)',"order_master","where order_status=0 and order_cancel=0"); // order verification pending
+    $orders_packing_pending=getAfield('count(order_master_id)',"order_master","where order_status=1 and order_cancel=0"); //  packing pending
+    $orders_shipping_pending=getAfield('count(order_master_id)',"order_master","where order_status=2 and order_cancel=0"); // shipping pending
+    $orders_delivery_pending=getAfield('count(order_master_id)',"order_master","where order_status=3 and order_cancel=0"); // delivery confirmation pending
     $data=array(
       'orders_confirm_pending'=>$orders_verify_pending,
       'orders_packing_pending'=>$orders_packing_pending,
@@ -109,8 +109,13 @@ public function counts_of_pendings()
       // generate Bill
       $bill_id= $this->orders->generate_bill_numer($order_id);
       $bill_number=getAfield("bill_text","bill_number","where id=$bill_id");
+      $deliverytime=$this->input->post('deliverytime');
       $data['bill_id']=$bill_id;
       $data['bill_number']=$bill_number;
+      if($deliverytime)
+      {
+        $data['delivey_expected_time']=$deliverytime;
+      }
     }
 
     if($next_order_status==4)
@@ -182,9 +187,8 @@ public function counts_of_pendings()
         'status_text'=>$sub
       );
       $insrt=insertInDb("order_delivery_management",$ins_data);
-  	//	$sendsms=sendSms($order_mobile,$sms_text);
-
-			//SendMail($order_email,$sub,array('head'=>strtoupper($sub),'name'=>"Customer",'order_no'=>$order_num,'txt'=>$sms_text),'email/order_status');
+  	//  $sendsms=sendSms($order_mobile,$sms_text);
+      SendMail($order_email,$sub,array('head'=>strtoupper($sub),'name'=>"Customer",'order_no'=>$order_num,'txt'=>$sms_text),'email/order_status');
 
 			print 1;
 		}

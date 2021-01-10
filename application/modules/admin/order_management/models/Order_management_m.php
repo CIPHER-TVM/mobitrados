@@ -11,7 +11,7 @@ class Order_management_m extends CI_Model
     FROM order_master om
     INNER JOIN app_usres au on au.app_user_id=om.user_id
     INNER JOIN user_address ua on ua.address_id=om.address_id
-    WHERE om.order_status=$lstype ORDER BY om.order_master_id ASC";
+    WHERE om.order_status=$lstype AND om.order_cancel=0 ORDER BY om.order_master_id ASC";
     return $this->db->query($qry);
   }
   public function get_order_child($order_id)

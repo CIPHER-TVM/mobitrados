@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="<?php echo base_url() ?>assets/admin_template/plugins/flatpickr/flatpickr.min.css">
+<link rel="stylesheet" href="<?php echo base_url() ?>assets/admin_template/plugins/flatpickr/plugins/monthSelect/style.css">
+<link rel="stylesheet" href="<?php echo base_url() ?>assets/admin_template/plugins/clockpicker/bootstrap-clockpicker.min.css">
   <main>
     <?php $this->template->datatables() ?>
     <?php
@@ -31,6 +34,35 @@
     </style>
     </style>
 <input type="hidden" id="lstype" value="0" />
+<!-- ORDER CONFIRMATION MODEL -->
+<input type="hidden" id="hidOrderConfirmId" value="0" />
+
+<div class="modal fade" id="scrollableModal4" tabindex="-1" role="dialog" aria-labelledby="scrollableModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header shadow-sm">
+        <h5 class="modal-title" id="scrollableModalLabel">Order Confirmation</h5>
+        <button class="btn btn-icon btn-sm btn-text-secondary rounded-circle" type="button" data-dismiss="modal">
+          <i class="material-icons">close</i>
+        </button>
+      </div>
+      <div class="modal-body" id="">
+          <div class="row">
+              <div class="col-md-12">
+                <label>Delivery Expected date and time</label>
+                <input type="text" class="form-control datetimepicker" id="deliverDate" placeholder="Choose date">
+              </div>
+
+          </div>
+      </div>
+      <div class="modal-footer border-top">
+          <button type="button" class="btn btn-success" onclick="confirmOrder(1)">Confirm Order</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!--ORDER DETAILS----------------------------->
 <div class="modal fade" id="scrollableModal2" tabindex="-1" role="dialog" aria-labelledby="scrollableModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable  modal-lg" role="document">
@@ -145,6 +177,9 @@
 
 
   </main>
+
+  <script src="<?php echo base_url() ?>assets/admin_template/plugins/flatpickr/flatpickr.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/admin_template/plugins/flatpickr/plugins/monthSelect/index.js"></script>
 <script>
 var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
 csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
@@ -215,41 +250,13 @@ table = $('#example').DataTable({
 
   $('#example').on('click', '.mark-confirm, .mark-packed, .mark-shipped, .mark-deliverd', function() {
 
+    $("#scrollableModal4").modal("show");
     var data = table.row($(this).parents('tr')).data();
     order_id=data.order_master_id;
     paytype=data.payment_type;
-
+    $("#hidOrderConfirmId").val(order_id);
     value=$(this).val();
-    msg="Are you sure to change the status of this order?";
-    if(value==4 && paytype==1)
-    {
-      msg=msg+" Since the order is cash on delivery, confirming will mark payment success ";
-    }
 
- 		 const confirmRemove = bootbox.confirm({
-        message: msg,
-        buttons: {
-          confirm: {
-            label: 'Yes',
-            className: 'btn-warning'
-          }
-        },
-        callback: result => {
-          if (result) {
-              ajaxval = {order_id : order_id, next_order_status:value, [csrfName]: csrfHash};
-              $.ajax({
-                  url: '<?php echo admin_url() ?>order_management/update_order_status',
-                  type : 'post',
-                  data : ajaxval,
-                  success : function(response) {
-                    notify_msg("success","<h5>Status changed successfully..!</h5> ");
-                    table.ajax.reload();
-                    fillcards();
-                  }
-              });
-          }
-        }
-      })
 
   });
 
@@ -332,4 +339,49 @@ function loadtb(val)
   table.ajax.reload();
 
 }
+
+function confirmOrder(nexval)
+{
+  var deliverytime=$("#deliverDate").val();
+  msg="Are you sure to change the status of this order?";
+  if(value==4 && paytype==1)
+  {
+    msg=msg+" Since the order is cash on delivery, confirming will mark payment success ";
+  }
+  value=1;
+   const confirmRemove = bootbox.confirm({
+      message: msg,
+      buttons: {
+        confirm: {
+          label: 'Yes',
+          className: 'btn-warning'
+        }
+      },
+      callback: result => {
+        if (result) {
+            ajaxval = {order_id : order_id, next_order_status:value, deliverytime:deliverytime, [csrfName]: csrfHash};
+            $.ajax({
+                url: '<?php echo admin_url() ?>order_management/update_order_status',
+                type : 'post',
+                data : ajaxval,
+                success : function(response) {
+                  $("#scrollableModal4").modal("hide");
+                  notify_msg("success","<h5>Status changed successfully..!</h5> ");
+                  table.ajax.reload();
+                  fillcards();
+                }
+            });
+        }
+      }
+    })
+}
+
+</script>
+<script>
+$(() => {
+  // Datetime
+  flatpickr('.datetimepicker', {
+    enableTime: true
+  })
+})
 </script>

@@ -16,11 +16,11 @@ style="font-family: Roboto;margin:auto;background-color:#fff;border:1px solid #e
 		<div
 			style="color:#4f4f4f;padding-bottom:15px;padding-top:15px;text-align:center;border-bottom: 1px solid #eee;background: #8fd1ff87;"
 			align="center">
-			<span style="color: #36a2eb;font-family: Roboto;letter-spacing: 1px;font-weight: 400;font-size: 38px;" >CITYMEDSHOP</span>
+			<span style="color: #36a2eb;font-family: Roboto;letter-spacing: 1px;font-weight: 400;font-size: 38px;" >MOBITRADOS</span>
 			<div>
-			<span style="color: #606975;font-family: Roboto;letter-spacing: 1px;font-weight: 300;font-size: 11px;text-transform: none;" >Phone:  212 123 456 789</span> 
-			<span style="color: #606975;font-family: Roboto;letter-spacing: 1px;font-weight: 300;font-size: 11px;text-transform: none;" >| </span> 
-			<span style="color: #606975;font-family: Roboto;letter-spacing: 1px;font-weight: 300;font-size: 11px;text-transform: none;" >Email:  support@citymedicines.com</span>
+			<span style="color: #606975;font-family: Roboto;letter-spacing: 1px;font-weight: 300;font-size: 11px;text-transform: none;" >Mob:  212 123 456 789</span>
+			<span style="color: #606975;font-family: Roboto;letter-spacing: 1px;font-weight: 300;font-size: 11px;text-transform: none;" >| </span>
+			<span style="color: #606975;font-family: Roboto;letter-spacing: 1px;font-weight: 300;font-size: 11px;text-transform: none;" >Email:  support@mobitrados.com</span>
 			</div>
 		</div>
 		<div style="text-align:center;border: 1px solid #eee;" align="center">
@@ -28,5 +28,3 @@ style="font-family: Roboto;margin:auto;background-color:#fff;border:1px solid #e
 		</div>
 
 		<div style="text-align:left;padding: 20px;color: #847286;" align="left">
-
-		

@@ -147,7 +147,8 @@ function secretkeyGneration($action,$string,$key="CImsdYkmPHnsfruypojkeER",$out=
 function sendSms($mobile_number,$sms_text)
 {
 	$sms_text = urlencode($sms_text);
-	 $url = "http://sms.datagenit.com/api.php?username=cipher&password=cpakhil459&sender=CIPHER&sendto=" . $mobile_number . "&message=" . $sms_text;
+  $url = "https://api.datagenit.com/sms?auth=D!~58712UEA8XLrpS&msisdn=".$mobile_number."&senderid=CIPTEC&message=".$sms_text;
+	// $url = "http://sms.datagenit.com/api.php?username=cipher&password=cpakhil459&sender=CIPTEC&sendto=" . $mobile_number . "&message=" . $sms_text;
 	// $ch = curl_init($url);
 	// curl_setopt($ch, CURLOPT_HEADER, 0);
 	// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);

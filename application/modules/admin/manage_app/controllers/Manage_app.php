@@ -328,4 +328,25 @@ class Manage_app extends MY_Controller {
     $data['page_title'] = 'Featured Products';
     $this->template->page_maker('manage_app/featured_products',$data);
   }
+  public function terms_conditions()
+  {
+    $data['page'] = 'terms_conditions';
+    $data['mainpage'] = 'app_settings';
+    $data['page_title'] = 'Terms And Conditions';
+    $this->template->page_maker('manage_app/terms_conditions',$data);
+  }
+  public function save_terms()
+  {
+    if (!$this->input->is_ajax_request()) { 	exit('No direct script access allowed');  }
+
+    $terms=$this->input->post('terms');
+      if($terms)
+      {
+        $data=array(
+          'app_terms'=>$terms
+        );
+        $ins=insertInDb("terms_conditions",$data);
+        if($ins) echo 1; else echo "Unable to save , try again later";
+      }
+  }
 }

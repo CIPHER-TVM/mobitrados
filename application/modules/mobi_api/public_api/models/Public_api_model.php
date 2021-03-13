@@ -44,14 +44,15 @@ class Public_api_model extends CI_Model {
          (
              SELECT product_id,  image_path,max(img_id) img_id
              FROM product_images
+             where is_deleted=0
              GROUP BY product_id
          ) pdi ON pdi.product_id = p.pr_id
 
       WHERE p.display_status=1 AND p.is_deleted=0 $cond
       AND  apd.display_status=1 AND apd.is_deleted=0 AND apd.display_type=$display_type
-      AND pc.display_status=1 AND pc.is_deleted=0 AND p.available_stock>0
+      AND pc.display_status=1 AND pc.is_deleted=0
       ";
-
+//AND p.available_stock>0
       $query=$this->db->query($qry);
       return $query;
     }
@@ -116,7 +117,7 @@ class Public_api_model extends CI_Model {
                      FROM product_images
                      GROUP BY product_id
                  ) pdi ON pdi.product_id = p.pr_id
-              WHERE  p.display_status=1 AND p.is_deleted=0 AND p.available_stock>0
+              WHERE  p.display_status=1 AND p.is_deleted=0
               AND pc.display_status=1 AND pc.is_deleted=0
               $cond
               $orderby
@@ -124,6 +125,7 @@ class Public_api_model extends CI_Model {
               ";
               $query=$this->db->query($qry);
               return $query;
+              //AND p.available_stock>0
     }
     public function get_categories($serach_item)
     {
@@ -174,10 +176,10 @@ class Public_api_model extends CI_Model {
 
     public function get_rating($product_id)
     {
-      $qry="SELECT r.star_rating,r.review_details,u.name FROM  product_rating r
+        echo "hai"; exit;
+     $qry="SELECT r.star_rating,r.review_details,u.name,r.id FROM  product_rating r
             INNER JOIN app_usres u on u.app_user_id =r.user_id
             WHERE r.product_id=$product_id";
       return $this->db->query($qry);
-
     }
 }

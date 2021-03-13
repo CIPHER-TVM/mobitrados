@@ -187,7 +187,7 @@ public function counts_of_pendings()
         'status_text'=>$sub
       );
       $insrt=insertInDb("order_delivery_management",$ins_data);
-  	//  $sendsms=sendSms($order_mobile,$sms_text);
+  	  $sendsms=sendSms($order_mobile,$sms_text);
       SendMail($order_email,$sub,array('head'=>strtoupper($sub),'name'=>"Customer",'order_no'=>$order_num,'txt'=>$sms_text),'email/order_status');
 
 			print 1;

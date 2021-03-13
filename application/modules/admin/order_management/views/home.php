@@ -247,15 +247,53 @@ table = $('#example').DataTable({
              "defaultContent": view
          } ],
   });
-
-  $('#example').on('click', '.mark-confirm, .mark-packed, .mark-shipped, .mark-deliverd', function() {
-
+  $('#example').on('click', '.mark-confirm', function() {
     $("#scrollableModal4").modal("show");
     var data = table.row($(this).parents('tr')).data();
     order_id=data.order_master_id;
     paytype=data.payment_type;
     $("#hidOrderConfirmId").val(order_id);
     value=$(this).val();
+
+  });
+
+  $('#example').on('click', '.mark-packed, .mark-shipped, .mark-deliverd', function() {
+
+    var data = table.row($(this).parents('tr')).data();
+    order_id=data.order_master_id;
+    paytype=data.payment_type;
+
+    value=$(this).val();
+    msg="Are you sure to change the status of this order?";
+    if(value==4 && paytype==1)
+    {
+      msg=msg+" Since the order is cash on delivery, confirming will mark payment success ";
+    }
+
+ 		 const confirmRemove = bootbox.confirm({
+        message: msg,
+        buttons: {
+          confirm: {
+            label: 'Yes',
+            className: 'btn-warning'
+          }
+        },
+        callback: result => {
+          if (result) {
+              ajaxval = {order_id : order_id, next_order_status:value, [csrfName]: csrfHash};
+              $.ajax({
+                  url: '<?php echo admin_url() ?>order_management/update_order_status',
+                  type : 'post',
+                  data : ajaxval,
+                  success : function(response) {
+                    notify_msg("success","<h5>Status changed successfully..!</h5> ");
+                    table.ajax.reload();
+                    fillcards();
+                  }
+              });
+          }
+        }
+      })
 
 
   });

@@ -200,4 +200,20 @@ class User_api_model extends CI_Model {
           $query=$this->db->query($qry);
           return $query;
     }
+    public function get_rating($product_id,$userid=0)
+    {
+        
+     $qry="SELECT r.star_rating,r.review_details,u.name,r.id,
+            CASE
+            WHEN r.user_id = $userid THEN 1
+            ELSE 0
+            END
+            as is_users_review
+            FROM  product_rating r
+            INNER JOIN app_usres u on u.app_user_id =r.user_id
+            WHERE r.product_id=$product_id";
+            
+            return $this->db->query($qry);
+
+    }
 }

@@ -86,3 +86,5 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 define('DS', DIRECTORY_SEPARATOR);
 define('ADMIN', 'webuser');
 define('CIPHER_KEY', 'CImsdYkmPHns1806*fruypojkeER');
+define('RAZOR_KEY', 'rzp_test_1La8JQKO4TQ8uh');
+define('RAZOR_SECRET_KEY', '0tza8INX1ys7Z2bGpt4A360F');

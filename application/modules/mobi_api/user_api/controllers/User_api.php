@@ -2,6 +2,10 @@
 
 require APPPATH . 'libraries/REST_Controller.php';
 require APPPATH . '/libraries/CreatorJwt.php';
+require_once(APPPATH."libraries/razorpay/Razorpay.php");
+
+use Razorpay\Api\Api;
+use Razorpay\Api\Errors\SignatureVerificationError;
 
 class User_api extends REST_Controller {
 
@@ -220,7 +224,15 @@ class User_api extends REST_Controller {
             $login['access_token']=$jwtToken;
           //  $response['user_details']=$login;
             $response=$login;
-            $this->response(array('status' => 200, 'message'=>'Login Success','response' => $response), REST_Controller::HTTP_OK);
+
+            // get wishlist
+            $wish_user=$login['app_user_id'];
+            $wish_qry="SELECT product_id FROM wish_list WHERE user_id=$wish_user";
+            $wish_qry_exe=$this->db->query($wish_qry);
+            $wish_resut=$wish_qry_exe->result();
+            $wish_resut = array_column ( $wish_resut , 'product_id' );
+            
+            $this->response(array('status' => 200, 'message'=>'Login Success','response' => $response,'wishlist'=>$wish_resut), REST_Controller::HTTP_OK);
           }
           else
           {
@@ -268,7 +280,13 @@ class User_api extends REST_Controller {
       {
         $profile = $this->user_api_model->get_profile($userid);
         if($profile){
-          $this->response(array('status' => 200, 'message' => "Success" ,'response'=>$profile ), REST_Controller::HTTP_OK);
+          
+           $wish_qry="SELECT product_id FROM wish_list WHERE user_id=$userid";
+            $wish_qry_exe=$this->db->query($wish_qry);
+            $wish_resut=$wish_qry_exe->result();
+            $wish_resut = array_column ( $wish_resut , 'product_id' );
+
+          $this->response(array('status' => 200, 'message' => "Success" ,'response'=>$profile,'wishlist'=>$wish_resut ), REST_Controller::HTTP_OK);
         }
         else{
             $this->response(array('status' => 204, 'message' => "No data found" ,'response'=>'' ), REST_Controller::HTTP_NO_CONTENT);
@@ -575,6 +593,7 @@ class User_api extends REST_Controller {
    }
    public function place_order_post()
    {
+    $response=array();
      if($userid=$this->check_user())
      {
        $address_id=$this->input->post('address_id');
@@ -658,25 +677,61 @@ class User_api extends REST_Controller {
                       $ins_count++;
                        // stock decrease
                       $updateStock=$this->user_api_model->product_stock_updates('-',$qty,$product_id);
-                      // CART DELETION///
-                      $car_delete_where=array('user_id'=>$userid,'product_id'=>$product_id);
-                      $deleteCart=$this->user_api_model->delete("cart",$car_delete_where);
+
                     }
 
                   } // foreach child tb insertion
                     if($ins_count>0)
                     {
+                      if($payment_type==2)
+                      {
+                        $razorpay_amount=$order_total+$shipping_charge;
+                        $razorpay_amount=$razorpay_amount*100;
+                        // razor pay
+                        $razorApi = new Api(RAZOR_KEY, RAZOR_SECRET_KEY);
+                         $razorpayOrder   = $razorApi->order->create([
+                           'receipt'         => $insrted_id,
+                           'amount'          => $razorpay_amount, // amount in the smallest currency unit
+                           'currency'        => 'INR'// <a href="/docs/international-payments/#supported-currencies" target="_blank">See the list of supported currencies</a>.)
+                           ]);
+
+                          $razorpayOrderId = $razorpayOrder['id'];
+
+                         // insert in transcation master
+                         $tr_ins=array(
+                           'order_master_id'=>$insrted_id,
+                           'transaction_type'=>2,
+                           'transcation_status'=>0,
+                           'transaction_for'=>1,
+                           'transaction_date'=>date('Y-m-d'),
+                           'amount'=>$order_total,
+                           'razor_pay_order_id'=>$razorpayOrderId
+                         );
+                         $ins_transcation=insertInDb("transactions",$tr_ins);
+                      }
+                      else{
+                        // delete from cart
+                        $car_delete_where=array('user_id'=>$userid);
+                        $deleteCart=$this->user_api_model->delete("cart",$car_delete_where);
+                      }
                       /////////////////////////////////
                         $ups_data=array(
                           'order_total'=>$order_total,
-                          'no_items'=>$ins_count
+                          'no_items'=>$ins_count,
+                          'transaction_id'=>$ins_transcation,
+                          'payment_confirm'=>0,
                         );
                         $where=array('order_master_id'=>$insrted_id);
                         $ups=update("order_master",$ups_data, $where);
                         //////////////////////////////////////
+                        $response=array(
+                          'order_number'=>$orderNumber,
+                          'transcation_id'=>$ins_transcation,
+                          'order_master_id'=>$insrted_id,
+                          'razorpay_order_id'=>$razorpayOrderId
+                        );
 
-
-                        $this->response(array('status' => 200, 'message' => "Your order will be arriving within 3 days" ,'response'=>$orderNumber ), REST_Controller::HTTP_OK);
+                        $this->response(array('status' => 200, 'message' => "Your order will be arriving within 3 days" ,'response'=>$response,'razorpay_order_id'=>$razorpayOrderId ), REST_Controller::HTTP_OK);
                     }
                     else{
                         $this->response(array('status' => 410, 'message' => "Unable to save order child" ,'response'=>'' ), REST_Controller::HTTP_GONE);
@@ -736,20 +791,40 @@ class User_api extends REST_Controller {
            $cancel_reason="";
            $cancel_flag=0;
          }
+
+         $delivery_expected_time=getAfield("delivey_expected_time","order_master","where order_master_id = $order_master_id");
+         $final_status=getAfield("order_status","order_master","where order_master_id = $order_master_id");
+         $payment_confirm=getAfield("payment_confirm","order_master","where order_master_id = $order_master_id");
+         $shipping_charge=getAfield("shipping_charge","order_master","where order_master_id = $order_master_id");
+
+         $refund_status=getAfield("refund_status","order_master","where order_master_id = $order_master_id");
+         if($refund_status==1) $refund_status_code="pending";
+			  	else if($refund_status==2) $refund_status_code="processed";
+		  		else if($refund_status==3) $refund_status_code="failed";
+		  		else $refund_status_code="pending";
+
          $response['iscancelled']=$cancel_flag;
          $response['cancel_reason']=$cancel_reason;
+         $response['refund_status']=$refund_status;
+         $response['refund_status_code']=$refund_status_code;
 
-              $response['order_child_data']=$order_list->result();
-              $address_id=getAfield("address_id","order_master","where order_master_id = $order_master_id");
-              $track_details=$this->user_api_model->track_order($order_master_id);
-              $response['track_details']=$track_details->result();
-              $address = $this->user_api_model->get_address($userid,0,$address_id,1);
-              $response['address_details']=$address->row();
+         $response['delivey_expected_time']=$delivery_expected_time;
+         $response['final_status']=$final_status;
+         $response['payment_status']=$payment_confirm;
+         $response['shipping_charge']=$shipping_charge;
+
+        $response['order_child_data']=$order_list->result();
+        $address_id=getAfield("address_id","order_master","where order_master_id = $order_master_id");
+        $track_details=$this->user_api_model->track_order($order_master_id);
+        $response['track_details']=$track_details->result();
+        $address = $this->user_api_model->get_address($userid,0,$address_id,1);
+        $response['address_details']=$address->row();
 
               $this->response(array('status' => 200, 'message' => "Success" ,'response'=>$response ), REST_Controller::HTTP_OK);
        }
        else
        {
+        $response=array();
            $this->response(array('status' => 205, 'message' => "No items found" ,'response'=>$response ), REST_Controller::HTTP_RESET_CONTENT );
        }
      }
@@ -923,7 +998,7 @@ class User_api extends REST_Controller {
      if($userid=$this->check_user())
      {
        $order_master_id=$this->input->post('order_master_id');
-       $qry="SELECT order_status,order_cancel,address_id,order_number FROM order_master where order_master_id ='$order_master_id' AND user_id=$userid";
+       $qry="SELECT order_status,order_cancel,address_id,order_number,payment_type,transaction_id,payment_confirm,razorpay_payment_id FROM order_master where order_master_id ='$order_master_id' AND user_id=$userid";
        $qrry=$this->db->query($qry);
        $order_data=$qrry->row();
 
@@ -943,11 +1018,96 @@ class User_api extends REST_Controller {
               $ins=$this->user_api_model->insert("order_cancellation",$ins_data);
               if($ins)
               {
+                 $refund_started_flag=0;
                 $up_data=array('order_cancel'=>1);
                 $where=array('order_master_id'=>$order_master_id);
                 $update=$this->user_api_model->update("order_master",$up_data,$where);
                   if($update)
                   {
+                      /*************REFUND*******/
+                     $payment_type=$order_data->payment_type;
+                     if($payment_type==2)
+                     {
+                         // if online
+                         // check paymentstatus
+                         $pay_status=$order_data->payment_confirm;
+                         if($pay_status==1)
+                         {
+                             $razorpay_payment_id=$order_data->razorpay_payment_id;
+                             if($razorpay_payment_id)
+                             {
+                                 // process refund
+                                  $api = new Api(RAZOR_KEY, RAZOR_SECRET_KEY);
+                                   try
+                                   {
+                                      $payment = $api->payment->fetch($razorpay_payment_id);
+                                      $refund = $payment->refund();
+                                      $refund_id=$refund->id;
+                                    //   print_r($refund);
+                                    //   echo  json_encode($refund);
+                                    //   echo $refund; exit;
+                                    //print_r($payment);
+                            
+                                   }
+                                   catch(SignatureVerificationError $e){
+                                      $response = 'failure' ;
+                                      $refund = 'Razorpay Error : ' . $e->getMessage();
+                                      $refund_id=0;
+                                      //echo $error;
+                                   }
+
+                                   $refund_status=$this->razor_get_refund_status($refund_id);
+                                   if($refund_status=="pending") $refund_status_code=1;
+                                   else if($refund_status=="processed") $refund_status_code=2;
+                                   else if($refund_status=="failed") $refund_status_code=3;
+                                   /************INSERT IN REFUND TRANSACTIONS*************/
+                                          $refund_ins=array(
+                                            'order_id'=>$order_master_id,
+                                              'razorpay_payment_id'=>$razorpay_payment_id,
+                                              'razorpay_refund_id'=>$refund_id,
+                                              'refund_status'=>$refund_status_code
+                                          );
+                                    $insrt_refund=$this->user_api_model->insert("refund_transactions",$refund_ins);
+                                         
+                                          /***********************************/
+                                                  $refund_trans_ins_data=array(
+                                                    'order_master_id'=>$order_master_id,
+                                                    'update_type'=>1,
+                                                    'refund_status'=>$refund_status_code,
+                                                    'refund_transcation_id'=>$insrt_refund,
+                                                    'razorpay_refund_id'=>$refund_id
+                                                  );
+                                        
+                                                  $insert= insertInDb("refund_status_update",$refund_trans_ins_data);
+                                            /*************************/
+                                   /****************************************************/
+
+                                     $ref_update_data=array(
+                                         'refund_status'=>$refund_status_code,
+                                         'razor_refund_id'=>$refund_id,
+                                         'refund_transaction_id'=>$insrt_refund
+                                       );
+                                       $where=array('order_master_id'=>$order_master_id);
+                                     $update_refund=$this->user_api_model->update("order_master",$ref_update_data,$where);
+                             }
+                         }
+                         
+                     }
+                     
+                     
+                     
+                       /*************END REFUND*******/
+                       // stock increase
+                       
+                  $qry="SELECT product_id,qty FROM order_child WHERE order_master_id=$order_master_id";
+                  $qrry=$this->db->query($qry);
+                  foreach($qrry->result() as $key)
+                  {
+                    $c_product_id=$key->product_id;
+                    $c_qty=$key->qty;
+                    $updateStock=$this->user_api_model->product_stock_updates('+',$c_qty,$c_product_id);
+                  }
+                  
                     // order number
                     $order_number=$order_data->order_number;
                     $address_id=$order_data->address_id;
@@ -1012,4 +1172,229 @@ class User_api extends REST_Controller {
        $this->response(array('status' => 203, 'message' => 'Authentication Failed','response'=>''), REST_Controller::HTTP_NON_AUTHORITATIVE_INFORMATION );
      }
    }
+
+   public function complete_transaction_post()
+   {
+      // used for transaction finish
+      if($userid=$this->check_user())
+      {
+        $rawdata = file_get_contents("php://input");
+        $content=json_decode($rawdata);
+           if($content)
+           {
+             $order_master_id=$content->order_master_id;
+             $transaction_id=$content->transcation_id;
+             $transaction_status=$content->transaction_status;
+
+             $razorpay_payment_id=$content->razorpay_payment_id;
+             $razorpay_signature=$content->razorpay_signature;
+             $razorpay_order_id=$content->razorpay_order_id;
+             $errortext=$content->errortext;
+
+             $trans_update=array(
+               'razorpay_signature'=>$razorpay_signature,
+               'razorpay_payment_id'=>$razorpay_payment_id,
+               'errortext'=>$errortext
+             );
+
+             if($transaction_status==1)
+              {
+                $trans_update['transcation_status']=1;
+                
+                $api = new Api(RAZOR_KEY, RAZOR_SECRET_KEY);
+                try
+                {
+                  $attributes  = array(
+                    'razorpay_signature'  =>$razorpay_signature,
+                    'razorpay_payment_id' =>$razorpay_payment_id,
+                    'razorpay_order_id'  =>$razorpay_order_id
+                  );
+                   $order  = $api->utility->verifyPaymentSignature($attributes);
+                   // success just update flags and other data
+                    
+                    $trans_update['razorpay_signature']=$razorpay_signature;
+                     $trans_update['razorpay_payment_id']=$razorpay_payment_id;
+                   
+                   $where_trans=array('transaction_id'=>$transaction_id);
+                   $trans_ins=$this->user_api_model->update("transactions",$trans_update,$where_trans);
+                   // CART DELETION///
+                   $car_delete_where=array('user_id'=>$userid);
+                   $deleteCart=$this->user_api_model->delete("cart",$car_delete_where);
+
+                   $up_data=array(
+                     'payment_confirm'=>1,
+                     'razorpay_payment_id'=>$razorpay_payment_id
+                   );
+                   $where=array('order_master_id'=>$order_master_id);
+                   $update=$this->user_api_model->update("order_master",$up_data,$where);
+                   if($update)
+                   {
+                     $this->response(array('status' => 200, 'message' => "Success" ,'response'=>'' ), REST_Controller::HTTP_OK);
+
+                   }
+                   else{
+                     $this->response(array('status' => 410, 'message' => "order_master update failed" ,'response'=>'' ), REST_Controller::HTTP_GONE);
+                   }
+                 }
+                catch(SignatureVerificationError $e)
+                {
+                   $response = 'failure' ;
+                   $error = 'Razorpay Error : ' . $e->getMessage();
+                   $this->response(array('status' => 204, 'message' => "failed" ,'response'=>$error ), REST_Controller::HTTP_NO_CONTENT);
+                 }
+
+               }
+              else{
+                $trans_update['transcation_status']=2;
+                // cancel order
+                $ins_data=array(
+                  'order_master_id'=>$order_master_id,
+                  'cancel_reason'=>"Online Payment Failed",
+                  'cancellation_date'=>date('Y-m-d')
+                );
+                $ins=$this->user_api_model->insert("order_cancellation",$ins_data);
+                if($ins)
+                {
+                    $up_data=array(
+                      'order_cancel'=>1,
+                      'payment_confirm'=>2,
+                    );
+                    $where=array('order_master_id'=>$order_master_id);
+                    $update=$this->user_api_model->update("order_master",$up_data,$where);
+                    if($update)
+                    {
+                      // decrease stock
+                      $qry="SELECT product_id,qty FROM order_child WHERE order_master_id=$order_master_id";
+                      $qrry=$this->db->query($qry);
+                      foreach($qrry->result() as $key)
+                      {
+                        $c_product_id=$key->product_id;
+                        $c_qty=$key->qty;
+                        $updateStock=$this->user_api_model->product_stock_updates('+',$c_qty,$c_product_id);
+                      }
+                      //update transcation status
+                        $trans_update['transcation_status']=1;
+                        $where_trans=array('transaction_id'=>$transaction_id);
+                        $trans_ins=$this->user_api_model->update("transactions",$trans_update,$where_trans);
+                        if($trans_ins)
+                        {
+                          $this->response(array('status' => 204, 'message' => "Success" ,'response'=>''), REST_Controller::HTTP_NO_CONTENT);
+                        }
+                        else{
+                          $this->response(array('status' => 410, 'message' => "failed" ,'response'=>''), REST_Controller::HTTP_OK);
+                        }
+                      }
+                      else{
+                        $this->response(array('status' => 410, 'message' => "order_master update failed" ,'response'=>'' ), REST_Controller::HTTP_GONE);
+
+                      }
+                }
+                else{
+                  $this->response(array('status' => 410, 'message' => "order cancel insertion failed" ,'response'=>'' ), REST_Controller::HTTP_GONE);
+
+                }
+              }
+           }
+      }
+      else{
+        $this->response(array('status' => 203, 'message' => 'Authentication Failed','response'=>''), REST_Controller::HTTP_NON_AUTHORITATIVE_INFORMATION );
+      }
+   }
+
+   public function razor_post()
+   {
+      $razorApi = new Api(RAZOR_KEY, RAZOR_SECRET_KEY);
+      $razorpayOrder   = $razorApi->order->create([
+        'receipt'         => 1,
+        'amount'          => 100, // amount in the smallest currency unit
+        'currency'        => 'INR'// <a href="/docs/international-payments/#supported-currencies" target="_blank">See the list of supported currencies</a>.)
+        ]);
+        $razorpayOrderId=$razorpayOrder->id;
+        echo $razorpayOrderId;
+   }
+   public function razorSign_post()
+   {
+       $api = new Api(RAZOR_KEY, RAZOR_SECRET_KEY);
+       try
+       {
+         $attributes  = array(
+           'razorpay_signature'  => 'asdasdasdas',
+           'razorpay_payment_id'  => 'pay_GgWe4TcBJpZizi' ,
+           'razorpay_order_id' => 'order_GgWdlF4m27zaYM'
+         );
+          $order  = $api->utility->verifyPaymentSignature($attributes);
+
+       }
+       catch(SignatureVerificationError $e){
+          $response = 'failure' ;
+          $error = 'Razorpay Error : ' . $e->getMessage();
+          echo $error;
+       }
+
+   }
+   
+   public function razorRefund_post()
+   {
+        $api = new Api(RAZOR_KEY, RAZOR_SECRET_KEY);
+       try
+       {
+         $payment = $api->payment->fetch('pay_GjPHcrWeJbodjW');
+       // $refund = $payment->refund();
+        print_r($payment);
+
+       }
+       catch(SignatureVerificationError $e){
+          $response = 'failure' ;
+          $error = 'Razorpay Error : ' . $e->getMessage();
+          echo $error;
+       }
+   }
+
+   public function razor_get_refund_status($refund_id)
+   {
+    
+            $api = new Api(RAZOR_KEY, RAZOR_SECRET_KEY);
+            try
+            {
+            $result = $api->refund->fetch($refund_id);
+            return $result['status'];
+
+            }
+            catch(SignatureVerificationError $e)
+            {
+            
+            return 0;
+            //echo $error;
+            }
+
+            /*******
+             * pending=1
+             * processed=2
+             * failed=3
+             * 
+             * ********/
+   }
+
+   public function get_product_review_get()
+   {
+     $userid=$this->check_user();
+     if(!$userid) $userid=0;
+     $response=array();
+     $product_id=$this->input->get('product_id');
+     $average_star=getAfield('AVG(star_rating)',"product_rating","where product_id=$product_id");
+     $list_rating = $this->user_api_model->get_rating($product_id,$userid);
+     $response=$list_rating->result();
+     $rows=$list_rating->num_rows();
+     if($rows>0){
+          $this->response(array('status' => 200, 'message' => "Success" ,'avg_star'=>$average_star,'response'=>$response ), REST_Controller::HTTP_OK);
+    }
+    else {
+        $this->response(array('status' => 204, 'message' => "No Data Found" ,'response'=>$response ), REST_Controller::HTTP_NO_CONTENT );
+    }
+    
+   }
+
+
+
+   
 }

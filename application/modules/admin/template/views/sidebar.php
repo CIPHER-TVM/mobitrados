@@ -74,6 +74,7 @@
                   <li><a class="<?php if($page == 'offers') echo 'active' ?>"  href="<?php echo admin_url() ?>manage_app/offers">Manage Offers</a></li>
                   <li><a class="<?php if($page == 'new_arrivals') echo 'active' ?>"  href="<?php echo admin_url() ?>manage_app/new_arrivals">New Arrivals</a></li>
                   <li><a class="<?php if($page == 'featured_products') echo 'active' ?>"  href="<?php echo admin_url() ?>manage_app/featured_products">Fetured Products</a></li>
+                  <li><a class="<?php if($page == 'terms_conditions') echo 'active' ?>"  href="<?php echo admin_url() ?>manage_app/terms_conditions">Terms & Conditions</a></li>
                 </ul>
              </li>
              <a class="nav-link has-icon <?php if($page == 'c_stock') echo 'active' ?>" href="<?php echo admin_url() ?>reports/current_stock"><i style="font-size : 19px" class="material-icons">book</i>Current Stock Report</a>
@@ -82,18 +83,25 @@
                  <a class="nav-link has-icon dropdown-toggle <?php if($page == 'sales_report') echo 'active' ?>" href="#"><i style="font-size : 19px" class="material-icons">book</i>Sales Report</a>
                  <ul>
                    <li><a class="<?php if($page == 'basic_sales') echo 'active' ?>"  href="<?php echo admin_url() ?>reports/basic_sales_report">Basic Sales Report</a></li>
-                    <li><a class="<?php if($page == 'product_sales') echo 'active' ?>"  href="<?php echo admin_url() ?>reports/product_sales_report">Produt Wise Sales Report</a></li>
+                    <li><a class="<?php if($page == 'sales_report') echo 'active' ?>"  href="<?php echo admin_url() ?>reports/product_sales_report">Produt Wise Sales Report</a></li>
                  </ul>
               </li>
 
               <li class="nav-item <?php if($mainpage == 'sales_report') echo 'active' ?>">
-                <a class="nav-link has-icon dropdown-toggle <?php if($page == 'sales_report') echo 'active' ?>" href="#"><i style="font-size : 19px" class="material-icons">calculate</i>Direct Billing</a>
+                <a class="nav-link has-icon dropdown-toggle <?php if($page == 'billing') echo 'active' ?>" href="#"><i style="font-size : 19px" class="material-icons">calculate</i>Direct Billing</a>
                 <ul>
-                    <li><a class="<?php if($page == 'basic_sales') echo 'active' ?>"  href="<?php echo admin_url() ?>reports/basic_sales_report">Billing</a></li>
-                    <li><a class="<?php if($page == 'basic_sales') echo 'active' ?>"  href="<?php echo admin_url() ?>reports/basic_sales_report">Manage Bills</a></li>
-                   <li><a class="<?php if($page == 'product_sales') echo 'active' ?>"  href="<?php echo admin_url() ?>reports/product_sales_report">Basic Sales Report</a></li>
+                    <li><a class="<?php if($page == 'billing') echo 'active' ?>"  href="<?php echo admin_url() ?>directbilling/index">Billing</a></li>
+                    <li><a class="<?php if($page == 'manage_bill') echo 'active' ?>"  href="<?php echo admin_url() ?>directbilling/manage_bills">Manage Bills</a></li>
+                   <li><a class="<?php if($page == 'direct_bill_report') echo 'active' ?>"  href="<?php echo admin_url() ?>directbilling/sales_report">Basic Sales Report</a></li>
                 </ul>
              </li>
+
+             <li class="nav-item <?php if($mainpage == 'customer_support') echo 'active' ?>">
+                 <a class="nav-link has-icon dropdown-toggle " href="#"><i style="font-size : 19px" class="material-icons">gps_fixed</i>Customer Support</a>
+                 <ul>
+                   <li><a class="<?php if($page == 'refund_status') echo 'active' ?>"  href="<?php echo admin_url() ?>customer_support/refund_status">Refund Status</a></li>
+                   </ul>
+              </li>
       </ul>
       <!-- /Menu -->
     </div>

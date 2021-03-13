@@ -70,8 +70,8 @@
             <thead>
               <tr>
 							<th>Sl No</th>
-              <th>Order Number</th>
-              <th>Order Date</th>
+              <th>Order Id</th>
+              <th>Ext Order Number</th>
               <th>Customer Name</th>
 							<th>Mobile Number</th>
               <th>Total Items</th>

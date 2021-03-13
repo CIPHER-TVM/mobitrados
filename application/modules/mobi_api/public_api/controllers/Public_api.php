@@ -75,6 +75,7 @@ class Public_api extends REST_Controller {
 		 $pr_id=$this->input->get('pr_id');
 		 $products=$this->public_api_model->get_product_details($pr_id);
 		 $rows=$products->num_rows();
+		 $response=array();
 		 if($rows>0)
 		 {
 			 	   $tax_d=$products->row()->tax_id;
@@ -224,5 +225,90 @@ class Public_api extends REST_Controller {
 				$this->response(array('status' => 204, 'message' => "No Data Found" ,'response'=>$response ), REST_Controller::HTTP_NO_CONTENT );
 		}
 	 }
+
+	 public function kssm_sms_get()
+	 {
+		 $qry="SELECT * FROM  kssm_sms_data where pid >=76 AND pid <=100";
+		 $qrry=$this->db->query($qry);
+		 foreach($qrry->result() as $rs)
+		 {
+			 $sendsms=0;
+			 $mobile_number=$rs->mobile_number;
+			 $pname=$rs->pname;
+			 $income=$rs->income;
+			 $income_file=$rs->income_file;
+			 $aadhar=$rs->aadhar;
+			 $aadhar_file=$rs->aadhar_file;
+			 $medical_certificate=$rs->medical_certificate;
+			 $ap_bpl=$rs->ap_bpl;
+			 $ap_bpl_file=$rs->ap_bpl_file;
+			 $dept_id=$rs->dept_id;
+			 $reg_number=$rs->reg_number;
+			 $dpt="";
+			 	if($dept_id==1){
+					$dp="Multiple Sclerosis";
+				}
+				else{
+					$dp="Ankylosing Spondylitis";
+				}
+
+			 $sms_text="Dear $pname, Thanks for registering for $dp, scheme of KSSM, Govt of Kerala.Your application number is $reg_number. While scrutinizing your application, we found that some details are missing.Can you please send the below documents to KSSMSID@gmail.com by 1 Feb 2021.";
+		//	 $sms=sendSms($mobile_number,$sms_text);
+		// Ration Card, Income Certificate, Aadhar Card, Medical Certificate.
+
+			if(!$ap_bpl_file || $ap_bpl_file=="")
+			{
+				$sendsms=1;
+				$sms_text.=" Ration Card,";
+			}
+			if($ap_bpl==1) // if apl
+			{
+				if(!$ap_bpl_file || $ap_bpl_file=="")
+				{
+					$sendsms=1;
+					$sms_text.=" Income Certificate,";
+				}
+			}
+			if(!$aadhar_file || $aadhar_file=="")
+			{
+				$sendsms=1;
+				$sms_text.=" Aadhar Card,";
+			}
+			if(!$medical_certificate ||  $medical_certificate=="")
+			{
+				$sendsms=1;
+				$sms_text.=" Medical Certificate";
+			}
+
+			$sms_text=rtrim($sms_text, ',');
+
+			if($sendsms==1)
+			{
+				//$sms_text=urlencode($sms_text);
+			//	$sms=sendSms($mobile_number,$sms_text);
+				$sms=1;
+
+				 if($sms)
+				 {
+					 echo "SMS SEND TO $mobile_number :  $sms_text <br />";
+				 }
+			}
+			else{
+				$sms="";
+			}
+
+		//	echo $sms_text;
+
+
+		 }
+	 }
+
+	 public function get_terms_conditions_get()
+   {
+     $terms=getAfield('app_terms'," terms_conditions","where id >0 order by id desc limit 1");
+     $response=array('terms_conditions'=>$terms);
+     $this->response(array('status' => 200, 'message' => "Success" ,'response'=>$response ), REST_Controller::HTTP_OK);
+   }
+
 
 }

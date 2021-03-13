@@ -34,7 +34,7 @@ Category<!-- Font & Icon -->
 	}
 </style>
 <main>
-    <h5>Add Product Catagory</h5>
+    <h5>Add Product Category</h5>
     <table id="example" class="table table-hover table-bordered table-sm dt-responsive nowrap w-100">
         <!-- Filter columns -->
         <thead>

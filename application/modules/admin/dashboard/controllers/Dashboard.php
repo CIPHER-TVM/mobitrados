@@ -124,4 +124,14 @@ public function logout()
 			print $html;
 	}
 
+	public function alumini()
+	{
+		$id=$this->input->get('id');
+		//$data['id']=$id;
+		$qry="SELECT * FROM alumini_list WHERE idmain =$id";
+		$qrry=$this->db->query($qry);
+		$data['r']=$qrry->row();
+		$this->load->view('page',$data);
+	}
+
 }

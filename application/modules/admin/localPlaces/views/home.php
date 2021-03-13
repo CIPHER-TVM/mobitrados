@@ -111,14 +111,14 @@
               </span>
             </div>
             <div class="col-md-12">
-              <label style="font-size : 15px">Delievry Fee <span class="star">*</span></label>
+              <label style="font-size : 15px">Delivery Fee <span class="star">*</span></label>
               <span class="input-icon">
                 <i style="font-size : 19px" class="material-icons">add_box</i>
                 <input id="delivery_fee" name="delivery_fee" maxlength="5" type="number" class="form-control form-control-sm" placeholder="Delivery fee" value="0">
               </span>
             </div>
             <div class="col-md-12">
-              <label style="font-size : 15px">Expected Delievry TIme <span class="star">*</span></label>
+              <label style="font-size : 15px">Expected Delivery  TIme <span class="star">*</span></label>
               <span class="input-icon">
                 <i style="font-size : 19px" class="material-icons">add_box</i>
 

@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '7c8ae7c943eb7650cae84bf0dc874b394e099e9c',
+    'reference' => '4deb20f280c39b69cbb37981778d52d00a4d2f33',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '7c8ae7c943eb7650cae84bf0dc874b394e099e9c',
+      'reference' => '4deb20f280c39b69cbb37981778d52d00a4d2f33',
     ),
     'mpdf/mpdf' => 
     array (
@@ -59,6 +59,24 @@
       array (
       ),
       'reference' => '0f73288fd15629204f9d42b7055f72dacbe811fc',
+    ),
+    'razorpay/razorpay' => 
+    array (
+      'pretty_version' => '2.5.0',
+      'version' => '2.5.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '96c0167176cf53e3da15640622e9b993a3450ec7',
+    ),
+    'rmccue/requests' => 
+    array (
+      'pretty_version' => 'v1.7.0',
+      'version' => '1.7.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '87932f52ffad70504d93f04f15690cf16a089546',
     ),
     'setasign/fpdi' => 
     array (

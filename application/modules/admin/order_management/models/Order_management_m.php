@@ -27,7 +27,7 @@ class Order_management_m extends CI_Model
       $cond="";
       $cond.=" AND om.order_placed_date>='$from_date' AND om.order_placed_date<='$to_date'";
       if($order_status>0){
-        $cond.=" om.order_status=$order_status";
+        $cond.=" AND om.order_status=$order_status";
       }
 
       $qry="SELECT DATE_FORMAT(om.created_date,'%d %M %Y - %H:%I') as order_date,om.*,
@@ -67,7 +67,7 @@ class Order_management_m extends CI_Model
     $qrry=$this->db->query($qry);
     return $qrry->row();
   }
-  public function generate_bill_numer($order_id)
+  public function generate_bill_numer($order_id,$type=0)
   {
     $bill_number=0;
     $count_of_bill=getAfield("max(auto_bill_number)","bill_number","where id>0");
@@ -84,10 +84,27 @@ class Order_management_m extends CI_Model
       $data=array(
         'auto_bill_number'=>$bill_number,
         'bill_text'=>$ins_bill,
-        'order_master_id'=>$order_id
+        'order_master_id'=>$order_id,
+        'billing_type'=>$type,
       );
       $ins=insertInDb("bill_number",$data);
       return $ins;
+  }
+  public function product_stock_updates($operator,$stock,$prod_id)
+  {
+    $existstoc=getAfield("available_stock","products","where pr_id='$prod_id'");
+    if($operator=='-')
+    {
+          $newstock=$existstoc-$stock;
+    }
+    else if($operator=="+")
+    {
+       $newstock=$existstoc+$stock;
+    }
+    $update=array('available_stock'=>$newstock);
+    $where=array('pr_id'=>$prod_id);
+    $ins=update("products",$update,$where);
+    if($ins) return true; else return false;
   }
 
 }

@@ -7,6 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'setasign\\Fpdi\\' => array($vendorDir . '/setasign/fpdi/src'),
+    'Razorpay\\Tests\\' => array($vendorDir . '/razorpay/razorpay/tests'),
+    'Razorpay\\Api\\' => array($vendorDir . '/razorpay/razorpay/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Mpdf\\' => array($vendorDir . '/mpdf/mpdf/src'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),

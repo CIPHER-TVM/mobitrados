@@ -15,6 +15,11 @@ class ComposerStaticInite72c0518c3e3c0a0f8bae82dba802ca6
         array (
             'setasign\\Fpdi\\' => 14,
         ),
+        'R' => 
+        array (
+            'Razorpay\\Tests\\' => 15,
+            'Razorpay\\Api\\' => 13,
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
@@ -34,6 +39,14 @@ class ComposerStaticInite72c0518c3e3c0a0f8bae82dba802ca6
         array (
             0 => __DIR__ . '/..' . '/setasign/fpdi/src',
         ),
+        'Razorpay\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/razorpay/razorpay/tests',
+        ),
+        'Razorpay\\Api\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/razorpay/razorpay/src',
+        ),
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
@@ -48,6 +61,16 @@ class ComposerStaticInite72c0518c3e3c0a0f8bae82dba802ca6
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'R' => 
+        array (
+            'Requests' => 
+            array (
+                0 => __DIR__ . '/..' . '/rmccue/requests/library',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
@@ -57,6 +80,7 @@ class ComposerStaticInite72c0518c3e3c0a0f8bae82dba802ca6
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInite72c0518c3e3c0a0f8bae82dba802ca6::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInite72c0518c3e3c0a0f8bae82dba802ca6::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInite72c0518c3e3c0a0f8bae82dba802ca6::$prefixesPsr0;
             $loader->classMap = ComposerStaticInite72c0518c3e3c0a0f8bae82dba802ca6::$classMap;
 
         }, null, ClassLoader::class);

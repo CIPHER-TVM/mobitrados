@@ -74,7 +74,6 @@
                   <li><a class="<?php if($page == 'offers') echo 'active' ?>"  href="<?php echo admin_url() ?>manage_app/offers">Manage Offers</a></li>
                   <li><a class="<?php if($page == 'new_arrivals') echo 'active' ?>"  href="<?php echo admin_url() ?>manage_app/new_arrivals">New Arrivals</a></li>
                   <li><a class="<?php if($page == 'featured_products') echo 'active' ?>"  href="<?php echo admin_url() ?>manage_app/featured_products">Fetured Products</a></li>
-                  <li><a class="<?php if($page == 'terms_conditions') echo 'active' ?>"  href="<?php echo admin_url() ?>manage_app/terms_conditions">Terms & Conditions</a></li>
                 </ul>
              </li>
              <a class="nav-link has-icon <?php if($page == 'c_stock') echo 'active' ?>" href="<?php echo admin_url() ?>reports/current_stock"><i style="font-size : 19px" class="material-icons">book</i>Current Stock Report</a>
@@ -100,6 +99,17 @@
                  <a class="nav-link has-icon dropdown-toggle " href="#"><i style="font-size : 19px" class="material-icons">gps_fixed</i>Customer Support</a>
                  <ul>
                    <li><a class="<?php if($page == 'refund_status') echo 'active' ?>"  href="<?php echo admin_url() ?>customer_support/refund_status">Refund Status</a></li>
+                   </ul>
+              </li>
+
+              <li class="nav-item <?php if($mainpage == 'terms') echo 'active' ?>">
+                 <a class="nav-link has-icon dropdown-toggle " href="#"><i style="font-size : 19px" class="material-icons">book</i>web & App Docs</a>
+                 <ul>
+                  
+                 <li><a class="<?php if($page == 'terms_conditions') echo 'active' ?>"  href="<?php echo admin_url() ?>manage_app/terms_conditions">Terms & Conditions</a></li>
+                 <li><a class="<?php if($page == 'privacy_policy') echo 'active' ?>"  href="<?php echo admin_url() ?>manage_app/privacy_policy"> Privacy Policy</a></li>
+                 <li><a class="<?php if($page == 'cancellation_refund') echo 'active' ?>"  href="<?php echo admin_url() ?>manage_app/cancellation_refund"> Cancellation/Refund</a></li>
+
                    </ul>
               </li>
       </ul>

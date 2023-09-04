@@ -6,18 +6,16 @@ public function __construct()
 	parent::__construct();
 
 }
-	public function index()
+public function index()
 	{
-  	$data['page'] = 'dashboard';
+    	$data['page'] = 'dashboard';
 		$data['mainpage'] = '';
-    $data['page_title'] = 'Dashboard';
+        $data['page_title'] = 'Dashboard';
 		$data['orders_verify_pending'] =getAfield('count(order_master_id)',"order_master","where order_status=0 and order_cancel=0"); // order verification pending
 		$data['orders_packing_pending'] =getAfield('count(order_master_id)',"order_master","where order_status=1 and order_cancel=0"); //  packing pending
 		$data['orders_shipping_pending'] =getAfield('count(order_master_id)',"order_master","where order_status=2 and order_cancel=0"); // shipping pending
 		$data['orders_delivery_pending'] =getAfield('count(order_master_id)',"order_master","where order_status=3 and order_cancel=0"); // delivery confirmation pending
 		$this->template->page_maker('dashboard/home',$data);
-
-		//$this->page_maker('dashboard/home', $data);
   }
 
 public function logout()
@@ -32,7 +30,7 @@ public function logout()
 		$url.="home";
 		redirect($url);
 
-  }
+ }
 
 	public function chart_data()
 	{

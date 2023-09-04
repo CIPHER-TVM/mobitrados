@@ -1,3 +1,4 @@
+
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> -->
@@ -96,6 +97,9 @@
 <script src="<?php echo base_url() ?>assets/plugins/date_picker/js/bootstrap-datepicker.js"></script>
 <script src="<?php echo base_url() ?>assets/plugins/date_picker/js/bootstrap-datepicker.min.js.js"></script>
 <script>
+
+
+
 $(".select2").select2();
 var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
 	csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';

@@ -173,7 +173,7 @@ public function counts_of_pendings()
 			else if($next_order_status==4)
 			{
         $sub = 'Order deliverd';
-				$sms_text="Delivered: Your Order (#$order_num) has been deliverd, if not contact the shop as soon as possible";
+				$sms_text="Delivered: Your Order (#$order_num) has been delivered, if not contact the shop as soon as possible";
 
 			}
 

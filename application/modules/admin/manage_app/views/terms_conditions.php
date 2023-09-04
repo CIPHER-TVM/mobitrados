@@ -2,7 +2,7 @@
 <?php $this->template->datatables() ?>
 <nav aria-label="breadcrumb" class="main-breadcrumb">
 	<ol class="breadcrumb breadcrumb-style2">
-		<li class="breadcrumb-item"><a href="#">App Management</a></li>
+		<li class="breadcrumb-item"><a href="#">Web & App Docs</a></li>
 		<li class="breadcrumb-item active" aria-current="page">Terms And Conditions</li>
 	</ol>
 </nav>

@@ -328,12 +328,26 @@ class Manage_app extends MY_Controller {
     $data['page_title'] = 'Featured Products';
     $this->template->page_maker('manage_app/featured_products',$data);
   }
+  public function privacy_policy()
+  {
+    $data['page'] = 'privacy_policy';
+    $data['mainpage'] = 'terms';
+    $data['page_title'] = 'privacy policy';
+    $this->template->page_maker('manage_app/privacy_policy',$data);
+  }
   public function terms_conditions()
   {
     $data['page'] = 'terms_conditions';
-    $data['mainpage'] = 'app_settings';
+    $data['mainpage'] = 'terms';
     $data['page_title'] = 'Terms And Conditions';
     $this->template->page_maker('manage_app/terms_conditions',$data);
+  }
+  public function cancellation_refund()
+  {
+    $data['page'] = 'cancellation_refund';
+    $data['mainpage'] = 'cancellation_refund';
+    $data['page_title'] = 'Cancellation / Refund';
+    $this->template->page_maker('manage_app/cancellation_refund',$data);
   }
   public function save_terms()
   {
@@ -346,6 +360,34 @@ class Manage_app extends MY_Controller {
           'app_terms'=>$terms
         );
         $ins=insertInDb("terms_conditions",$data);
+        if($ins) echo 1; else echo "Unable to save , try again later";
+      }
+  }
+  public function save_privacy()
+  {
+    if (!$this->input->is_ajax_request()) { 	exit('No direct script access allowed');  }
+
+    $terms=$this->input->post('terms');
+      if($terms)
+      {
+        $data=array(
+          'app_terms'=>$terms
+        );
+        $ins=insertInDb("privacy_policy",$data);
+        if($ins) echo 1; else echo "Unable to save , try again later";
+      }
+  }
+  public function save_refund()
+  {
+    if (!$this->input->is_ajax_request()) { 	exit('No direct script access allowed');  }
+
+    $terms=$this->input->post('terms');
+      if($terms)
+      {
+        $data=array(
+          'app_terms'=>$terms
+        );
+        $ins=insertInDb("refund_policy",$data);
         if($ins) echo 1; else echo "Unable to save , try again later";
       }
   }

@@ -2,7 +2,7 @@
  $atributes=array('id'=>'frm', 'name'=>'frm' ,'autocomplete'=>'off');
   echo form_open('',$atributes);
 ?>
-  <main>
+<main>
 
     <!-- Conversion Rate | Unique Purchases | Avg. Order Value | Order Quantity -->
     <div class="border rounded mb-3">
@@ -14,9 +14,8 @@
               <div class="d-flex align-items-center font-number mb-1">
                 <i class="material-icons mr-2">shopping_basket</i>
                 <h3 class="mb-0 mr-2"><?= $orders_verify_pending ?></h3>
-
-              </div>
-              </div>
+             </div>
+             </div>
           </div>
         </div>
         <div class="col-6 col-lg-3">
@@ -127,9 +126,19 @@
   <script src="<?php echo base_url() ?>assets/admin_template/plugins/chart.js/Chart.min.js"></script>
   <script src="<?php echo base_url() ?>assets/admin_template/plugins/jqvmap/jquery.vmap.min.js"></script>
   <script src="<?php echo base_url() ?>assets/admin_template/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+
+  
   <script>
-  var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
-  	csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+
+$(document).ready(function() {
+      window.history.pushState(null, "", window.location.href);        
+      window.onpopstate = function() {
+          window.history.pushState(null, "", window.location.href);
+      };
+});
+
+var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
+csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
 
 Chart.defaults.global.elements.rectangle.borderWidth = 1 // bar border width
 Chart.defaults.global.elements.line.borderWidth = 1 // line border width

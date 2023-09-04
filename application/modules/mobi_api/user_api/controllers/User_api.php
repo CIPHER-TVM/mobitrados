@@ -1112,12 +1112,12 @@ class User_api extends REST_Controller {
                     $order_number=$order_data->order_number;
                     $address_id=$order_data->address_id;
                     $customer_number=getAfield("mobile_number","user_address","where address_id =$address_id");
-                    $sms_text="Your Order #$order_number has been cancelled, refund will process soon, if any payment made";
+                    $sms_text="Your Order #$order_number has been canceled, refund will process soon, if any payment made";
                     $sendotp=sendSms($customer_number,$sms_text);
                     $owner_mobile=getAfield("sms_mobile","software_profile","where id =1");
-                    $sms_text="Order  #$order_number has been cancelled,check admin panel for more details";
+                    $sms_text="Order  #$order_number has been canceled,check admin panel for more details";
                     $sendotp=sendSms($owner_mobile,$sms_text);
-                    $this->response(array('status' => 200, 'message'=>'Order Cancelled sucssfully','response' => ''), REST_Controller::HTTP_OK);
+                    $this->response(array('status' => 200, 'message'=>'Order canceled sucssfully','response' => ''), REST_Controller::HTTP_OK);
                   }
               }
               else{
